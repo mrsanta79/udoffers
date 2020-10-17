@@ -91,4 +91,13 @@ $sideNaveWidth: 250;
     width: 100%;
 }
 
+.page-heading {
+    align-items: center;
+    h1 {
+        margin: 0;
+        font-size: 30px;
+        font-weight: bold;
+    }
+}
+
 @import "responsive";

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title><?= env('APP_NAME') ?> - Control Panel</title>
+    <title><?= env('APP_NAME') . ' - Admin | ' . ucfirst($page_name) ?></title>
 
     <!-- CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
@@ -32,6 +32,7 @@
                         <img src="<?= avatar('Santanu Biswas') ?>" alt="" class="avatar mr-2">
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-default" aria-labelledby="top-nav">
+                        <a class="dropdown-item" href="/language">Language</a>
                         <a class="dropdown-item" href="/logout">Logout</a>
                     </div>
                 </li>
@@ -41,26 +42,26 @@
     <!-- Top Navbar -->
 
     <!-- Side Navbar -->
-    <div class="sidenav color-secondary">
+    <div class="sidenav color-primary">
         <a class="navbar-brand mr-0 ml-0" href="/">
             <img src="<?= assets('images/logo.jpeg') ?>" alt="" class="w-100" style="max-width: 150px;">
         </a>
         <a class="navbar-brand-sm hidden" href="/">R</a>
         <ul>
-            <li class="waves-effect <?= !empty($page_name) && $page_name == 'fields' ? 'active' : '' ?>">
-                <a href="/fields">
+            <li class="waves-effect <?= isset($page_name) && $page_name == 'fields' ? 'active' : '' ?>">
+                <a href="/admin/fields">
                     <i class="fas fa-columns"></i>
                     <span>Fields</span>
                 </a>
             </li>
-            <li class="waves-effect <?= !empty($page_name) && $page_name == 'offers' ? 'active' : '' ?>">
-                <a href="/offers">
+            <li class="waves-effect <?= isset($page_name) && $page_name == 'offers' ? 'active' : '' ?>">
+                <a href="/admin/offers">
                     <i class="fas fa-gifts"></i>
                     <span>Offers</span>
                 </a>
             </li>
-            <li class="waves-effect <?= !empty($page_name) && $page_name == 'users' ? 'active' : '' ?>">
-                <a href="/users">
+            <li class="waves-effect <?= isset($page_name) && $page_name == 'users' ? 'active' : '' ?>">
+                <a href="/admin/users">
                     <i class="fas fa-users"></i>
                     <span>Users</span>
                 </a>

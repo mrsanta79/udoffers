@@ -7,11 +7,11 @@
 }
 
 .color-primary {
-  background: #fb7813;
+  background: #512c96;
 }
 
 .color-secondary {
-  background: #0e9aa7;
+  background: #ff5151;
 }
 
 .color-accent {
@@ -22,23 +22,23 @@
   background: #41444b;
 }
 
-.text-primary {
-  color: #fb7813;
+.text-primary, .text-primary * {
+  color: #512c96;
 }
 
-.text-secondary {
-  color: #0e9aa7;
+.text-secondary, .text-secondary * {
+  color: #ff5151;
 }
 
-.text-accent {
+.text-accent, .text-accent * {
   color: #ffc93c;
 }
 
-.text-white {
+.text-white, .text-white * {
   color: #fff;
 }
 
-.text-black {
+.text-black, .text-black * {
   color: #41444b;
 }
 
@@ -48,6 +48,15 @@
 
 .font-montserrat {
   font-family: "Montserrat", sans-serif;
+}
+
+.btn {
+  border-radius: 100px;
+  font-weight: bold;
+  text-transform: unset;
+}
+.btn.btn-narrow {
+  padding: 7px 20px;
 }
 
 body {
