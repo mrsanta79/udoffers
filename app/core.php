@@ -41,13 +41,19 @@ if(!function_exists('redirect')) {
 
 if(!function_exists('url')) {
     function url($route = '') {
+        if(strpos($route, '/') == 0) {
+            $route = substr($route, 1);
+        }
         return env('APP_URL') . $route;
     }
 }
 
 if(!function_exists('api')) {
     function api($route = '') {
-        return env('APP_URL') . 'api/' . $route;
+        if(strpos($route, '/') == 0) {
+            $route = substr($route, 1);
+        }
+        return url('/api/' . $route);
     }
 }
 
