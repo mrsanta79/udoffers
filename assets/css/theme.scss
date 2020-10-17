@@ -1,0 +1,53 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap");
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: antialiased;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+}
+
+$primary-color: #fb7813;
+$secondary-color: #0e9aa7;
+$accent-color: #ffc93c;
+$text-white: #fff;
+$text-black: #41444b;
+
+// Backgrounds
+.color-primary {
+    background: $primary-color;
+}
+.color-secondary {
+    background: $secondary-color;
+}
+.color-accent {
+    background: $accent-color;
+}
+.color-black {
+    background: $text-black;
+}
+
+// Texts
+.text-primary {
+    color: $primary-color;
+}
+.text-secondary {
+    color: $secondary-color;
+}
+.text-accent {
+    color: $accent-color;
+}
+.text-white {
+    color: $text-white;
+}
+.text-black {
+    color: $text-black;
+}
+
+// Font
+.font-comfortaa {
+    font-family: 'Comfortaa', sans-serif;
+}
+.font-montserrat {
+    font-family: 'Montserrat', sans-serif;
+}

@@ -1,0 +1,100 @@
+@media only screen and (max-width: 1440px) {
+    .sidenav {
+        width: 60px;
+        overflow: hidden;
+        transition: width 0.3s ease-in-out;
+        .navbar-brand {
+            margin-left: 0;
+            margin-right: 0;
+            display: none;
+        }
+        .navbar-brand-sm {
+            display: block;
+        }
+        &.expanded {
+            width: 200px;
+            .navbar-brand {
+                margin-left: 0;
+                margin-right: 0;
+                display: block;
+            }
+            .navbar-brand-sm {
+                display: none;
+            }
+            ul li a span {
+                display: initial;
+            }
+        }
+    }
+    .navbar {
+        padding-left: 65px;
+        transition: padding 0.3s ease-in-out;
+        .navbar-brand {
+            display: none !important;
+        }
+        #toggle-sidenav {
+            display: block;
+        }
+        &.expanded {
+            padding-left: 205px;
+        }
+    }
+    .container-fluid {
+        padding-left: 75px;
+        transition: padding 0.3s ease-in-out;
+        &.expanded {
+            padding-left: 215px;
+        }
+    }
+}
+@media only screen and (max-width: 992px) {
+    .navbar {
+        padding-right: 0;
+        .navbar-nav {
+            text-align: right;
+            padding-right: 10px;
+        }
+        .dropdown-menu {
+            left: unset;
+            right: 0;
+        }
+    }
+}
+@media only screen and (max-width: 767px) {
+    .navbar {
+        padding-left: 0;
+        .navbar-brand {
+            display: block !important;
+        }
+    }
+    .sidenav {
+        display: block;
+        width: 200px;
+        left: -220px;
+        transition: left 0.3s ease-in-out;
+        z-index: 10000;
+        &:before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: unset;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: -100;
+            transition: left 0.3s ease-in-out, z-index 0.3s ease-in-out;
+        }
+
+        &.expanded {
+            left: 0;
+            &:before {
+                left: 200px;
+                z-index: 9999;
+            }
+        }
+    }
+    .container-fluid {
+        padding-bottom: 10px;
+        padding-left: 10px;
+    }
+}
