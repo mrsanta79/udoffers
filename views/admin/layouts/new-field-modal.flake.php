@@ -8,12 +8,17 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                ...
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-narrow color-secondary text-white">Create</button>
-            </div>
+            <form action="<?= api('/admin/field') ?>" name="create-field" method="post" @submit.prevent="createField">
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-narrow color-secondary text-white" :class="isCreatingField ? 'disabled' : ''">
+                        <i class="fa fa-spinner fa-spin" v-if="isCreatingField"></i>
+                        <span class="font-weight-bold" v-if="!isCreatingField">Create</span>
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

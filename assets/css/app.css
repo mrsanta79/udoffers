@@ -15,7 +15,7 @@
 }
 
 .color-accent {
-  background: #ffc93c;
+  background: #f69314;
 }
 
 .color-black {
@@ -31,7 +31,7 @@
 }
 
 .text-accent, .text-accent * {
-  color: #ffc93c;
+  color: #f69314;
 }
 
 .text-white, .text-white * {
@@ -57,6 +57,59 @@
 }
 .btn.btn-narrow {
   padding: 7px 20px;
+}
+
+.md-form label {
+  color: #41444b;
+}
+
+.md-form select {
+  border: navajowhite;
+  border-bottom: 1px solid #ccc;
+  border-radius: 0;
+  padding: 0.6rem 0 0.4rem 0;
+  height: unset;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url("/assets/images/arrow-down.svg");
+  background-position: right 5px center;
+  background-size: 10px;
+}
+
+.md-form select:focus {
+  border: 0;
+  border-bottom: 1px solid #4285f4;
+  outline: 0;
+  box-shadow: 0 1px 0 0 #4285f4;
+}
+
+div[contenteditable=true] {
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #ced4da;
+  border-radius: 0;
+  outline: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+}
+
+div[contenteditable=true]:focus {
+  border-bottom: 2px solid #4285f4;
+  -webkit-box-shadow: 0 1px 0 0 #4285f4;
+  box-shadow: 0 1px 0 0 #4285f4;
+}
+
+div[contenteditable=true][placeholder]:empty:before {
+  content: attr(placeholder);
+  color: #9c9c9c;
 }
 
 body {

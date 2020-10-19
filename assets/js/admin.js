@@ -1,13 +1,31 @@
 const app = new Vue({
     el: '#app',
     data: {
-
+        isCreatingField: false,
+        isCreatingOffer: false,
+        createOfferForm: {
+            date: '',
+            country: '',
+            entry_type: '',
+            winners_count: '',
+            shop: '',
+            discount: '',
+            information: '',
+            map_link: ''
+        }
     },
     created() {
 
     },
     methods: {
-
+        createOffer: function(e) {
+            const url = e.target.action;
+            const post = e.target.method;
+        },
+        createField: function(e) {
+            const url = e.target.action;
+            const post = e.target.method;
+        }
     }
 });
 

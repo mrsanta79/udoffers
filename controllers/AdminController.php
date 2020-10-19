@@ -18,4 +18,12 @@ class AdminController {
     public static function users() {
         return view('admin/users', null, 'users');
     }
+
+    public static function createField() {
+
+    }
+
+    public static function createOffer() {
+
+    }
 }

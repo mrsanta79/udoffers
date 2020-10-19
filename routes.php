@@ -4,8 +4,6 @@ use AppController\AppController;
 use AdminController\AdminController;
 use AuthController\AuthController;
 
-$route = rtrim(explode('?', $_SERVER['REQUEST_URI'])[0], '/');
-
 switch ($route) {
     // Auth
     case '/login': AuthController::login();

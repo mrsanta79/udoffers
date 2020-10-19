@@ -6,6 +6,9 @@ require_once 'core.php';
 $dotenv = Dotenv\Dotenv::createImmutable('./');
 $dotenv->load();
 
+// Route
+$route = rtrim(explode('?', $_SERVER['REQUEST_URI'])[0], '/');
+
 // Load config
 require_once 'config.php';
 
@@ -20,5 +23,4 @@ foreach (glob('models/*.php') as $model) {
 }
 
 // Load routes
-require_once 'routes/web.php';
-require_once 'routes/api.php';
+require_once 'routes.php';
