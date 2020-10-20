@@ -83,12 +83,9 @@ $sideNaveWidth: 250;
         }
     }
 }
+
 .container-fluid {
     padding-left: $sideNaveWidth + 15px;
-    padding-bottom: 15px;
-    margin-top: 80px !important;
-    box-sizing: border-box;
-    width: 100%;
 }
 
 .page-heading {

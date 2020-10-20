@@ -3,10 +3,14 @@
 use AppController\AppController;
 use AdminController\AdminController;
 use AuthController\AuthController;
+use Api\AuthController\AuthController as APIAuthController;
 
 switch ($route) {
     // Auth
-    case '/login': AuthController::login();
+    case '/login': AuthController::login(); break;
+    case '/api/auth': APIAuthController::auth(); break;
+    case '/api/auth/email': APIAuthController::loginPasswordVerify(); break;
+    case '/logout': AuthController::logout(); break;
 
     // User Panel
     case '/':

@@ -1,0 +1,188 @@
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap");
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: antialiased;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+}
+
+.color-primary {
+  background: #512c96;
+}
+
+.color-secondary {
+  background: #ff5151;
+}
+
+.color-accent {
+  background: #f69314;
+}
+
+.color-black {
+  background: #41444b;
+}
+
+.text-primary, .text-primary * {
+  color: #512c96;
+}
+
+.text-secondary, .text-secondary * {
+  color: #ff5151;
+}
+
+.text-accent, .text-accent * {
+  color: #f69314;
+}
+
+.text-white, .text-white * {
+  color: #fff;
+}
+
+.text-black, .text-black * {
+  color: #41444b;
+}
+
+.font-comfortaa {
+  font-family: "Comfortaa", sans-serif;
+}
+
+.font-montserrat {
+  font-family: "Montserrat", sans-serif;
+}
+
+.btn {
+  border-radius: 100px;
+  font-weight: bold;
+  text-transform: unset;
+}
+.btn.btn-narrow {
+  padding: 7px 20px;
+}
+
+.md-form label {
+  color: #41444b;
+}
+
+.md-form select {
+  border: navajowhite;
+  border-bottom: 1px solid #ccc;
+  border-radius: 0;
+  padding: 0.6rem 0 0.4rem 0;
+  height: unset;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url("/assets/images/arrow-down.svg");
+  background-position: right 5px center;
+  background-size: 10px;
+}
+
+.md-form select:focus {
+  border: 0;
+  border-bottom: 1px solid #4285f4;
+  outline: 0;
+  box-shadow: 0 1px 0 0 #4285f4;
+}
+
+div[contenteditable=true] {
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #ced4da;
+  border-radius: 0;
+  outline: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+}
+
+div[contenteditable=true]:focus {
+  border-bottom: 2px solid #4285f4;
+  -webkit-box-shadow: 0 1px 0 0 #4285f4;
+  box-shadow: 0 1px 0 0 #4285f4;
+}
+
+div[contenteditable=true][placeholder]:empty:before {
+  content: attr(placeholder);
+  color: #9c9c9c;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #f5f7fa;
+}
+
+* {
+  color: #41444b;
+}
+
+.notifier-container {
+  z-index: 1000;
+  direction: ltr;
+}
+
+.notifier-container .notifier {
+  border-left-width: 10px;
+}
+
+.notifier-container .notifier-title {
+  font-weight: 600;
+  color: #777;
+}
+
+.notifier-container .notifier-body {
+  font-weight: 400;
+  color: #000;
+}
+
+.swal-modal .swal-text {
+  text-align: center;
+}
+
+.avatar {
+  width: 35px;
+  height: 35px;
+  object-fit: cover;
+  border-radius: 100%;
+  background: #eee;
+}
+
+.container-fluid {
+  padding-bottom: 15px;
+  margin-top: 80px !important;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.card {
+  margin: 100px auto;
+  max-width: 500px;
+  box-sizing: border-box;
+  padding: 50px;
+}
+
+.logo {
+  display: block;
+  max-width: 150px;
+  margin: 20px auto 50px auto;
+}
+.logo img {
+  width: 100%;
+}
+
+.btn {
+  vertical-align: center;
+  font-size: 18px;
+  width: 100%;
+}
+.btn:not(:last-child) {
+  margin-bottom: 30px;
+}
+
+/*# sourceMappingURL=auth.css.map */

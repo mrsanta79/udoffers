@@ -29,7 +29,7 @@
             <ul class="navbar-nav ml-auto nav-flex-icons">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="top-nav" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src="<?= avatar('Santanu Biswas') ?>" alt="" class="avatar mr-2">
+                        <img src="<?= avatar(user()->name) ?>" alt="" class="avatar mr-2">
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-default" aria-labelledby="top-nav">
                         <a class="dropdown-item" href="/language">Language</a>

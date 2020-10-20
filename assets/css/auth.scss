@@ -1,0 +1,26 @@
+@import "common";
+
+.card {
+    margin: 100px auto;
+    max-width: 500px;
+    box-sizing: border-box;
+    padding: 50px;
+}
+
+.logo {
+    display: block;
+    max-width: 150px;
+    margin: 20px auto 50px auto;
+    img {
+        width: 100%;
+    }
+}
+
+.btn {
+    vertical-align: center;
+    font-size: 18px;
+    width: 100%;
+    &:not(:last-child) {
+        margin-bottom: 30px;
+    }
+}

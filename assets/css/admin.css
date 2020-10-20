@@ -153,6 +153,13 @@ body {
   background: #eee;
 }
 
+.container-fluid {
+  padding-bottom: 15px;
+  margin-top: 80px !important;
+  box-sizing: border-box;
+  width: 100%;
+}
+
 .navbar {
   position: fixed;
   left: 0;
@@ -236,10 +243,6 @@ body {
 
 .container-fluid {
   padding-left: 265px;
-  padding-bottom: 15px;
-  margin-top: 80px !important;
-  box-sizing: border-box;
-  width: 100%;
 }
 
 .page-heading {
