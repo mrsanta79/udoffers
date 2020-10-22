@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="<?= explode('_', lang())[0] ?>">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -14,8 +14,9 @@
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="<?= assets('libs/notifier/css/notifier.css') ?>">
     <link rel="stylesheet" href="<?= assets('css/admin.css') ?>">
+    <link rel="stylesheet" href="<?= assets('css/admin-rtl.css') ?>">
 </head>
-<body>
+<body dir="<?= explode('_', lang())[0] == 'ar' ? 'rtl' : 'ltr' ?>">
     <!-- Top Navbar -->
     <nav class="mb-1 navbar navbar-expand-lg navbar-dark color-primary">
         <button class="navbar-toggler" type="button" id="toggle-sidenav">
@@ -34,8 +35,8 @@
                         <img src="<?= !empty(user()->avatar) ? user()->avatar : avatar(user()->name) ?>" alt="" class="avatar mr-2">
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-default" aria-labelledby="top-nav">
-                        <a class="dropdown-item" href="/language">Language</a>
-                        <a class="dropdown-item" href="/logout">Logout</a>
+<!--                        <a class="dropdown-item" href="/language">Language</a>-->
+                        <a class="dropdown-item" style="vertical-align: middle" href="/logout">Logout</a>
                     </div>
                 </li>
             </ul>

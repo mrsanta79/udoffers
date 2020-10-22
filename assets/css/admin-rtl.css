@@ -1,0 +1,126 @@
+@charset "UTF-8";
+body[dir=rtl] .mr-2, body[dir=rtl] i.mr-2 {
+  margin-right: unset !important;
+  margin-left: 0.5rem !important;
+}
+body[dir=rtl] .ml-2, body[dir=rtl] i.ml-2 {
+  margin-left: unset !important;
+  margin-right: 0.5rem !important;
+}
+body[dir=rtl] .mr-3 {
+  margin-right: unset !important;
+  margin-left: 1rem !important;
+}
+body[dir=rtl] .ml-3 {
+  margin-left: unset !important;
+  margin-right: 1rem !important;
+}
+body[dir=rtl] i.fa-chevron-right:before {
+  content: "";
+}
+body[dir=rtl] i.fa-chevron-left:before {
+  content: "";
+}
+body[dir=rtl] .ml-auto {
+  margin-right: auto !important;
+  margin-left: unset !important;
+}
+body[dir=rtl] .mr-auto {
+  margin-left: auto !important;
+  margin-right: unset !important;
+}
+body[dir=rtl] .swal-modal {
+  direction: ltr;
+}
+body[dir=rtl] .navbar {
+  padding-right: 265px;
+  padding-left: 10px;
+}
+body[dir=rtl] .navbar .navbar-brand {
+  margin-right: 0.35rem;
+  margin-left: 1rem;
+}
+body[dir=rtl] .sidenav {
+  left: unset;
+  right: 0;
+  box-shadow: -3px 0 5px 2px rgba(0, 0, 0, 0.1);
+}
+body[dir=rtl] .sidenav ul li a {
+  direction: ltr;
+  text-align: right;
+}
+body[dir=rtl] .container-fluid {
+  padding-left: 15px;
+  padding-right: 265px;
+}
+body[dir=rtl] .dataTables_wrapper .dataTables_length {
+  float: right;
+  padding-right: 5px;
+}
+body[dir=rtl] .dataTables_wrapper .dataTables_filter {
+  float: left;
+  padding-left: 5px;
+}
+body[dir=rtl] .dataTables_wrapper .dataTables_filter input {
+  margin-left: unset;
+  margin-right: 0.5em;
+}
+body[dir=rtl] table th, body[dir=rtl] table td {
+  text-align: right;
+}
+body[dir=rtl] table th:not(:last-child),
+body[dir=rtl] table td:not(:last-child) {
+  border-right: unset;
+}
+body[dir=rtl] table a.icon-btn.btn-floating:not(:last-child) {
+  margin-right: unset;
+  margin-left: 5px;
+}
+body[dir=rtl] .modal .modal-title {
+  text-align: right;
+}
+body[dir=rtl] .modal button.close {
+  margin: -1rem auto -1rem -1rem;
+}
+body[dir=rtl] .modal#modal-compose-mail form .text-right {
+  text-align: left !important;
+}
+body[dir=rtl] .modal#modal-compose-mail form div[contenteditable=true] {
+  direction: ltr;
+}
+body[dir=rtl] .md-form label {
+  left: unset;
+  right: 0;
+}
+body[dir=rtl] .md-form select {
+  background-position: left 2px center;
+}
+
+@media only screen and (max-width: 1440px) {
+  body[dir=rtl] .container-fluid {
+    padding-right: 75px !important;
+  }
+  body[dir=rtl] .container-fluid.expanded {
+    padding-right: 215px !important;
+  }
+  body[dir=rtl] .navbar {
+    padding-right: 50px !important;
+  }
+  body[dir=rtl] .navbar.expanded {
+    padding-right: 190px !important;
+  }
+}
+@media only screen and (max-width: 767px) {
+  body[dir=rtl] .navbar {
+    padding-right: 0px !important;
+  }
+  body[dir=rtl] .sidenav {
+    left: unset;
+    right: -220px;
+  }
+  body[dir=rtl] .container-fluid {
+    padding-right: 15px !important;
+  }
+}
+
+/*# sourceMappingURL=admin-rtl.css.map */

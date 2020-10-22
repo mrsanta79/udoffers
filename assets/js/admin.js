@@ -71,6 +71,7 @@ const app = new Vue({
                             }
                         });
                     }
+                    $($tableJq).wrap('<div class="responsive-table"></div>');
                 })
             }).catch(err => {
                 notifier.show('Oops!', err.response.data.message, 'danger', '', 7000);
@@ -180,6 +181,7 @@ const app = new Vue({
                             }
                         });
                     }
+                    $($tableJq).wrap('<div class="responsive-table"></div>');
                 })
             }).catch(err => {
                 notifier.show('Oops!', err.response.data.message, 'danger', '', 7000);

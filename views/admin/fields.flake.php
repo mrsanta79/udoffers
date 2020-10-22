@@ -4,7 +4,7 @@
     <div class="container-fluid">
         <div class="page-heading d-flex justify-content-between">
             <h1>Fields</h1>
-            <button type="button" class="btn btn-narrow color-secondary text-white" data-toggle="modal" data-target="#new-field-modal">
+            <button type="button" class="btn btn-narrow color-secondary text-white mx-0" data-toggle="modal" data-target="#new-field-modal">
                 <i class="fas fa-plus mr-2"></i>
                 Field
             </button>

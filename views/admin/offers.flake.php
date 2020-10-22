@@ -4,13 +4,13 @@
         <div class="container-fluid">
             <div class="page-heading d-flex justify-content-between">
                 <h1>Offers</h1>
-                <button type="button" class="btn btn-narrow color-secondary text-white mr-0" data-toggle="modal" data-target="#new-offer-modal">
+                <button type="button" class="btn btn-narrow color-secondary text-white mx-0" data-toggle="modal" data-target="#new-offer-modal">
                     <i class="fas fa-plus mr-2"></i>
                     Offer
                 </button>
             </div>
 
-            <div class="responsive-table mt-5">
+            <div class="table mt-5">
                 <div class="text-center" :class="!isFetchingData ? 'd-none' : ''">
                     <i class="fa fa-spinner fa-spin" style="font-size: 40px;"></i>
                     <br>
