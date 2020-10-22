@@ -13,9 +13,9 @@
                     ...
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-narrow color-secondary text-white" :class="isCreatingField ? 'disabled' : ''">
-                        <i class="fa fa-spinner fa-spin" v-if="isCreatingField"></i>
-                        <span class="font-weight-bold" v-if="!isCreatingField">Create</span>
+                    <button type="submit" class="btn btn-narrow color-secondary text-white" :class="isProcessing ? 'disabled' : ''">
+                        <i class="fa fa-spinner fa-spin" v-if="isProcessing"></i>
+                        <span class="font-weight-bold" v-if="!isProcessing">Create</span>
                     </button>
                 </div>
             </form>

@@ -12,7 +12,7 @@ const app = new Vue({
         users: null,
         offerForm: {
             date: '',
-            country: '',
+            city: '',
             entry_type: '',
             winners_count: '',
             shop: '',

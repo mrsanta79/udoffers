@@ -48,7 +48,7 @@ class Admin {
 
         $data = (object)$data;
 
-        $query = mysqli_query($conn, "INSERT INTO offers (date, country, entry_type, winners_count, shop, discount, information, map_link, created_by, created_at) VALUES ('$data->date', '$data->country', '$data->entry_type', '$data->winners_count', '$data->shop', '$data->discount', '$data->information', '$data->map_link', '$data->created_by', '$data->created_at')");
+        $query = mysqli_query($conn, "INSERT INTO offers (date, city, entry_type, winners_count, shop, discount, information, map_link, created_by, created_at) VALUES ('$data->date', '$data->city', '$data->entry_type', '$data->winners_count', '$data->shop', '$data->discount', '$data->information', '$data->map_link', '$data->created_by', '$data->created_at')");
 
         if(!$query) {
             return false;

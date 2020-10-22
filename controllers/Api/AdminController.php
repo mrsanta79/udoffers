@@ -36,8 +36,8 @@ class AdminController {
         if(!isset($_POST['date']) || empty(sanitize_input($_POST['date']))) {
             return response(false, null, 'Date is required');
         }
-        if(!isset($_POST['country']) || empty(sanitize_input($_POST['country']))) {
-            return response(false, null, 'Please select a country');
+        if(!isset($_POST['city']) || empty(sanitize_input($_POST['city']))) {
+            return response(false, null, 'Please select a city');
         }
         if(!isset($_POST['entry_type']) || empty(sanitize_input($_POST['entry_type']))) {
             return response(false, null, 'Please select an entry type');
@@ -58,7 +58,7 @@ class AdminController {
         // Data
         $data = [
             'date' => strtotime(sanitize_input($_POST['date'])),
-            'country' => sanitize_input($_POST['country']),
+            'city' => sanitize_input($_POST['city']),
             'entry_type' => sanitize_input($_POST['entry_type']),
             'winners_count' => sanitize_input($_POST['winners_count']),
             'shop' => sanitize_input($_POST['shop']),

@@ -20,7 +20,7 @@
                     <thead>
                         <tr>
                             <th>Date</th>
-                            <th>Country</th>
+                            <th>City</th>
                             <th>Entry Type</th>
                             <th>No. of winners</th>
                             <th>Shop</th>
@@ -34,7 +34,7 @@
                     <tbody>
                         <tr v-for="(offer, index) in offers" :data-id="offer.id">
                             <td>{{ offer.date }}</td>
-                            <td>{{ offer.country }}</td>
+                            <td>{{ offer.city }}</td>
                             <td>{{ offer.entry_type }}</td>
                             <td>{{ offer.winners_count }}</td>
                             <td>{{ offer.shop }}</td>

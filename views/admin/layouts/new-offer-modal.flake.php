@@ -15,8 +15,8 @@
                         <label for="date">Date</label>
                     </div>
                     <div class="md-form">
-                        <select class="browser-default custom-select" name="country" @change="offerForm.country = event.target.value">
-                            <option selected>Country</option>
+                        <select class="browser-default custom-select" name="city" @change="offerForm.city = event.target.value">
+                            <option selected>City</option>
                             <option value="1">One</option>
                             <option value="2">Two</option>
                             <option value="3">Three</option>
