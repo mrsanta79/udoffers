@@ -9,6 +9,7 @@ const app = new Vue({
         isProcessing: false,
         isFetchingData: false,
         offers: null,
+        users: null,
         offerForm: {
             date: '',
             country: '',
@@ -22,6 +23,7 @@ const app = new Vue({
     },
     created() {
         this.getAllOffers();
+        this.getAllUsers();
     },
     methods: {
         // Offers
@@ -44,7 +46,7 @@ const app = new Vue({
                 response = response.data;
 
                 if(!response.success) {
-                    notifier.show('Oops!', response.message, 'danger', '', 7000);
+                    this.isFetchingData = false;
                     return false;
                 }
 
@@ -122,11 +124,83 @@ const app = new Vue({
             });
         },
 
-        // Fields
-        createField: function(e) {
-            const url = e.target.action;
-            const post = e.target.method;
-        }
+        // Users
+        getAllUsers: function(e) {
+            const $table = document.getElementById('users-table');
+            const $tableJq = '#users-table';
+
+            // Run only on specific page
+            if($table === null) {
+                return false;
+            }
+
+            // Get URL from table via data-attribute
+            const url = $table.getAttribute('data-users-url');
+
+            this.isFetchingData = true;
+            let dataTable = [];
+
+            axios.get(url).then(response => {
+                response = response.data;
+
+                if(!response.success) {
+                    this.isFetchingData = false;
+                    return false;
+                }
+
+                // Assign fetched data to variable
+                this.users = response.data;
+                dataTable = response.data !== null ? response.data : [];
+                this.isFetchingData = false;
+
+                // Init datatable
+                Vue.nextTick(function () {
+                    if(typeof(usersTable) !== 'undefined') {
+                        usersTable.destroy();
+                    }
+                    if(typeof(dataTable) !== 'undefined' && dataTable.length > 0) {
+                        usersTable = $($tableJq).DataTable({
+                            bSort: false,
+                            language: {
+                                paginate: {
+                                    previous: '<i class="fas fa-chevron-left"></i>',
+                                    next: '<i class="fas fa-chevron-right"></i>'
+                                }
+                            }
+                        });
+                    }
+                })
+            }).catch(err => {
+                notifier.show('Oops!', err.response.data.message, 'danger', '', 7000);
+                this.isFetchingData = false;
+            });
+        },
+        deleteUser: function(e) {
+            const id = e.currentTarget.getAttribute('data-id');
+            const url = e.currentTarget.href + id;
+            const $table = document.getElementById('#users-table');
+
+            swal({
+                title: "Are you sure?",
+                text: "Once deleted, you will not be able to recover this account!",
+                icon: "warning",
+                buttons: ['Cancel', 'Proceed'],
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+                if (willDelete) {
+                    axios.delete(url).then(response => {
+                        response = response.data;
+                        notifier.show('Success!', response.message, 'success',
+                            '', 7000);
+
+                        setTimeout(() => {
+                            window.location.reload();
+                        }, 2000);
+                    });
+                }
+            });
+        },
     }
 });
 

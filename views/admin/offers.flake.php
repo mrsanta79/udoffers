@@ -16,7 +16,7 @@
                     <br>
                     <h4 class="mt-3">Loading data...</h4>
                 </div>
-                <table class="table table-hover card" id="offers-table" style="display: none" :class="!isFetchingData ? 'd-table' : ''" data-offers-url="<?= api('/admin/offers') ?>">
+                <table class="table table-hover card" id="offers-table" style="display: none" :class="!isFetchingData ? 'd-table' : ''" v-if="offers" data-offers-url="<?= api('/admin/offers') ?>">
                     <thead>
                         <tr>
                             <th>Date</th>
@@ -50,6 +50,9 @@
                         </tr>
                     </tbody>
                 </table>
+                <div class="text-center" style="display: none" :class="isFetchingData ? 'd-none' : 'd-block'" v-if="!offers">
+                    <h4 class="mt-3">No offer found</h4>
+                </div>
             </div>
         </div>
 

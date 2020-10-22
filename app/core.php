@@ -108,6 +108,7 @@ if(!function_exists('user')) {
             $user['is_google'] = boolval($user['is_google']);
             $user['is_admin'] = boolval($user['is_admin']);
             $user['created_at'] = intval($user['created_at']);
+            $user['is_deleted'] = boolval($user['is_deleted']);
 
             $_SESSION['user'] = (object)$user;
         }

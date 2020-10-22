@@ -3,6 +3,7 @@
 namespace Api\AdminController;
 
 use Admin\Admin;
+use User\User;
 
 class AdminController {
 
@@ -91,7 +92,7 @@ class AdminController {
 
         $id = sanitize_input($_GET['id']);
 
-        // Create entry
+        // Delete entry
         $result = Admin::deleteOffer($id);
 
         if(!$result) {
@@ -99,5 +100,48 @@ class AdminController {
         }
 
         return response(true, null, 'Offer has been deleted');
+    }
+
+    // Users
+    public static function getAllUsers() {
+        request_method('GET');
+
+        // Check privilege
+        if(!is_admin()) {
+            return response(false, null, 'You are not authorized');
+        }
+
+        $result = User::getAllUsers();
+
+        if(!$result) {
+            return response(false, null, 'No user found');
+        }
+
+        return response(true, $result, 'Users found');
+    }
+
+    public static function deleteUser() {
+        request_method('DELETE');
+
+        // Check privilege
+        if (!is_admin()) {
+            return response(false, null, 'You are not authorized');
+        }
+
+        // Validate data
+        if(!isset($_GET['id']) || empty(sanitize_input($_GET['id']))) {
+            return response(false, null, 'User ID is required');
+        }
+
+        $id = sanitize_input($_GET['id']);
+
+        // Delete entry
+        $result = User::deleteUser($id);
+
+        if(!$result) {
+            return response(false, null, 'Oops! User could not be deleted');
+        }
+
+        return response(true, null, 'User has been deleted');
     }
 }

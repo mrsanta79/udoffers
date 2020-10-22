@@ -208,10 +208,12 @@ body {
 .responsive-table table th {
   font-weight: 700;
   vertical-align: middle;
+  padding: 10px !important;
 }
 .responsive-table table td {
   font-weight: 500;
   vertical-align: middle;
+  padding: 10px !important;
 }
 .responsive-table table th.actions, .responsive-table table td.actions {
   text-align: center;

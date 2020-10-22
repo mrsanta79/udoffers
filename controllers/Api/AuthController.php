@@ -23,6 +23,11 @@ class AuthController {
             // User data
             $user = mysqli_fetch_object($query);
 
+            // Check if account is deleted or not
+            if($user->is_deleted) {
+                return response(false, null, "Your account has been deleted. Please contact to our support team.");
+            }
+
             // Check if account is facebook or gmail account
             if($user->is_facebook || $user->is_google) {
                 $accountType = $user->is_facebook ? 'Facebook' : 'Google';

@@ -28,6 +28,9 @@ switch ($route) {
     case '/api/admin/offers/create': APIAdminController::createOffer(); break;
     case '/api/admin/offers/delete': APIAdminController::deleteOffer(); break;
 
+    case '/api/admin/users': APIAdminController::getAllUsers(); break;
+    case '/api/admin/users/delete': APIAdminController::deleteUser(); break;
+
     // Errors
     default:
         http_response_code(404);
