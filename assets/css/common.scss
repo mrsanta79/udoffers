@@ -10,7 +10,7 @@ body {
 }
 
 .notifier-container {
-    z-index: 1000;
+    z-index: 10000000;
     direction: ltr;
 }
 .notifier-container .notifier {
@@ -41,4 +41,88 @@ body {
     margin-top: 80px !important;
     box-sizing: border-box;
     width: 100%;
+}
+
+.responsive-table {
+    overflow: auto;
+    table {
+        thead tr {
+            background: $accent-color;
+            th {
+                color: $text-white;
+                white-space: nowrap;
+            }
+        }
+        th {
+            font-weight: 700;
+            vertical-align: middle;
+        }
+        td {
+            font-weight: 500;
+            vertical-align: middle;
+        }
+        th.actions, td.actions {
+            text-align: center;
+        }
+    }
+    .dataTables_wrapper {
+        table {
+            margin-top: 15px;
+        }
+        .dataTables_length label, .dataTables_filter label {
+            font-size: 16px;
+        }
+        .dataTables_length,
+        .dataTables_info {
+            padding-left: 5px;
+        }
+        .dataTables_filter,
+        .dataTables_paginate {
+            padding-right: 5px;
+        }
+        input[type=search], select {
+            padding: 5px 15px;
+            box-sizing: border-box;
+            border-radius: 5px;
+            border: 2px solid rgba(0, 0, 0, 0.2);
+            outline: none;
+            box-shadow: 0 2px 5px 2px rgba(0, 0, 0, 0.1);
+            transition: background 0.3s ease-in-out;
+
+            &:hover, &:active {
+                background: rgba(0, 0, 0, 0.1);
+            }
+        }
+        select {
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+        &.form-inline {
+            display: unset;
+        }
+        .paginate_button {
+            transition: background 0.3s ease-in-out;
+            background: #e8e8e8 !important;
+            border: none !important;
+            a {
+                color: #555 !important;
+                transition: color 0.3s ease-in-out;
+            }
+            &:hover {
+                background: #8a8a8a !important;
+                a {
+                    color: #fff !important;
+                }
+            }
+            &:disabled, &.disabled {
+                opacity: 0.4;
+            }
+            &.current {
+                background: #a9a9a9 !important;
+                a {
+                    color: #fff !important;
+                }
+            }
+        }
+    }
 }

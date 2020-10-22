@@ -4,6 +4,7 @@ use AppController\AppController;
 use AdminController\AdminController;
 use AuthController\AuthController;
 use Api\AuthController\AuthController as APIAuthController;
+use Api\AdminController\AdminController as APIAdminController;
 
 switch ($route) {
     // Auth
@@ -23,7 +24,9 @@ switch ($route) {
     case '/admin/users': AdminController::users(); break;
 
     // API routes
-    case '/api/admin': echo response(false, null, 'No message'); break;
+    case '/api/admin/offers': APIAdminController::getAllOffers(); break;
+    case '/api/admin/offers/create': APIAdminController::createOffer(); break;
+    case '/api/admin/offers/delete': APIAdminController::deleteOffer(); break;
 
     // Errors
     default:

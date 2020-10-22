@@ -90,7 +90,7 @@ if(!function_exists('response')) {
 
 if(!function_exists('sanitize_input')) {
     function sanitize_input($input) {
-        return mysqli_real_escape_string(db(), $input);
+        return mysqli_real_escape_string(db(), trim($input));
     }
 }
 

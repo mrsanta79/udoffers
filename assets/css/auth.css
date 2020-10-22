@@ -59,6 +59,35 @@
   padding: 7px 20px;
 }
 
+a.icon-btn.btn-floating {
+  border-radius: 100%;
+}
+a.icon-btn.btn-floating:not(:last-child) {
+  margin-right: 5px;
+}
+a.icon-btn .fa, a.icon-btn .fab, a.icon-btn .fal, a.icon-btn .far, a.icon-btn .fas {
+  width: 30px;
+  height: 30px;
+  line-height: 30px !important;
+  padding: 0;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  font-size: 16px;
+  background: rgba(0, 0, 0, 0.1);
+  color: #555;
+  transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+a.icon-btn .fa:hover, a.icon-btn .fab:hover, a.icon-btn .fal:hover, a.icon-btn .far:hover, a.icon-btn .fas:hover {
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+}
+a.icon-btn.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
 .md-form label {
   color: #41444b;
 }
@@ -112,6 +141,12 @@ div[contenteditable=true][placeholder]:empty:before {
   color: #9c9c9c;
 }
 
+.datepicker {
+  position: relative !important;
+  top: 0 !important;
+}
+
+/*Bootstrap Calendar*/
 body {
   margin: 0;
   padding: 0;
@@ -123,7 +158,7 @@ body {
 }
 
 .notifier-container {
-  z-index: 1000;
+  z-index: 10000000;
   direction: ltr;
 }
 
@@ -158,6 +193,85 @@ body {
   margin-top: 80px !important;
   box-sizing: border-box;
   width: 100%;
+}
+
+.responsive-table {
+  overflow: auto;
+}
+.responsive-table table thead tr {
+  background: #f69314;
+}
+.responsive-table table thead tr th {
+  color: #fff;
+  white-space: nowrap;
+}
+.responsive-table table th {
+  font-weight: 700;
+  vertical-align: middle;
+}
+.responsive-table table td {
+  font-weight: 500;
+  vertical-align: middle;
+}
+.responsive-table table th.actions, .responsive-table table td.actions {
+  text-align: center;
+}
+.responsive-table .dataTables_wrapper table {
+  margin-top: 15px;
+}
+.responsive-table .dataTables_wrapper .dataTables_length label, .responsive-table .dataTables_wrapper .dataTables_filter label {
+  font-size: 16px;
+}
+.responsive-table .dataTables_wrapper .dataTables_length,
+.responsive-table .dataTables_wrapper .dataTables_info {
+  padding-left: 5px;
+}
+.responsive-table .dataTables_wrapper .dataTables_filter,
+.responsive-table .dataTables_wrapper .dataTables_paginate {
+  padding-right: 5px;
+}
+.responsive-table .dataTables_wrapper input[type=search], .responsive-table .dataTables_wrapper select {
+  padding: 5px 15px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  outline: none;
+  box-shadow: 0 2px 5px 2px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s ease-in-out;
+}
+.responsive-table .dataTables_wrapper input[type=search]:hover, .responsive-table .dataTables_wrapper input[type=search]:active, .responsive-table .dataTables_wrapper select:hover, .responsive-table .dataTables_wrapper select:active {
+  background: rgba(0, 0, 0, 0.1);
+}
+.responsive-table .dataTables_wrapper select {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.responsive-table .dataTables_wrapper.form-inline {
+  display: unset;
+}
+.responsive-table .dataTables_wrapper .paginate_button {
+  transition: background 0.3s ease-in-out;
+  background: #e8e8e8 !important;
+  border: none !important;
+}
+.responsive-table .dataTables_wrapper .paginate_button a {
+  color: #555 !important;
+  transition: color 0.3s ease-in-out;
+}
+.responsive-table .dataTables_wrapper .paginate_button:hover {
+  background: #8a8a8a !important;
+}
+.responsive-table .dataTables_wrapper .paginate_button:hover a {
+  color: #fff !important;
+}
+.responsive-table .dataTables_wrapper .paginate_button:disabled, .responsive-table .dataTables_wrapper .paginate_button.disabled {
+  opacity: 0.4;
+}
+.responsive-table .dataTables_wrapper .paginate_button.current {
+  background: #a9a9a9 !important;
+}
+.responsive-table .dataTables_wrapper .paginate_button.current a {
+  color: #fff !important;
 }
 
 .card {
