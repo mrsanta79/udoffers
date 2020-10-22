@@ -113,14 +113,25 @@ const app = new Vue({
             const url = e.currentTarget.href + id;
             const $table = document.getElementById('#offers-table');
 
-            // this.isFetchingData = true;
-            axios.delete(url).then(response => {
-                response = response.data;
-                notifier.show('Success!', response.message, 'success', '', 7000);
+            swal({
+                title: "Are you sure?",
+                text: "Once deleted, you will not be able to recover this offer!",
+                icon: "warning",
+                buttons: ['Cancel', 'Proceed'],
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+                if (willDelete) {
+                    axios.delete(url).then(response => {
+                        response = response.data;
+                        notifier.show('Success!', response.message, 'success',
+                            '', 7000);
 
-                setTimeout(() => {
-                    window.location.reload();
-                }, 2000);
+                        setTimeout(() => {
+                            window.location.reload();
+                        }, 2000);
+                    });
+                }
             });
         },
 
