@@ -2,6 +2,7 @@
 
 namespace Admin;
 
+use User\City;
 use User\User;
 
 class Admin {
@@ -18,6 +19,9 @@ class Admin {
 
             // Assign user data
             $result[$key]['creator'] = User::getUserById($item['created_by']);
+
+            // Assign city
+            $result[$key]['city'] = City::getCityById($item['city']);
         }
 
         return $result;
@@ -61,7 +65,11 @@ class Admin {
         return $offer;
     }
 
-    public static function deleteOffer($id) {
+    public static function deleteOffer(int $id) {
+        if(!isset($id) || empty($id)) {
+            throw new \Error('Offer ID is required');
+        }
+
         $query = mysqli_query(db(), "DELETE FROM offers WHERE id = '$id'");
 
         if(!$query) {

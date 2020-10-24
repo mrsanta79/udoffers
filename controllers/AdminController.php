@@ -2,6 +2,8 @@
 
 namespace AdminController;
 
+use User\City;
+
 class AdminController {
     public static function index() {
         if(!user()) {
@@ -22,7 +24,11 @@ class AdminController {
             redirect('/');
         }
 
-        return view('admin/fields', null, 'fields');
+        $data = [
+            'cities' => City::getAllCities(),
+        ];
+
+        return view('admin/fields', $data, 'fields');
     }
 
     public static function offers() {
@@ -33,7 +39,11 @@ class AdminController {
             redirect('/');
         }
 
-        return view('admin/offers', null, 'offers');
+        $data = [
+            'cities' => City::getAllCities(),
+        ];
+
+        return view('admin/offers', $data, 'offers');
     }
 
     public static function users() {
@@ -45,13 +55,5 @@ class AdminController {
         }
 
         return view('admin/users', null, 'users');
-    }
-
-    public static function createField() {
-
-    }
-
-    public static function createOffer() {
-
     }
 }

@@ -195,6 +195,24 @@ body {
   width: 100%;
 }
 
+#page-loader {
+  position: absolute;
+  z-index: 10000;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  overflow: hidden;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+table.card {
+  display: table !important;
+}
+
 .responsive-table {
   overflow-x: auto;
   width: 100%;
@@ -221,21 +239,22 @@ body {
 .responsive-table table th.actions, .responsive-table table td.actions {
   text-align: center;
 }
-.responsive-table .dataTables_wrapper table {
+
+.dataTables_wrapper table {
   margin-top: 15px;
 }
-.responsive-table .dataTables_wrapper .dataTables_length label, .responsive-table .dataTables_wrapper .dataTables_filter label {
+.dataTables_wrapper .dataTables_length label, .dataTables_wrapper .dataTables_filter label {
   font-size: 16px;
 }
-.responsive-table .dataTables_wrapper .dataTables_length,
-.responsive-table .dataTables_wrapper .dataTables_info {
+.dataTables_wrapper .dataTables_length,
+.dataTables_wrapper .dataTables_info {
   padding-left: 5px;
 }
-.responsive-table .dataTables_wrapper .dataTables_filter,
-.responsive-table .dataTables_wrapper .dataTables_paginate {
+.dataTables_wrapper .dataTables_filter,
+.dataTables_wrapper .dataTables_paginate {
   padding-right: 5px;
 }
-.responsive-table .dataTables_wrapper input[type=search], .responsive-table .dataTables_wrapper select {
+.dataTables_wrapper input[type=search], .dataTables_wrapper select {
   padding: 5px 15px;
   box-sizing: border-box;
   border-radius: 5px;
@@ -244,38 +263,38 @@ body {
   box-shadow: 0 2px 5px 2px rgba(0, 0, 0, 0.1);
   transition: background 0.3s ease-in-out;
 }
-.responsive-table .dataTables_wrapper input[type=search]:hover, .responsive-table .dataTables_wrapper input[type=search]:active, .responsive-table .dataTables_wrapper select:hover, .responsive-table .dataTables_wrapper select:active {
+.dataTables_wrapper input[type=search]:hover, .dataTables_wrapper input[type=search]:active, .dataTables_wrapper select:hover, .dataTables_wrapper select:active {
   background: rgba(0, 0, 0, 0.1);
 }
-.responsive-table .dataTables_wrapper select {
+.dataTables_wrapper select {
   margin-left: 5px;
   margin-right: 5px;
 }
-.responsive-table .dataTables_wrapper.form-inline {
+.dataTables_wrapper.form-inline {
   display: unset;
 }
-.responsive-table .dataTables_wrapper .paginate_button {
+.dataTables_wrapper .paginate_button {
   transition: background 0.3s ease-in-out;
   background: #e8e8e8 !important;
   border: none !important;
 }
-.responsive-table .dataTables_wrapper .paginate_button a {
+.dataTables_wrapper .paginate_button a {
   color: #555 !important;
   transition: color 0.3s ease-in-out;
 }
-.responsive-table .dataTables_wrapper .paginate_button:hover {
+.dataTables_wrapper .paginate_button:hover {
   background: #8a8a8a !important;
 }
-.responsive-table .dataTables_wrapper .paginate_button:hover a {
+.dataTables_wrapper .paginate_button:hover a {
   color: #fff !important;
 }
-.responsive-table .dataTables_wrapper .paginate_button:disabled, .responsive-table .dataTables_wrapper .paginate_button.disabled {
+.dataTables_wrapper .paginate_button:disabled, .dataTables_wrapper .paginate_button.disabled {
   opacity: 0.4;
 }
-.responsive-table .dataTables_wrapper .paginate_button.current {
+.dataTables_wrapper .paginate_button.current {
   background: #a9a9a9 !important;
 }
-.responsive-table .dataTables_wrapper .paginate_button.current a {
+.dataTables_wrapper .paginate_button.current a {
   color: #fff !important;
 }
 

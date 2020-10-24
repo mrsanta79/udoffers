@@ -11,15 +11,21 @@
             <form action="<?= api('/admin/offers/create') ?>" name="create-offer" method="post" @submit.prevent="createOffer">
                 <div class="modal-body">
                     <div class="md-form mt-0">
-                        <input type="text" id="date" name="date" class="form-control datepicker" autocomplete="off" v-model="offerForm.date">
+                        <input type="text" id="date" name="date" class="form-control datepicker" autocomplete="off" v-model="offerForm.date" required>
                         <label for="date">Date</label>
                     </div>
                     <div class="md-form">
                         <select class="browser-default custom-select" name="city" @change="offerForm.city = event.target.value">
-                            <option selected>City</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                            <option selected disabled>City</option>
+                            <?php
+                                if(isset($data) && isset($data['cities']) && count($data['cities'])) {
+                                    foreach ($data['cities'] as $city) {
+                                        ?>
+                                        <option value="<?= $city['id'] ?>"><?= $city['name'] ?></option>
+                                        <?php
+                                    }
+                                }
+                            ?>
                         </select>
                     </div>
                     <div class="md-form">
@@ -39,11 +45,11 @@
                         </select>
                     </div>
                     <div class="md-form">
-                        <input type="text" id="shop" name="shop" class="form-control" v-model="offerForm.shop">
+                        <input type="text" id="shop" name="shop" class="form-control" v-model="offerForm.shop" required>
                         <label for="shop">Name of shop</label>
                     </div>
                     <div class="md-form">
-                        <input type="text" id="discount" name="discount" class="form-control" v-model="offerForm.discount">
+                        <input type="text" id="discount" name="discount" class="form-control" v-model="offerForm.discount" required>
                         <label for="discount">Discount details</label>
                     </div>
                     <div class="md-form">
@@ -51,7 +57,7 @@
                         <label for="information">Information</label>
                     </div>
                     <div class="md-form">
-                        <input type="text" id="map_link" name="map_link" class="form-control" v-model="offerForm.map_link">
+                        <input type="text" id="map_link" name="map_link" class="form-control" v-model="offerForm.map_link" required>
                         <label for="map_link">Google Map link</label>
                     </div>
                 </div>

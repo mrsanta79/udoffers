@@ -172,7 +172,7 @@ if(!function_exists('trans')) {
 }
 
 if(!function_exists('load_layout')) {
-    function load_layout($file_name, $page_name = '') {
+    function load_layout($file_name, $data = null, $page_name = '') {
         require_once 'views/' . $file_name . '.flake.php';
     }
 }

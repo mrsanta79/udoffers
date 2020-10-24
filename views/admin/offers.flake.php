@@ -1,4 +1,4 @@
-<?= load_layout('admin/layouts/header', $page_name) ?>
+<?= load_layout('admin/layouts/header', null, $page_name) ?>
 
     <div id="app">
         <div class="container-fluid">
@@ -24,7 +24,7 @@
                             <th>Entry Type</th>
                             <th>No. of winners</th>
                             <th>Shop</th>
-                            <th>information</th>
+                            <th>Information</th>
                             <th>Map</th>
                             <th>Author</th>
                             <th>Added On</th>
@@ -34,16 +34,20 @@
                     <tbody>
                         <tr v-for="(offer, index) in offers" :data-id="offer.id">
                             <td>{{ offer.date }}</td>
-                            <td>{{ offer.city }}</td>
+                            <td>{{ offer.city.name }}</td>
                             <td>{{ offer.entry_type }}</td>
                             <td>{{ offer.winners_count }}</td>
                             <td>{{ offer.shop }}</td>
                             <td>{{ offer.information || '-' }}</td>
-                            <td>{{ offer.map_link }}</td>
+                            <td>
+                                <a :href="offer.map_link" class="text-primary" target="_blank">
+                                    Open Map
+                                </a>
+                            </td>
                             <td>{{ offer.creator.name }} ({{ offer.creator.email }})</td>
                             <td>{{ dateFormat(offer.created_at) }}</td>
                             <td class="actions">
-                                <a href="<?= api('/admin/offers/delete?id=') ?>" type="button" class="btn-floating icon-btn delete-mail" :data-id="offer.id" @click.prevent="deleteOffer">
+                                <a href="<?= api('/admin/offers/delete?id=') ?>" type="button" class="btn-floating icon-btn delete-offer" :data-id="offer.id" @click.prevent="deleteOffer">
                                     <i class="fas fa-trash waves-effect" aria-hidden="true"></i>
                                 </a>
                             </td>
@@ -56,7 +60,7 @@
             </div>
         </div>
 
-        <?= load_layout('admin/layouts/new-offer-modal') ?>
+        <?= load_layout('admin/layouts/new-offer-modal', $data) ?>
     </div>
 
 <?= load_layout('admin/layouts/footer') ?>

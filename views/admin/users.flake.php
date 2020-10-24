@@ -1,4 +1,4 @@
-<?= load_layout('admin/layouts/header', $page_name) ?>
+<?= load_layout('admin/layouts/header', null, $page_name) ?>
 
     <div id="app">
         <div class="container-fluid">
@@ -36,7 +36,7 @@
                             <td>{{ user.is_admin ? 'Administrator' : '-' }}</td>
                             <td>{{ dateFormat(user.created_at) }}</td>
                             <td class="actions">
-                                <a href="<?= api('/admin/users/delete?id=') ?>" type="button" class="btn-floating icon-btn delete-mail" :data-id="user.id" @click.prevent="deleteUser">
+                                <a href="<?= api('/admin/users/delete?id=') ?>" type="button" class="btn-floating icon-btn delete-user" :data-id="user.id" @click.prevent="deleteUser">
                                     <i class="fas fa-trash waves-effect" aria-hidden="true"></i>
                                 </a>
                             </td>

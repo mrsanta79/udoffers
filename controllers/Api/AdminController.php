@@ -3,6 +3,7 @@
 namespace Api\AdminController;
 
 use Admin\Admin;
+use User\City;
 use User\User;
 
 class AdminController {
@@ -143,5 +144,80 @@ class AdminController {
         }
 
         return response(true, null, 'User has been deleted');
+    }
+
+    // City
+    public static function createCity() {
+        request_method('POST');
+
+        // Check privilege
+        if(!is_admin()) {
+            return response(false, null, 'You are not authorized');
+        }
+
+        // Validate data
+        if(!isset($_POST['name']) || empty(sanitize_input($_POST['name']))) {
+            return response(false, null, 'City name is required');
+        }
+
+        // Check if city name is already present
+        if(City::getCityByName(sanitize_input($_POST['name']))) {
+            return response(false, null, 'This city is already present');
+        }
+
+        // Data
+        $data = [
+            'name' => sanitize_input($_POST['name']),
+        ];
+
+        // Create entry
+        $result = City::createCity($data);
+
+        if(!$result) {
+            return response(false, null, 'Oops! New city cound not be created');
+        }
+
+        return response(true, $result, 'New city created');
+    }
+    public static function getAllCities() {
+        request_method('GET');
+
+        // Check privilege
+        if(!is_admin()) {
+            return response(false, null, 'You are not authorized');
+        }
+
+        $result = City::getAllCities();
+
+        if(!$result) {
+            return response(false, null, 'No city found');
+        }
+
+        return response(true, $result, 'Cities found');
+    }
+
+    public static function deleteCity() {
+        request_method('DELETE');
+
+        // Check privilege
+        if (!is_admin()) {
+            return response(false, null, 'You are not authorized');
+        }
+
+        // Validate data
+        if(!isset($_GET['id']) || empty(sanitize_input($_GET['id']))) {
+            return response(false, null, 'City ID is required');
+        }
+
+        $id = sanitize_input($_GET['id']);
+
+        // Delete entry
+        $result = City::deleteCity($id);
+
+        if(!$result) {
+            return response(false, null, 'Oops! City could not be deleted');
+        }
+
+        return response(true, null, 'City has been deleted');
     }
 }

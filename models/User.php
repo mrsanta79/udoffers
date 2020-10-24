@@ -41,7 +41,11 @@ class User {
         return $user;
     }
 
-    public static function deleteUser($id) {
+    public static function deleteUser(int $id) {
+        if(!isset($id) || empty($id)) {
+            throw new \Error('User ID is required');
+        }
+
         $query = mysqli_query(db(), "UPDATE users SET is_deleted = 1 WHERE id = '$id'");
 
         if(!$query) {

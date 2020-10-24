@@ -19,6 +19,9 @@ const app = new Vue({
             discount: '',
             information: '',
             map_link: ''
+        },
+        cityForm: {
+            name: '',
         }
     },
     created() {
@@ -214,6 +217,60 @@ const app = new Vue({
                 }
             });
         },
+
+        // City
+        createCity: function(e) {
+            const url = e.target.action;
+
+            this.isProcessing = true;
+
+            let data = new FormData();
+            data.append('name', this.cityForm.name);
+
+            axios.post(url, data).then(response => {
+                response = response.data;
+
+                if(!response.success) {
+                    this.isProcessing = false;
+                    notifier.show('Oops!', response.message, 'danger', '', 7000);
+                    return false;
+                }
+
+                notifier.show('Success', response.message, 'success', '', 7000);
+                setTimeout(() => {
+                    window.location.reload();
+                }, 2000);
+            }).catch(err => {
+                notifier.show('Oops!', err.response.data.message, 'danger', '', 7000);
+                this.isProcessing = false;
+            });
+        },
+        deleteCity: function(e) {
+            const id = e.currentTarget.getAttribute('data-id');
+            const url = e.currentTarget.href + id;
+            const $table = document.getElementById('#cities-table');
+
+            swal({
+                title: "Are you sure?",
+                text: "Once deleted, you will not be able to recover this city!",
+                icon: "warning",
+                buttons: ['Cancel', 'Proceed'],
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+                if (willDelete) {
+                    axios.delete(url).then(response => {
+                        response = response.data;
+                        notifier.show('Success!', response.message, 'success',
+                            '', 7000);
+
+                        setTimeout(() => {
+                            window.location.reload();
+                        }, 2000);
+                    });
+                }
+            });
+        },
     }
 });
 
@@ -226,6 +283,18 @@ $(document).ready(function() {
         startDate: '0d',
         todayHighlight: true,
     });
+
+    // Init static data tables
+    $('.datatable').DataTable({
+        bSort: false,
+        language: {
+            paginate: {
+                previous: '<i class="fas fa-chevron-left"></i>',
+                next: '<i class="fas fa-chevron-right"></i>'
+            }
+        }
+    });
+    $('.datatable').wrap('<div class="responsive-table"></div>');
 
     // Toggle sidenav bar
     $(document).on('click', '#toggle-sidenav', function(e) {
@@ -251,3 +320,12 @@ const dateFormat = (date) => {
 
     return dmyDate;
 }
+
+// Check if document is loaded fully
+const stateCheck = setInterval(() => {
+    if (document.readyState === 'complete') {
+        clearInterval(stateCheck);
+        const pageLoader = document.getElementById('page-loader');
+        pageLoader.parentNode.removeChild(pageLoader);
+    }
+}, 100);
