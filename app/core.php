@@ -95,22 +95,22 @@ if(!function_exists('sanitize_input')) {
 }
 
 if(!function_exists('user')) {
-    function user($user = null, $hide_fields = null) {
+    function user(object $user = null, array $hide_fields = null) {
         if($user != null) {
             if(isset($hide_fields) && count($hide_fields)) {
                 foreach ($hide_fields as $field) {
-                    unset($user[$field]);
+                    unset($user->$field);
                 }
             }
 
-            $user['id'] = intval($user['id']);
-            $user['is_facebook'] = boolval($user['is_facebook']);
-            $user['is_google'] = boolval($user['is_google']);
-            $user['is_admin'] = boolval($user['is_admin']);
-            $user['created_at'] = intval($user['created_at']);
-            $user['is_deleted'] = boolval($user['is_deleted']);
+            $user->id = intval($user->id);
+            $user->is_facebook = boolval($user->is_facebook);
+            $user->is_google = boolval($user->is_google);
+            $user->is_admin = boolval($user->is_admin);
+            $user->created_at = intval($user->created_at);
+            $user->is_deleted = boolval($user->is_deleted);
 
-            $_SESSION['user'] = (object)$user;
+            $_SESSION['user'] = $user;
         }
 
         if(session_status() == PHP_SESSION_NONE) {

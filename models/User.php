@@ -41,6 +41,29 @@ class User {
         return $user;
     }
 
+    public static function getUserByEmail(string $email) {
+        if(!isset($email) || empty($email)) {
+            throw new \Error('User email is required');
+        }
+
+        $query = mysqli_query(db(), "SELECT * FROM users WHERE email = '$email'");
+        if(mysqli_num_rows($query) < 1) {
+            return false;
+        }
+
+        $user = mysqli_fetch_object($query);
+
+        unset($user->password);
+        $user->id = intval($user->id);
+        $user->is_facebook = boolval($user->is_facebook);
+        $user->is_google = boolval($user->is_google);
+        $user->is_admin = boolval($user->is_admin);
+        $user->created_at = intval($user->created_at);
+        $user->is_deleted = boolval($user->is_deleted);
+
+        return $user;
+    }
+
     public static function deleteUser(int $id) {
         if(!isset($id) || empty($id)) {
             throw new \Error('User ID is required');

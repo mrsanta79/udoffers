@@ -18,11 +18,7 @@
             <a href="<?= url('/') ?>" class="logo">
                 <img src="<?= assets('images/logo.jpeg') ?>" alt="">
             </a>
-            <?php if(isset($data) && isset($data['is_new_account']) && $data['is_new_account']) { ?>
-                <h1 class="text-center">Welcome to <?= env('APP_NAME') ?></h1>
-            <?php } ?>
-            <h2 class="text-center">Your One Time Password</h2>
-            <h1 class="font-weight-bold text-center"><?= isset($data) && isset($data['password']) ? $data['password'] : '' ?></h1>
+            <h1 class="text-center">Welcome to <?= env('APP_NAME') ?></h1>
         </div>
     </div>
 </body>

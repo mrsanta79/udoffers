@@ -25,15 +25,19 @@
                     <img src="<?= assets('images/logo.jpeg') ?>" alt="">
                 </a>
 
-                <div class="buttons-container">
-                    <button type="button" class="btn color-secondary text-white" @click="loginType('email')" :class="authType !== '' ? 'd-none' : ''">
+                <div class="buttons-container" :class="authType !== '' && authType !== 'email' ? 'processing-auth' : ''">
+                    <button type="button" class="btn color-secondary text-white" @click="loginType('email')" :class="authType === 'email' ? 'd-none' : ''">
                         <i class="fas fa-envelope mr-3"></i>
                         Continue with Email
                     </button>
-                    <button type="button" class="btn text-white g-signin2" data-onsuccess="continueWithGoogle" style="background: #4081ee" @click="loginType('google')" :class="authType === 'email' ? 'd-none' : ''">
+
+                    <button type="button" class="btn text-white" id="continue-with-google" style="background: #4081ee" @click="loginType('google')" :class="authType === 'email' ? 'd-none' : ''">
                         <i class="fab fa-google mr-3"></i>
                         Continue with Google
                     </button>
+
+                    <button class="g-signin2 d-none" data-onsuccess="continueWithGoogle" data-theme="dark" data-url="<?= api('/auth/google') ?>"></button>
+
                     <button type="button" class="btn text-white" style="background: #395794" @click="loginType('facebook')" :class="authType === 'email' ? 'd-none' : ''">
                         <i class="fab fa-facebook-square mr-3"></i>
                         Continue with Facebook
@@ -91,20 +95,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.12/vue.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
-<!--    <script src="https://apis.google.com/js/platform.js" async defer></script>-->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
 <!--    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v8.0" nonce="0iT6IU08"></script>-->
     <script src="<?= assets('libs/notifier/js/notifier.js') ?>"></script>
     <script src="<?= assets('js/auth.js') ?>"></script>
     <script type="text/javascript">
-
-        // Google Login
-        const continueWithGoogle = (googleUser)  => {
-            const profile = googleUser.getBasicProfile();
-            console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-            console.log('Name: ' + profile.getName());
-            console.log('Image URL: ' + profile.getImageUrl());
-            console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-        }
 
         // Facebook login
         // window.fbAsyncInit = function() {

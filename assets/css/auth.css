@@ -305,6 +305,31 @@ table.card {
   padding: 50px;
 }
 
+.buttons-container.processing-auth:after {
+  content: "";
+  background: rgba(0, 0, 0, 0.75);
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border-radius: 5px;
+  backdrop-filter: blur(5px);
+}
+.buttons-container.processing-auth:before {
+  content: "";
+  position: absolute;
+  z-index: 100;
+  width: 80px;
+  height: 80px;
+  border-top: 4px solid #f69314;
+  border-right: 4px solid #f69314;
+  border-radius: 100%;
+  left: 50%;
+  top: 50%;
+  animation: loadingState 0.5s infinite linear;
+}
+
 .logo {
   display: block;
   max-width: 150px;
@@ -318,9 +343,55 @@ table.card {
   vertical-align: center;
   font-size: 18px;
   width: 100%;
+  font-family: "Comfortaa", sans-serif !important;
 }
 .btn:not(:last-child) {
   margin-bottom: 30px;
+}
+.btn.g-signin2 {
+  padding: 0;
+}
+.btn.g-signin2 > div {
+  width: 100% !important;
+  height: 100% !important;
+  padding: 0.64rem 2rem !important;
+}
+.btn.g-signin2 > div .abcRioButtonContentWrapper span {
+  font-size: 18px !important;
+  font-weight: 500 !important;
+}
+
+@-moz-keyframes loadingState {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+@-ms-keyframes loadingState {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+@-o-keyframes loadingState {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+@keyframes loadingState {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
 }
 
 /*# sourceMappingURL=auth.css.map */

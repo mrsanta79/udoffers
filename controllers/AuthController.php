@@ -8,7 +8,7 @@ class AuthController {
             if(is_admin()) {
                 redirect('/admin/fields');
             } else {
-                echo 'User';
+                redirect('/');
             }
         }
 

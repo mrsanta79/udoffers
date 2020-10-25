@@ -2,6 +2,8 @@
 
 namespace Api\AuthController;
 
+use User\User;
+
 class AuthController {
     public static function auth() {
         request_method('POST');
@@ -140,10 +142,10 @@ class AuthController {
             return response(false, null, 'Invalid login. Please login again');
         }
 
-        $user = mysqli_fetch_assoc($checkUser);
+        $user = mysqli_fetch_object($checkUser);
 
         // Check password
-        if(!password_verify($password, $user['password'])) {
+        if(!password_verify($password, $user->password)) {
             return response(false, null, 'Invalid password');
         }
 
@@ -156,7 +158,78 @@ class AuthController {
 
     }
 
-    public static function loginWithGmail() {
+    public static function loginWithGoogle() {
+        request_method('POST');
 
+        // Validate input
+        if(!isset($_POST['email']) || empty($_POST['email'])) {
+            return response(false, null, 'Invalid login. Please login again');
+        }
+        if(!isset($_POST['name']) || empty($_POST['name'])) {
+            return response(false, null, 'Invalid login. Please login again');
+        }
+        if(!isset($_POST['avatar']) || empty($_POST['avatar'])) {
+            return response(false, null, 'Invalid login. Please login again');
+        }
+
+        $data = (object)[
+            'email' => sanitize_input($_POST['email']),
+            'name' => sanitize_input($_POST['name']),
+            'avatar' => sanitize_input($_POST['avatar']),
+            'created_at' => strtotime('now')
+        ];
+
+        // Check user
+        $user = User::getUserByEmail($data->email);
+
+        // Verify if it's a google account
+        if($user && !$user->is_google) {
+            return response(false, null, 'This is not a google authenticated account. Please login using the correct method.');
+        }
+
+        // Create entry if not found
+        if(!$user) {
+            $conn = db();
+            $query = mysqli_query($conn, "INSERT INTO users (name, email, avatar, is_google, created_at) VALUES ('$data->name', '$data->email', '$data->avatar', true, '$data->created_at')");
+
+            if ($query) {
+                $userId = mysqli_insert_id($conn);
+                $user = User::getUserById($userId);
+
+                // Set user session
+                user($user);
+
+                // Send welcome mail
+                ob_start();
+                view('emails/welcome');
+                $message = ob_get_clean();
+
+                $subject = 'Welcome to ' . env('APP_NAME');
+                $senderName = 'Info - ' . env('APP_NAME');
+                $senderEmail = 'info@' . env('APP_DOMAIN');
+
+                mailer($user->email, $subject, $message, $senderEmail, $senderName);
+
+                return response(true, user(), 'Login success');
+            } else {
+                return response(false, null, 'Sorry, your account could not be created.');
+            }
+        } else {
+
+            // Update name and avatar if not same
+            if($user->name != $data->name || $user->avatar != $data->avatar) {
+                mysqli_query(db(), "UPDATE users SET name = '$data->name', avatar = '$data->avatar' WHERE id = '$user->id'");
+            }
+
+            // Set user session
+            user($user);
+
+            return response(true, user(), 'Login success');
+        }
+
+        // Set session if user found in database
+        user($user);
+
+        return response(true, user(), 'Login success');
     }
 }

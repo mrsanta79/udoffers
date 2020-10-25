@@ -11,6 +11,8 @@ switch ($route) {
     case '/login': AuthController::login(); break;
     case '/api/auth': APIAuthController::auth(); break;
     case '/api/auth/email': APIAuthController::loginPasswordVerify(); break;
+    case '/api/auth/google': APIAuthController::loginWithGoogle(); break;
+    case '/api/auth/facebook': APIAuthController::loginWithFacebook(); break;
     case '/logout': AuthController::logout(); break;
 
     // User Panel

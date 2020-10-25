@@ -9,6 +9,11 @@ const app = new Vue({
             email: '',
             password: '',
             name: ''
+        },
+        loginWithGoogle: {
+            email: '',
+            name: '',
+            avatar: ''
         }
     },
     created() {
@@ -87,4 +92,44 @@ const app = new Vue({
             });
         }
     }
+});
+
+// Google Login
+function continueWithGoogle(googleUser) {
+    if(app.authType === '') {
+        return;
+    }
+
+    const profile = googleUser.getBasicProfile();
+    const url = document.querySelector('.g-signin2').getAttribute('data-url');
+
+    const data = new FormData();
+    data.append('name', profile.getName());
+    data.append('email', profile.getEmail());
+    data.append('avatar', profile.getImageUrl());
+
+    axios.post(url, data).then(response => {
+        response = response.data;
+
+        if(!response.success) {
+            notifier.show('Oops!', response.message, 'danger', '', 7000);
+            return false;
+        }
+
+        notifier.show('Success', response.message, 'success', '', 7000);
+        setTimeout(() => {
+            window.location.reload();
+        }, 2000);
+    }).catch(err => {
+        notifier.show('Oops!', err.response.data.message, 'danger', '', 7000);
+    });
+}
+
+// Trigger google login button on click continue with google button
+document.getElementById('continue-with-google').addEventListener('click', (event) => {
+    event.preventDefault();
+
+    const loginWithGoogleButton = document.querySelector('.g-signin2 > .abcRioButton');
+
+    loginWithGoogleButton.click();
 });
