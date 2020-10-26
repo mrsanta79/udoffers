@@ -48,7 +48,7 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-default" aria-labelledby="top-nav">
 <!--                        <a class="dropdown-item" href="/language">Language</a>-->
-                        <a class="dropdown-item" style="vertical-align: middle" href="/logout">Logout</a>
+                        <a class="dropdown-item" style="vertical-align: middle" href="/logout"><?= trans('common.menu.logout') ?></a>
                     </div>
                 </li>
             </ul>
@@ -66,19 +66,19 @@
             <li class="waves-effect <?= isset($page_name) && $page_name == 'fields' ? 'active' : '' ?>">
                 <a href="/admin/fields">
                     <i class="fas fa-columns"></i>
-                    <span>Fields</span>
+                    <span><?= trans('common.menu.fields') ?></span>
                 </a>
             </li>
             <li class="waves-effect <?= isset($page_name) && $page_name == 'offers' ? 'active' : '' ?>">
                 <a href="/admin/offers">
                     <i class="fas fa-gifts"></i>
-                    <span>Offers</span>
+                    <span><?= trans('common.menu.offers') ?></span>
                 </a>
             </li>
             <li class="waves-effect <?= isset($page_name) && $page_name == 'users' ? 'active' : '' ?>">
                 <a href="/admin/users">
                     <i class="fas fa-users"></i>
-                    <span>Users</span>
+                    <span><?= trans('common.menu.users') ?></span>
                 </a>
             </li>
         </ul>

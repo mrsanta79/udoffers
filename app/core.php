@@ -167,7 +167,7 @@ if(!function_exists('trans')) {
             if($k == $variable) array_push($val, $v);
         });
 
-        return count($val) > 1 ? $val : array_pop($val);
+        return count($val) > 1 ? $val[0] : array_pop($val);
     }
 }
 

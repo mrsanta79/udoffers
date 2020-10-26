@@ -3,7 +3,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="new-city-modal">Create New City</h5>
+                <h5 class="modal-title" id="new-city-modal"><?= trans('modals.create_new_city') ?></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -12,13 +12,13 @@
                 <div class="modal-body">
                     <div class="md-form mt-0">
                         <input type="text" id="name" name="name" class="form-control" autocomplete="off" v-model="cityForm.name" required>
-                        <label for="name">City Name</label>
+                        <label for="name"><?= trans('modals.city_name') ?></label>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-narrow color-secondary text-white" :class="isProcessing ? 'disabled' : ''">
                         <i class="fa fa-spinner fa-spin" v-if="isProcessing"></i>
-                        <span class="font-weight-bold" v-if="!isProcessing">Create</span>
+                        <span class="font-weight-bold" v-if="!isProcessing"><?= trans('buttons.create') ?></span>
                     </button>
                 </div>
             </form>

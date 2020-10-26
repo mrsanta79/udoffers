@@ -3,24 +3,24 @@
     <div id="app">
         <div class="container-fluid">
             <div class="page-heading d-flex justify-content-between">
-                <h1>Users</h1>
+                <h1><?= trans('common.menu.users') ?></h1>
             </div>
 
             <div class="responsive-table mt-5">
                 <div class="text-center" :class="!isFetchingData ? 'd-none' : ''">
                     <i class="fa fa-spinner fa-spin" style="font-size: 40px;"></i>
                     <br>
-                    <h4 class="mt-3">Loading data...</h4>
+                    <h4 class="mt-3"><?= trans('common.loading_data') ?></h4>
                 </div>
                 <table class="table table-hover card" id="users-table" style="display: none" :class="!isFetchingData ? 'd-table' : ''" v-if="users" data-users-url="<?= api('/admin/users') ?>">
                     <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Account Type</th>
-                            <th>Admin</th>
-                            <th>Registered On</th>
-                            <th class="actions">Actions</th>
+                            <th><?= trans('pages.users.name') ?></th>
+                            <th><?= trans('pages.users.email') ?></th>
+                            <th><?= trans('pages.users.account_type') ?></th>
+                            <th><?= trans('pages.users.user_type') ?></th>
+                            <th><?= trans('pages.users.registered_on') ?></th>
+                            <th class="actions"><?= trans('common.actions') ?></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -50,7 +50,7 @@
                     </tbody>
                 </table>
                 <div class="text-center" style="display: none" :class="isFetchingData ? 'd-none' : 'd-block'" v-if="!users">
-                    <h4 class="mt-3">No user found</h4>
+                    <h4 class="mt-3"><?= trans('pages.users.no_user_found') ?></h4>
                 </div>
             </div>
         </div>

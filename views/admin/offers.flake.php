@@ -3,10 +3,10 @@
     <div id="app">
         <div class="container-fluid">
             <div class="page-heading d-flex justify-content-between">
-                <h1>Offers</h1>
+                <h1><?= trans('common.menu.offers') ?></h1>
                 <button type="button" class="btn btn-narrow color-secondary text-white mx-0" data-toggle="modal" data-target="#new-offer-modal">
                     <i class="fas fa-plus mr-2"></i>
-                    Offer
+                    <?= trans('common.menu.offer') ?>
                 </button>
             </div>
 
@@ -14,21 +14,22 @@
                 <div class="text-center" :class="!isFetchingData ? 'd-none' : ''">
                     <i class="fa fa-spinner fa-spin" style="font-size: 40px;"></i>
                     <br>
-                    <h4 class="mt-3">Loading data...</h4>
+                    <h4 class="mt-3"><?= trans('common.loading_data') ?></h4>
                 </div>
                 <table class="table table-hover card" id="offers-table" style="display: none" :class="!isFetchingData ? 'd-table' : ''" v-if="offers" data-offers-url="<?= api('/admin/offers') ?>">
                     <thead>
                         <tr>
-                            <th>Date</th>
-                            <th>City</th>
-                            <th>Entry Type</th>
-                            <th>No. of winners</th>
-                            <th>Shop</th>
-                            <th>Information</th>
-                            <th>Map</th>
-                            <th>Author</th>
-                            <th>Added On</th>
-                            <th class="actions">Actions</th>
+                            <th><?= trans('pages.offers.date') ?></th>
+                            <th><?= trans('pages.offers.city') ?></th>
+                            <th><?= trans('pages.offers.entry_type') ?></th>
+                            <th><?= trans('pages.offers.number_of_winners') ?></th>
+                            <th><?= trans('pages.offers.shop') ?></th>
+                            <th><?= trans('pages.offers.discount_details') ?></th>
+                            <th><?= trans('pages.offers.information') ?></th>
+                            <th><?= trans('pages.offers.map') ?></th>
+                            <th><?= trans('pages.offers.author') ?></th>
+                            <th><?= trans('pages.offers.added_on') ?></th>
+                            <th class="actions"><?= trans('common.actions') ?></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -41,11 +42,12 @@
                                           class="d-inline-block mr-2">
                                     </span>
                                     {{ offer.entry_type.name }}
-                                    ({{ offer.entry_type.background }})
+                                    <span style="text-transform: uppercase">({{ offer.entry_type.background }})</span>
                                 </div>
                             </td>
                             <td>{{ offer.winners_count }}</td>
                             <td>{{ offer.shop }}</td>
+                            <td>{{ offer.discount }}</td>
                             <td>{{ offer.information || '-' }}</td>
                             <td>
                                 <a :href="offer.map_link" class="text-primary" target="_blank">
@@ -63,7 +65,7 @@
                     </tbody>
                 </table>
                 <div class="text-center" style="display: none" :class="isFetchingData ? 'd-none' : 'd-block'" v-if="!offers">
-                    <h4 class="mt-3">No offer found</h4>
+                    <h4 class="mt-3"><?= trans('pages.offers.no_offer_found') ?></h4>
                 </div>
             </div>
         </div>

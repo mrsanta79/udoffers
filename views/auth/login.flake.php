@@ -29,12 +29,12 @@
                 <div class="buttons-container processing-auth" :class="authType !== '' && authType !== 'email' ? 'processing-auth' : ''">
                     <button type="button" class="btn color-secondary text-white" @click="loginType('email')" :class="authType === 'email' ? 'd-none' : ''">
                         <i class="fas fa-envelope mr-3"></i>
-                        Continue with Email
+                        <?= trans('auth.continue_with_email') ?>
                     </button>
 
                     <button type="button" class="btn text-white" id="continue-with-google" style="background: #4081ee" @click="loginType('google')" :class="authType === 'email' ? 'd-none' : ''">
                         <i class="fab fa-google mr-3"></i>
-                        Continue with Google
+                        <?= trans('auth.continue_with_google') ?>
                     </button>
 
                     <button class="g-signin2 d-none" data-onsuccess="continueWithGoogle" data-theme="dark" data-url="<?= api('/auth/google') ?>"></button>
@@ -57,13 +57,13 @@
                 <form action="<?= api('/auth') ?>" name="continue-with-email" method="post" style="display: none" @submit.prevent="continueWithEmail" :class="authType === 'email' && !isPasswordSent ? 'd-block' : ''">
                     <div class="md-form mt-0">
                         <input type="email" id="email" name="email" class="form-control" v-model="loginWithEmail.email">
-                        <label for="email">Email</label>
+                        <label for="email"><?= trans('auth.email') ?></label>
                     </div>
                     <div class="md-form mt-0">
                         <button type="submit" class="btn color-secondary text-white" :class="isProcessing ? 'disabled' : ''" style="transition: none">
                             <i class="fa fa-spinner fa-spin" v-if="isProcessing"></i>
                             <span class="font-weight-bold" v-if="!isProcessing">
-                                Continue
+                                <?= trans('buttons.continue') ?>
                                 <i class="fas fa-chevron-right ml-3"></i>
                             </span>
                         </button>
@@ -77,17 +77,17 @@
                     </div>
                     <div class="md-form mt-0" style="display: none" :class="isNewAccount ? 'd-block' : ''">
                         <input type="text" id="name" name="name" class="form-control" v-model="loginWithEmail.name">
-                        <label for="name">Your Name</label>
+                        <label for="name"><?= trans('auth.your_name') ?></label>
                     </div>
                     <div class="md-form mt-0">
                         <input type="password" id="password" name="password" class="form-control" v-model="loginWithEmail.password">
-                        <label for="password">Password</label>
+                        <label for="password"><?= trans('auth.password') ?></label>
                     </div>
                     <div class="md-form mt-0">
                         <button type="submit" class="btn color-secondary text-white" :class="isProcessing ? 'disabled' : ''">
                             <i class="fa fa-spinner fa-spin" v-if="isProcessing"></i>
                             <span class="font-weight-bold" v-if="!isProcessing">
-                                Authenticate
+                                <?= trans('buttons.authenticate') ?>
                                 <i class="fas fa-unlock-alt ml-3"></i>
                             </span>
                         </button>
