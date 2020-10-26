@@ -17,8 +17,7 @@
                         <tr>
                             <th>Name</th>
                             <th>Email</th>
-                            <th>Facebook Account</th>
-                            <th>Google Account</th>
+                            <th>Account Type</th>
                             <th>Admin</th>
                             <th>Registered On</th>
                             <th class="actions">Actions</th>
@@ -31,8 +30,15 @@
                                 <i v-if="user.is_admin" class="fas fa-crown text-warning ml-2"></i>
                             </td>
                             <td>{{ user.email }}</td>
-                            <td>{{ user.is_facebook ? 'Yes' : 'No' }}</td>
-                            <td>{{ user.is_google ? 'Yes' : 'No' }}</td>
+                            <td>
+                                {{
+                                    user.is_facebook
+                                    ? 'Facebook Account'
+                                    : user.is_google
+                                        ? 'Google Account'
+                                        : 'Email Account'
+                                }}
+                            </td>
                             <td>{{ user.is_admin ? 'Administrator' : '-' }}</td>
                             <td>{{ dateFormat(user.created_at) }}</td>
                             <td class="actions">
