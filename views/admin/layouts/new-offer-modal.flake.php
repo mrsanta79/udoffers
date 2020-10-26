@@ -35,7 +35,10 @@
                             if(isset($data) && isset($data['entries']) && count($data['entries'])) {
                                 foreach ($data['entries'] as $entry) {
                                     ?>
-                                    <option value="<?= $entry['id'] ?>"><?= $entry['name'] ?></option>
+                                    <option value="<?= $entry['id'] ?>">
+                                        <?= $entry['name'] ?>
+                                        (<?= $entry['background'] ?>)
+                                    </option>
                                     <?php
                                 }
                             }
