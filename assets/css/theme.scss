@@ -150,6 +150,24 @@ div[contenteditable=true][placeholder]:empty:before {
 }
 
 .datepicker {
-    position: relative !important;
-    top: 0 !important;
+    box-shadow: 0 2px 5px 2px rgba(0, 0, 0, 0.1);
+    margin-bottom: 3rem;
+
+    td, th {
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 0.85rem;
+    }
+    .year.active,
+    .month.active,
+    .day.today {
+        background: $accent-color !important;
+        color: $text-white !important;
+    }
+    .year.focused,
+    .month.focused,
+    .day.active {
+        background: $secondary-color !important;
+        color: $text-white !important;
+    }
 }

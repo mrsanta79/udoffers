@@ -11,7 +11,7 @@
             <form action="<?= api('/admin/offers/create') ?>" name="create-offer" method="post" @submit.prevent="createOffer">
                 <div class="modal-body">
                     <div class="md-form mt-0">
-                        <input type="text" id="date" name="date" class="form-control datepicker" autocomplete="off" v-model="offerForm.date" required>
+                        <input type="text" id="date" name="date" class="form-control datepicker" autocomplete="off" data-date-container='#new-offer-modal' v-model="offerForm.date" required>
                         <label for="date"><?= trans('modals.date') ?></label>
                     </div>
                     <div class="md-form">

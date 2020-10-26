@@ -1,6 +1,5 @@
 // Global variables
-let fieldsTable,
-    offersTable,
+let offersTable,
     usersTable;
 
 const app = new Vue({
@@ -348,6 +347,11 @@ $(document).ready(function() {
         format: 'dd/mm/yyyy',
         startDate: '0d',
         todayHighlight: true,
+    });
+
+    // On change date inside New Offer Modal
+    $('form[name=create-offer] .datepicker').on('changeDate', function(ev) {
+        app.offerForm.date = $(this).val();
     });
 
     // Init static data tables
