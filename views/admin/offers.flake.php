@@ -35,7 +35,15 @@
                         <tr v-for="(offer, index) in offers" :data-id="offer.id">
                             <td>{{ offer.date }}</td>
                             <td>{{ offer.city.name }}</td>
-                            <td>{{ offer.entry_type }}</td>
+                            <td>
+                                <div class="d-flex flex-row">
+                                    <span style="width: 20px; height: 20px; border-radius: 100%;" :style="{ background: offer.entry_type.background }"
+                                          class="d-inline-block mr-2">
+                                    </span>
+                                    {{ offer.entry_type.name }}
+                                    ({{ offer.entry_type.background }})
+                                </div>
+                            </td>
                             <td>{{ offer.winners_count }}</td>
                             <td>{{ offer.shop }}</td>
                             <td>{{ offer.information || '-' }}</td>

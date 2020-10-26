@@ -3,6 +3,7 @@
 namespace Offer;
 
 use City\City;
+use Entry\Entry;
 use User\User;
 
 class Offer {
@@ -22,6 +23,7 @@ class Offer {
 
             // Assign city
             $result[$key]['city'] = City::getCityById($item['city']);
+            $result[$key]['entry_type'] = Entry::getEntryById($item['entry_type']);
         }
 
         return $result;
@@ -40,6 +42,7 @@ class Offer {
 
         $offer = mysqli_fetch_object($query);
         $offer->creator = User::getUserById($offer->created_by);
+        $offer->entry_type = Entry::getEntryById($offer->entry_type);
 
         return $offer;
     }
