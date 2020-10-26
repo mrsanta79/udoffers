@@ -15,8 +15,13 @@
                         <label for="entry_name">Entry Name</label>
                     </div>
                     <div class="md-form">
-                        <input type="text" id="background" name="background" class="form-control" v-model="entryForm.background" required autocomplete="off">
-                        <label for="background">Background Color (e.g. #424242 or #424)</label>
+                        <span class="d-block">Background Color (e.g. #424242 or #424):</span>
+                        <div class="d-flex flex-row mt-2">
+                            <input type="color" id="background" name="background" class="d-block w-100" v-model="entryForm.background">
+                            <span class="ml-2 text-right" style="text-transform: uppercase; width: 100px;">
+                                {{ entryForm.background }}
+                            </span>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">

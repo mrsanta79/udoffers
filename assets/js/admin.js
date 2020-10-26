@@ -25,7 +25,7 @@ const app = new Vue({
         },
         entryForm: {
             name: '',
-            background: ''
+            background: '#424242'
         }
     },
     created() {
