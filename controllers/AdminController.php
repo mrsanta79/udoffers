@@ -2,7 +2,7 @@
 
 namespace AdminController;
 
-use User\City;
+use City\City;
 
 class AdminController {
     public static function index() {

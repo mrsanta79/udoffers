@@ -1,11 +1,11 @@
 <?php
 
-namespace Admin;
+namespace Offer;
 
-use User\City;
+use City\City;
 use User\User;
 
-class Admin {
+class Offer {
     public static function getAllOffers() {
         $query = mysqli_query(db(), "SELECT * FROM offers");
 

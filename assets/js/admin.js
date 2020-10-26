@@ -22,6 +22,10 @@ const app = new Vue({
         },
         cityForm: {
             name: '',
+        },
+        entryForm: {
+            name: '',
+            color: ''
         }
     },
     created() {

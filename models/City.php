@@ -1,6 +1,8 @@
 <?php
 
-namespace User;
+namespace City;
+
+use User\User;
 
 class City {
     public static function getAllCities() {
@@ -11,6 +13,9 @@ class City {
         foreach ($result as $key=>$item) {
             $result[$key]['id'] = intval($result[$key]['id']);
             $result[$key]['created_at'] = intval($result[$key]['created_at']);
+
+            // Assign user data
+            $result[$key]['creator'] = User::getUserById($result[$key]['created_by']);
         }
 
         return $result;
@@ -31,6 +36,9 @@ class City {
         $city->id = intval($city->id);
         $city->created_at = intval($city->created_at);
 
+        // Assign user data
+        $city->creator = User::getUserById($city->created_by);
+
         return $city;
     }
 
@@ -49,6 +57,9 @@ class City {
         $city->id = intval($city->id);
         $city->created_at = intval($city->created_at);
 
+        // Assign user data
+        $city->creator = User::getUserById($city->created_by);
+
         return $city;
     }
 
@@ -59,7 +70,7 @@ class City {
 
         $data = (object)$data;
 
-        $query = mysqli_query($conn, "INSERT INTO cities (name, created_at) VALUES ('$data->name', '$data->created_at')");
+        $query = mysqli_query($conn, "INSERT INTO cities (name, created_by, created_at) VALUES ('$data->name', '$data->created_by', '$data->created_at')");
 
         if(!$query) {
             return false;

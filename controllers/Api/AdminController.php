@@ -2,8 +2,8 @@
 
 namespace Api\AdminController;
 
-use Admin\Admin;
-use User\City;
+use Offer\Offer;
+use City\City;
 use User\User;
 
 class AdminController {
@@ -16,7 +16,7 @@ class AdminController {
             return response(false, null, 'You are not authorized');
         }
 
-        $result = Admin::getAllOffers();
+        $result = Offer::getAllOffers();
 
         if(!$result) {
             return response(false, null, 'No offer found');
@@ -69,7 +69,7 @@ class AdminController {
         ];
 
         // Create entry
-        $result = Admin::createOffer($data);
+        $result = Offer::createOffer($data);
 
         if(!$result) {
             return response(false, null, 'Oops! New offer cound not be created');
@@ -94,7 +94,7 @@ class AdminController {
         $id = sanitize_input($_GET['id']);
 
         // Delete entry
-        $result = Admin::deleteOffer($id);
+        $result = Offer::deleteOffer($id);
 
         if(!$result) {
             return response(false, null, 'Oops! Offer could not be deleted');
@@ -168,6 +168,7 @@ class AdminController {
         // Data
         $data = [
             'name' => sanitize_input($_POST['name']),
+            'created_by' => user()->id,
         ];
 
         // Create entry
