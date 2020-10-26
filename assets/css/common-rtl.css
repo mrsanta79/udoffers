@@ -1,0 +1,40 @@
+@charset "UTF-8";
+body[dir=rtl] .mr-2, body[dir=rtl] i.mr-2 {
+  margin-right: unset !important;
+  margin-left: 0.5rem !important;
+}
+body[dir=rtl] .ml-2, body[dir=rtl] i.ml-2 {
+  margin-left: unset !important;
+  margin-right: 0.5rem !important;
+}
+body[dir=rtl] .mr-3 {
+  margin-right: unset !important;
+  margin-left: 1rem !important;
+}
+body[dir=rtl] .ml-3 {
+  margin-left: unset !important;
+  margin-right: 1rem !important;
+}
+body[dir=rtl] i.fa-chevron-right:before {
+  content: "";
+}
+body[dir=rtl] i.fa-chevron-left:before {
+  content: "";
+}
+body[dir=rtl] .ml-auto {
+  margin-right: auto !important;
+  margin-left: unset !important;
+}
+body[dir=rtl] .mr-auto {
+  margin-left: auto !important;
+  margin-right: unset !important;
+}
+body[dir=rtl] .swal-modal {
+  direction: ltr;
+}
+body[dir=rtl] .dropdown-menu {
+  left: 0;
+  right: unset;
+}
+
+/*# sourceMappingURL=common-rtl.css.map */

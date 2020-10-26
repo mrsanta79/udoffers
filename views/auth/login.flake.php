@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="<?= assets('libs/notifier/css/notifier.css') ?>">
     <link rel="stylesheet" href="<?= assets('css/auth.css') ?>">
 </head>
-<body>
+<body dir="<?= explode('_', lang())[0] == 'ar' ? 'rtl' : 'ltr' ?>">
 
     <div id="app">
         <div class="container">
@@ -104,7 +104,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.12/vue.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/<?= lang() ?>/sdk.js"></script>
     <script src="<?= assets('libs/notifier/js/notifier.js') ?>"></script>
     <script src="<?= assets('js/auth.js') ?>"></script>
 </body>

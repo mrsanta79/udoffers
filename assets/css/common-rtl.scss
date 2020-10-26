@@ -1,0 +1,42 @@
+body[dir=rtl] {
+    .mr-2, i.mr-2 {
+        margin-right: unset !important;
+        margin-left: 0.5rem !important;
+    }
+    .ml-2, i.ml-2 {
+        margin-left: unset !important;
+        margin-right: 0.5rem !important;
+    }
+    .mr-3 {
+        margin-right: unset !important;
+        margin-left: 1rem !important;
+    }
+    .ml-3 {
+        margin-left: unset !important;
+        margin-right: 1rem !important;
+    }
+    i {
+        &.fa-chevron-right:before {
+            content: '\f053';
+        }
+        &.fa-chevron-left:before {
+            content: '\f054';
+        }
+    }
+
+    .ml-auto {
+        margin-right: auto !important;
+        margin-left: unset !important;
+    }
+    .mr-auto {
+        margin-left: auto !important;
+        margin-right: unset !important;
+    }
+    .swal-modal {
+        direction: ltr;
+    }
+    .dropdown-menu {
+        left: 0;
+        right: unset;
+    }
+}
