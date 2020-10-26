@@ -10,13 +10,13 @@
             </div>
             <form action="<?= api('/admin/entries/create') ?>" name="create-entry" method="post" @submit.prevent="createEntry">
                 <div class="modal-body">
-                    <div class="md-form">
+                    <div class="md-form mt-0">
                         <input type="text" id="entry_name" name="name" class="form-control" v-model="entryForm.name" required autocomplete="off">
                         <label for="entry_name">Entry Name</label>
                     </div>
                     <div class="md-form">
-                        <input type="text" id="color" name="color" class="form-control" v-model="entryForm.color" required autocomplete="off">
-                        <label for="color">Background Color</label>
+                        <input type="text" id="background" name="background" class="form-control" v-model="entryForm.background" required autocomplete="off">
+                        <label for="background">Background Color (e.g. #424242 or #424)</label>
                     </div>
                 </div>
                 <div class="modal-footer">

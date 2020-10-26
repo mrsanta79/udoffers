@@ -25,7 +25,7 @@ const app = new Vue({
         },
         entryForm: {
             name: '',
-            color: ''
+            background: ''
         }
     },
     created() {
@@ -275,6 +275,68 @@ const app = new Vue({
                 }
             });
         },
+
+        // Entry
+        createEntry: function(e) {
+            const url = e.target.action;
+
+            // Validate background color
+
+            if(!validateHexCode(this.entryForm.background)) {
+                notifier.show('Oops!', 'Invalid hex color code. Please try again.', 'danger', '', 7000);
+                return false;
+            }
+
+            this.isProcessing = true;
+
+            let data = new FormData();
+            data.append('name', this.entryForm.name);
+            data.append('background', this.entryForm.background);
+
+            axios.post(url, data).then(response => {
+                response = response.data;
+
+                if(!response.success) {
+                    this.isProcessing = false;
+                    notifier.show('Oops!', response.message, 'danger', '', 7000);
+                    return false;
+                }
+
+                notifier.show('Success', response.message, 'success', '', 7000);
+                setTimeout(() => {
+                    window.location.reload();
+                }, 2000);
+            }).catch(err => {
+                notifier.show('Oops!', err.response.data.message, 'danger', '', 7000);
+                this.isProcessing = false;
+            });
+        },
+        deleteEntry: function(e) {
+            const id = e.currentTarget.getAttribute('data-id');
+            const url = e.currentTarget.href + id;
+            const $table = document.getElementById('#entries-table');
+
+            swal({
+                title: "Are you sure?",
+                text: "Once deleted, you will not be able to recover this entry!",
+                icon: "warning",
+                buttons: ['Cancel', 'Proceed'],
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+                if (willDelete) {
+                    axios.delete(url).then(response => {
+                        response = response.data;
+                        notifier.show('Success!', response.message, 'success',
+                            '', 7000);
+
+                        setTimeout(() => {
+                            window.location.reload();
+                        }, 2000);
+                    });
+                }
+            });
+        },
     }
 });
 
@@ -323,6 +385,14 @@ const dateFormat = (date) => {
     dmyDate += date.getFullYear();
 
     return dmyDate;
+}
+
+const validateHexCode = (code) => {
+    if(/^#[0-9A-F]{6}$/i.test(code) || /^#([0-9A-F]{3}){1,2}$/i.test(code)) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
 // Check if document is loaded fully

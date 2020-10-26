@@ -34,6 +34,10 @@ switch ($route) {
     case '/api/admin/cities/create': APIAdminController::createCity(); break;
     case '/api/admin/cities/delete': APIAdminController::deleteCity(); break;
 
+    case '/api/admin/entries': APIAdminController::getAllEntries(); break;
+    case '/api/admin/entries/create': APIAdminController::createEntry(); break;
+    case '/api/admin/entries/delete': APIAdminController::deleteEntry(); break;
+
     case '/api/admin/users': APIAdminController::getAllUsers(); break;
     case '/api/admin/users/delete': APIAdminController::deleteUser(); break;
 

@@ -3,6 +3,7 @@
 namespace AdminController;
 
 use City\City;
+use Entry\Entry;
 
 class AdminController {
     public static function index() {
@@ -25,6 +26,7 @@ class AdminController {
         }
 
         $data = [
+            'entries' => Entry::getAllEntries(),
             'cities' => City::getAllCities(),
         ];
 
@@ -40,6 +42,7 @@ class AdminController {
         }
 
         $data = [
+            'entries' => Entry::getAllEntries(),
             'cities' => City::getAllCities(),
         ];
 

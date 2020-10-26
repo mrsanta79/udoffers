@@ -14,28 +14,37 @@
                 ?>
                 <table class="table table-hover datatable card" id="entries-table">
                     <thead>
-                    <tr>
-                        <th>Entry ID</th>
-                        <th>Entry Type</th>
-                        <th>Background Image</th>
-                        <th>Added On</th>
-                        <th class="actions">Actions</th>
-                    </tr>
+                        <tr>
+                            <th>Entry ID</th>
+                            <th>Entry Name</th>
+                            <th>Background</th>
+                            <th>Added By</th>
+                            <th>Added On</th>
+                            <th class="actions">Actions</th>
+                        </tr>
                     </thead>
                     <tbody>
-                    <?php foreach($data['cities'] as $index => $city) { ?>
-                        <tr data-id="<?= $city['id'] ?>">
-                            <td>#<?= $index + 1 ?></td>
-                            <td><?= $city['name'] ?></td>
-                            <td><?= $city['name'] ?></td>
-                            <td><?= date('d/m/Y', $city['created_at']) ?></td>
-                            <td class="actions">
-                                <a href="<?= api('/admin/entries/delete?id=') ?>" type="button" class="btn-floating icon-btn delete-entry" data-id="<?= $city['id'] ?>" @click.prevent="deleteEntry">
-                                    <i class="fas fa-trash waves-effect" aria-hidden="true"></i>
-                                </a>
-                            </td>
-                        </tr>
-                    <?php } ?>
+                        <?php foreach($data['entries'] as $index => $entry) { ?>
+                            <tr data-id="<?= $entry['id'] ?>">
+                                <td>#<?= $index + 1 ?></td>
+                                <td><?= $entry['name'] ?></td>
+                                <td style="text-transform: uppercase">
+                                    <div class="d-flex flex-row">
+                                        <span style="width: 20px; height: 20px; border-radius: 100%; background: <?= $entry['background'] ?>"
+                                              class="d-inline-block mr-2">
+                                        </span>
+                                        <?= $entry['background'] ?>
+                                    </div>
+                                </td>
+                                <td><?= $entry['creator']->name ?> (<?= $entry['creator']->email ?>)</td>
+                                <td><?= date('d/m/Y', $entry['created_at']) ?></td>
+                                <td class="actions">
+                                    <a href="<?= api('/admin/entries/delete?id=') ?>" type="button" class="btn-floating icon-btn delete-entry" data-id="<?= $entry['id'] ?>" @click.prevent="deleteEntry">
+                                        <i class="fas fa-trash waves-effect" aria-hidden="true"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        <?php } ?>
                     </tbody>
                 </table>
             <?php } else { ?>

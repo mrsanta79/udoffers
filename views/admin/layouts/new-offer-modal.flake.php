@@ -30,10 +30,16 @@
                     </div>
                     <div class="md-form">
                         <select class="browser-default custom-select" name="entry_type" @change="offerForm.entry_type = event.target.value">
-                            <option selected>Type of entry</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                            <option selected disabled>Type of entry</option>
+                            <?php
+                            if(isset($data) && isset($data['entries']) && count($data['entries'])) {
+                                foreach ($data['entries'] as $entry) {
+                                    ?>
+                                    <option value="<?= $entry['id'] ?>"><?= $entry['name'] ?></option>
+                                    <?php
+                                }
+                            }
+                            ?>
                         </select>
                     </div>
                     <div class="md-form">

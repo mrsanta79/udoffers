@@ -2,6 +2,7 @@
 
 namespace Api\AdminController;
 
+use Entry\Entry;
 use Offer\Offer;
 use City\City;
 use User\User;
@@ -220,5 +221,85 @@ class AdminController {
         }
 
         return response(true, null, 'City has been deleted');
+    }
+
+    // Entry
+    public static function createEntry() {
+        request_method('POST');
+
+        // Check privilege
+        if(!is_admin()) {
+            return response(false, null, 'You are not authorized');
+        }
+
+        // Validate data
+        if(!isset($_POST['name']) || empty(sanitize_input($_POST['name']))) {
+            return response(false, null, 'Entry name is required');
+        }
+        if(!isset($_POST['background']) || empty(sanitize_input($_POST['background']))) {
+            return response(false, null, 'Entry background is required');
+        }
+
+        // Validate hex code
+        if(!validate_hex(sanitize_input($_POST['background']))) {
+            return response(false, null, 'Invalid hex code. Please try again.');
+        }
+
+        // Data
+        $data = [
+            'name' => sanitize_input($_POST['name']),
+            'background' => sanitize_input($_POST['background']),
+            'created_by' => user()->id,
+        ];
+
+        // Create entry
+        $result = Entry::createEntry($data);
+
+        if(!$result) {
+            return response(false, null, 'Oops! New entry cound not be created');
+        }
+
+        return response(true, $result, 'New entry created');
+    }
+    public static function getAllEntries() {
+        request_method('GET');
+
+        // Check privilege
+        if(!is_admin()) {
+            return response(false, null, 'You are not authorized');
+        }
+
+        $result = Entry::getAllEntries();
+
+        if(!$result) {
+            return response(false, null, 'No entry found');
+        }
+
+        return response(true, $result, 'Entries found');
+    }
+
+    public static function deleteEntry() {
+        request_method('DELETE');
+
+        // Check privilege
+        if (!is_admin()) {
+            return response(false, null, 'You are not authorized');
+        }
+
+        // Validate data
+        if(!isset($_GET['id']) || empty(sanitize_input($_GET['id']))) {
+            return response(false, null, 'Entry ID is required');
+        }
+
+        $id = sanitize_input($_GET['id']);
+
+        // Delete entry
+        $result = Entry::deleteEntry($id);
+
+        if(!$result) {
+            return response(false, null, 'Oops! Entry could not be deleted');
+        }
+
+        return response(true, null, 'Entry has been deleted');
     }
 }
