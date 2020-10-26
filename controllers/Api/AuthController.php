@@ -178,7 +178,7 @@ class AuthController {
         // Check user
         $user = User::getUserByEmail($data->email);
 
-        // Verify if it's a google account
+        // Verify if it's a facebook account
         if($user && !$user->is_facebook) {
             return response(false, null, 'This is not a facebook authenticated account. Please login using the correct method.');
         }
