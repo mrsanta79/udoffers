@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="google-signin-client_id" content="<?= env('GOOGLE_CLIENT_ID') ?>">
+    <meta name="facebook-app_id" content="<?= env('FACEBOOK_APP_ID') ?>" />
 
     <title><?= env('APP_NAME') . ' - Login' ?></title>
 
@@ -25,7 +26,7 @@
                     <img src="<?= assets('images/logo.jpeg') ?>" alt="">
                 </a>
 
-                <div class="buttons-container" :class="authType !== '' && authType !== 'email' ? 'processing-auth' : ''">
+                <div class="buttons-container processing-auth" :class="authType !== '' && authType !== 'email' ? 'processing-auth' : ''">
                     <button type="button" class="btn color-secondary text-white" @click="loginType('email')" :class="authType === 'email' ? 'd-none' : ''">
                         <i class="fas fa-envelope mr-3"></i>
                         Continue with Email
@@ -38,11 +39,18 @@
 
                     <button class="g-signin2 d-none" data-onsuccess="continueWithGoogle" data-theme="dark" data-url="<?= api('/auth/google') ?>"></button>
 
-                    <button type="button" class="btn text-white" style="background: #395794" @click="loginType('facebook')" :class="authType === 'email' ? 'd-none' : ''">
-                        <i class="fab fa-facebook-square mr-3"></i>
-                        Continue with Facebook
-                    </button>
-    <!--                <div class="fb-login-button" data-size="large" data-button-type="continue_with" data-layout="rounded" data-auto-logout-link="false" data-use-continue-as="true" data-width=""></div>-->
+                    <div class="fb-login-button"
+                         data-size="large"
+                         data-button-type="continue_with"
+                         data-layout="rounded"
+                         data-auto-logout-link="false"
+                         data-use-continue-as="true"
+                         data-width="800"
+                         data-url="<?= api('/auth/facebook') ?>"
+                         data-onlogin="continueWithFacebook"
+                         :class="authType === 'email' ? 'd-none' : ''">
+                    </div>
+
                 </div>
 
                 <!-- Continue with email form -->
@@ -96,34 +104,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.12/vue.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
-<!--    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v8.0" nonce="0iT6IU08"></script>-->
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
     <script src="<?= assets('libs/notifier/js/notifier.js') ?>"></script>
     <script src="<?= assets('js/auth.js') ?>"></script>
-    <script type="text/javascript">
-
-        // Facebook login
-        // window.fbAsyncInit = function() {
-        //     FB.init({
-        //         appId      : '{your-app-id}',
-        //         cookie     : true,
-        //         xfbml      : true,
-        //         version    : '{api-version}'
-        //     });
-        //     FB.AppEvents.logPageView();
-        // };
-        //
-        // (function(d, s, id){
-        //     var js, fjs = d.getElementsByTagName(s)[0];
-        //     if (d.getElementById(id)) {return;}
-        //     js = d.createElement(s); js.id = id;
-        //     js.src = "https://connect.facebook.net/en_US/sdk.js";
-        //     fjs.parentNode.insertBefore(js, fjs);
-        // }(document, 'script', 'facebook-jssdk'));
-        //
-        // // Check if user is logged in already
-        // FB.getLoginStatus(function(response) {
-        //     statusChangeCallback(response);
-        // });
-    </script>
 </body>
 </html>

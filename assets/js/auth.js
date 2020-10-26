@@ -96,7 +96,7 @@ const app = new Vue({
 
 // Google Login
 function continueWithGoogle(googleUser) {
-    if(app.authType === '') {
+    if(app.authType !== 'google') {
         return;
     }
 
@@ -125,6 +125,49 @@ function continueWithGoogle(googleUser) {
     });
 }
 
+// Facebook login
+window.fbAsyncInit = function() {
+    const APP_ID = document.querySelector('meta[name=facebook-app_id]').getAttribute('content');
+
+    FB.init({
+        appId: APP_ID,
+        autoLogAppEvents: true,
+        xfbml: true,
+        version: 'v8.0'
+    });
+}
+
+function continueWithFacebook(resp) {
+    app.authType = 'facebook';
+    if (resp.authResponse) {
+        FB.api('/me?fields=id,name,email,picture', 'GET', {}, response => {
+            // Start processing
+            app.authType = 'facebook';
+
+            const url = document.querySelector('.fb-login-button').getAttribute('data-url');
+
+            const data = new FormData();
+            data.append('name', response.name);
+            data.append('email', response.email);
+            data.append('avatar', response.picture.data.url);
+
+            axios.post(url, data).then(data => data.data).then(response => {
+                if(!response.success) {
+                    notifier.show('Oops!', response.message, 'danger', '', 7000);
+                    return false;
+                }
+
+                notifier.show('Success', response.message, 'success', '', 7000);
+                setTimeout(() => {
+                    window.location.reload();
+                }, 2000);
+            }).catch(err => {
+                notifier.show('Oops!', err.response.data.message, 'danger', '', 7000);
+            });
+        });
+    }
+}
+
 // Trigger google login button on click continue with google button
 document.getElementById('continue-with-google').addEventListener('click', (event) => {
     event.preventDefault();
@@ -133,3 +176,11 @@ document.getElementById('continue-with-google').addEventListener('click', (event
 
     loginWithGoogleButton.click();
 });
+
+// Check if Facebook plugin is loaded or not
+window.onload = function() {
+    FB.Event.subscribe('xfbml.render', function(response) {
+        const loader = document.querySelector('.buttons-container');
+        loader.classList.remove('processing-auth');
+    });
+};

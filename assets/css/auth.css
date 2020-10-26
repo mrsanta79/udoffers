@@ -344,6 +344,8 @@ table.card {
   font-size: 18px;
   width: 100%;
   font-family: "Comfortaa", sans-serif !important;
+  margin-left: 0;
+  margin-right: 0;
 }
 .btn:not(:last-child) {
   margin-bottom: 30px;
