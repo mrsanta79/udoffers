@@ -99,3 +99,9 @@
         transform: translate(-50%, -50%) rotate(360deg);
     }
 }
+
+@media only screen and (max-width: 767px) {
+    .card {
+        padding: 50px 15px !important;
+    }
+}

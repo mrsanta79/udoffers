@@ -20,7 +20,9 @@ $sideNaveWidth: 250;
         border-radius: 5px;
     }
 }
-
+#sidenav-backdrop {
+    display: none;
+}
 .sidenav {
     width: $sideNaveWidth + px;
     height: 100%;

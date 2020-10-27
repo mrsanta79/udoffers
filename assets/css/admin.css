@@ -356,6 +356,11 @@ body[dir=rtl] .dropdown-menu {
   right: unset;
 }
 
+@media only screen and (min-width: 767px) {
+  .show-sm {
+    display: none;
+  }
+}
 .navbar {
   position: fixed;
   left: 0;
@@ -373,6 +378,10 @@ body[dir=rtl] .dropdown-menu {
   margin-right: 10px;
   padding: 10px 15px;
   border-radius: 5px;
+}
+
+#sidenav-backdrop {
+  display: none;
 }
 
 .sidenav {
@@ -515,11 +524,28 @@ body[dir=rtl] .dropdown-menu {
   }
 }
 @media only screen and (max-width: 767px) {
+  .page-heading h1 {
+    font-size: 24px;
+  }
+
   .navbar {
     padding-left: 0;
   }
   .navbar .navbar-brand, .navbar .sidenav .navbar-brand-sm, .sidenav .navbar .navbar-brand-sm {
     display: block !important;
+  }
+
+  #sidenav-backdrop {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    opacity: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 10000;
+    backdrop-filter: blur(5px);
+    transition: display 0.3s ease-in-out, opacity 0.3s ease-in-out;
   }
 
   .sidenav {
@@ -529,23 +555,17 @@ body[dir=rtl] .dropdown-menu {
     transition: left 0.3s ease-in-out;
     z-index: 10000;
   }
-  .sidenav:before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: unset;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: -100;
-    transition: left 0.3s ease-in-out, z-index 0.3s ease-in-out;
-  }
   .sidenav.expanded {
     left: 0;
   }
-  .sidenav.expanded:before {
-    left: 200px;
-    z-index: 9999;
+
+  body[dir=rtl] .sidenav {
+    left: unset;
+    right: -220px;
+    transition: right 0.3s ease-in-out;
+  }
+  body[dir=rtl] .sidenav.expanded {
+    right: 0;
   }
 
   .container-fluid {

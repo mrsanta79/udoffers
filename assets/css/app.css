@@ -356,4 +356,10 @@ body[dir=rtl] .dropdown-menu {
   right: unset;
 }
 
+@media only screen and (min-width: 767px) {
+  .show-sm {
+    display: none;
+  }
+}
+
 /*# sourceMappingURL=app.css.map */

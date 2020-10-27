@@ -14,8 +14,11 @@ body[dir=rtl] {
         right: 0;
         box-shadow: -3px 0 5px 2px rgba(0, 0, 0, 0.1);
         ul li a {
-            direction: ltr;
             text-align: right;
+            i {
+                margin-right: unset;
+                margin-left: 15px;
+            }
         }
     }
 

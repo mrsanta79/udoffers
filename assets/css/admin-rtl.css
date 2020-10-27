@@ -12,8 +12,11 @@ body[dir=rtl] .sidenav {
   box-shadow: -3px 0 5px 2px rgba(0, 0, 0, 0.1);
 }
 body[dir=rtl] .sidenav ul li a {
-  direction: ltr;
   text-align: right;
+}
+body[dir=rtl] .sidenav ul li a i {
+  margin-right: unset;
+  margin-left: 15px;
 }
 body[dir=rtl] .container-fluid {
   padding-left: 15px;

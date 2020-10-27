@@ -370,10 +370,33 @@ $(document).ready(function() {
     $(document).on('click', '#toggle-sidenav', function(e) {
         e.preventDefault();
         const $sideNav = $('.sidenav');
+        const $sideNavBackdrop = $('#sidenav-backdrop');
         const $topNav = $('.navbar');
         const $bodyContainer = $('.container-fluid');
 
         $sideNav.toggleClass('expanded');
+        $sideNavBackdrop.css({
+            display: 'block',
+            opacity: 1
+        });
+        if($(window).width() >= 767) {
+            $topNav.toggleClass('expanded');
+            $bodyContainer.toggleClass('expanded');
+        }
+    });
+    // Toggle sidenav bar
+    $(document).on('click', '#sidenav-backdrop', function(e) {
+        e.preventDefault();
+        const $sideNav = $('.sidenav');
+        const $sideNavBackdrop = $('#sidenav-backdrop');
+        const $topNav = $('.navbar');
+        const $bodyContainer = $('.container-fluid');
+
+        $sideNav.toggleClass('expanded');
+        $sideNavBackdrop.css({
+            display: 'none',
+            opacity: 0
+        });
         if($(window).width() >= 767) {
             $topNav.toggleClass('expanded');
             $bodyContainer.toggleClass('expanded');

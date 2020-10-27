@@ -356,6 +356,11 @@ body[dir=rtl] .dropdown-menu {
   right: unset;
 }
 
+@media only screen and (min-width: 767px) {
+  .show-sm {
+    display: none;
+  }
+}
 .card {
   margin: 100px auto;
   max-width: 500px;
@@ -451,6 +456,11 @@ body[dir=rtl] .dropdown-menu {
   }
   to {
     transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+@media only screen and (max-width: 767px) {
+  .card {
+    padding: 50px 15px !important;
   }
 }
 

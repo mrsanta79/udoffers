@@ -37,9 +37,10 @@
         <a class="navbar-brand" href="<?= url('/') ?>">
             UDOffers
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#top-nav" aria-controls="top-nav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        <a type="button" href="<?= url('/logout') ?>" class="show-sm text-white mr-3">
+            <i class="fas fa-sign-out-alt" style="font-size: 20px;"></i>
+        </a>
+
         <div class="collapse navbar-collapse" id="top-nav">
             <ul class="navbar-nav ml-auto nav-flex-icons">
                 <li class="nav-item dropdown">
@@ -47,7 +48,6 @@
                         <img src="<?= !empty(user()->avatar) ? user()->avatar : avatar(user()->name) ?>" alt="" class="avatar mr-2">
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-default" aria-labelledby="top-nav">
-<!--                        <a class="dropdown-item" href="/language">Language</a>-->
                         <a class="dropdown-item" style="vertical-align: middle" href="/logout"><?= trans('common.menu.logout') ?></a>
                     </div>
                 </li>
@@ -57,6 +57,7 @@
     <!-- Top Navbar -->
 
     <!-- Side Navbar -->
+    <div id="sidenav-backdrop"></div>
     <div class="sidenav color-primary">
         <a class="navbar-brand mr-0 ml-0" href="/">
             <img src="<?= assets('images/logo.jpeg') ?>" alt="" class="w-100" style="max-width: 150px;">
