@@ -6,6 +6,10 @@ body[dir=rtl] .navbar .navbar-brand {
   margin-right: 0.35rem;
   margin-left: 1rem;
 }
+body[dir=rtl] .navbar #toggle-sidenav {
+  margin-left: 10px;
+  margin-right: 0;
+}
 body[dir=rtl] .sidenav {
   left: unset;
   right: 0;

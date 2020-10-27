@@ -344,8 +344,32 @@ const app = new Vue({
     }
 });
 
+// Function
+
+// Open sidenav bar function
+const openSideNav = (event) => {
+    // event.preventDefault();
+
+    const $sideNav = $('.sidenav');
+    const $sideNavBackdrop = $('#sidenav-backdrop');
+    const $topNav = $('.navbar');
+    const $bodyContainer = $('.container-fluid');
+
+    $sideNav.addClass('expanded');
+    $sideNavBackdrop.css({
+        display: 'block',
+        opacity: 1
+    });
+    if($(window).width() >= 767) {
+        $topNav.addClass('expanded');
+        $bodyContainer.addClass('expanded');
+    }
+}
+
 // jQuery operations
 $(document).ready(function() {
+
+    let initialTouch;
 
     $('.datepicker').datepicker({
         autoclose: true,
@@ -371,25 +395,10 @@ $(document).ready(function() {
     });
     $('.datatable').wrap('<div class="responsive-table"></div>');
 
-    // Toggle sidenav bar
-    $(document).on('click', '#toggle-sidenav', function(e) {
-        e.preventDefault();
-        const $sideNav = $('.sidenav');
-        const $sideNavBackdrop = $('#sidenav-backdrop');
-        const $topNav = $('.navbar');
-        const $bodyContainer = $('.container-fluid');
+    // Open sidenav bar
+    $(document).on('click', '#toggle-sidenav', openSideNav);
 
-        $sideNav.toggleClass('expanded');
-        $sideNavBackdrop.css({
-            display: 'block',
-            opacity: 1
-        });
-        if($(window).width() >= 767) {
-            $topNav.toggleClass('expanded');
-            $bodyContainer.toggleClass('expanded');
-        }
-    });
-    // Toggle sidenav bar
+    // Close sidenav bar
     $(document).on('click', '#sidenav-backdrop', function(e) {
         e.preventDefault();
         const $sideNav = $('.sidenav');
@@ -397,14 +406,48 @@ $(document).ready(function() {
         const $topNav = $('.navbar');
         const $bodyContainer = $('.container-fluid');
 
-        $sideNav.toggleClass('expanded');
+        $sideNav.removeClass('expanded');
         $sideNavBackdrop.css({
             display: 'none',
             opacity: 0
         });
         if($(window).width() >= 767) {
-            $topNav.toggleClass('expanded');
-            $bodyContainer.toggleClass('expanded');
+            $topNav.removeClass('expanded');
+            $bodyContainer.removeClass('expanded');
+        }
+    });
+
+    // Swipe to open sidenav
+    $(document).on('touchstart', function(e) {
+        const $sideNav = $('.sidenav');
+
+        // Activate swipe if sidebar is not expanded and screen width is less than 767px
+        if(!$sideNav.hasClass('expanded') && $(window).width() <= 767) {
+
+            // Cache initial touch
+            if($('body').attr('dir') === 'rtl') {
+                // For RTL
+                initialTouch = $(window).width() - e.touches[0].clientX;
+            } else {
+                // For LTR
+                initialTouch = e.touches[0].clientX;
+            }
+        }
+    });
+    $(document).on('touchend', function(e) {
+        const $sideNav = $('.sidenav');
+        const sideNavWidth = $sideNav.width();
+        const maxSwipeRange = 30;
+        const swipeMaxPixel = sideNavWidth / 2;
+
+        // Activate swipe if sidebar is not expanded and screen width is less than 767px
+        if(!$sideNav.hasClass('expanded') && $(window).width() <= 767) {
+            let swippedX = e.changedTouches[0].clientX;
+
+            // Expand sidebar if swipped more than 100px
+            if(initialTouch <= maxSwipeRange && swippedX - initialTouch >= swipeMaxPixel) {
+                openSideNav();
+            }
         }
     });
 });

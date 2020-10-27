@@ -8,6 +8,10 @@ body[dir=rtl] {
             margin-right: 0.35rem;
             margin-left: 1rem;
         }
+        #toggle-sidenav {
+            margin-left: 10px;
+            margin-right: 0;
+        }
     }
     .sidenav {
         left: unset;
