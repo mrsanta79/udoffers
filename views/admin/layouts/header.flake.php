@@ -61,7 +61,7 @@
         <a class="navbar-brand mr-0 ml-0" href="/">
             <img src="<?= assets('images/logo.jpeg') ?>" alt="" class="w-100" style="max-width: 150px;">
         </a>
-        <a class="navbar-brand-sm hidden" href="/">R</a>
+        <a class="navbar-brand-sm hidden" href="/">U</a>
         <ul>
             <li class="waves-effect <?= isset($page_name) && $page_name == 'fields' ? 'active' : '' ?>">
                 <a href="/admin/fields">

@@ -260,6 +260,9 @@ table.card {
 .dataTables_wrapper table {
   margin-top: 15px;
 }
+.dataTables_wrapper table td, .dataTables_wrapper table th {
+  white-space: nowrap;
+}
 .dataTables_wrapper .dataTables_length label, .dataTables_wrapper .dataTables_filter label {
   font-size: 16px;
 }
