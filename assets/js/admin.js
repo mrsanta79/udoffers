@@ -90,6 +90,11 @@ const app = new Vue({
             // Re-init date
             this.offerForm.date = document.getElementById('date').value;
 
+            if(!validateUrl(this.offerForm.map_link)) {
+                notifier.show('Oops!', 'Please enter a valid map link', 'danger', '', 7000);
+                return false;
+            }
+
             this.isProcessing = true;
 
             let data = new FormData();
@@ -420,6 +425,16 @@ const validateHexCode = (code) => {
     } else {
         return false;
     }
+}
+
+const validateUrl = (url) => {
+    var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
+        '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
+        '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
+        '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
+        '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
+        '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
+    return !!pattern.test(url);
 }
 
 // Check if document is loaded fully

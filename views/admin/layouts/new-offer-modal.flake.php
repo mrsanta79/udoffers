@@ -48,9 +48,12 @@
                     <div class="md-form">
                         <select class="browser-default custom-select" name="winners_count" @change="offerForm.winners_count = event.target.value">
                             <option selected><?= trans('modals.number_of_winners') ?></option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="10">10</option>
                         </select>
                     </div>
                     <div class="md-form">
