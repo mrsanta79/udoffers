@@ -3,8 +3,9 @@
 use AppController\AppController;
 use AdminController\AdminController;
 use AuthController\AuthController;
-use Api\AuthController\AuthController as APIAuthController;
+use Api\AppController\AppController as APIAppController;
 use Api\AdminController\AdminController as APIAdminController;
+use Api\AuthController\AuthController as APIAuthController;
 
 switch ($route) {
     // Auth
@@ -18,6 +19,8 @@ switch ($route) {
     // User Panel
     case '/':
     case '' : AppController::index(); break;
+    case '/api/participants': APIAppController::getAllParticipants(); break;
+    case '/api/participants/update': APIAppController::participate(); break;
 
     // Admin panel
     case '/admin': AdminController::index(); break;

@@ -2,8 +2,36 @@
 
 namespace AppController;
 
+use City\City;
+use Entry\Entry;
+use Offer\Offer;
+use Participants\Participants;
+
 class AppController {
     public static function index() {
-        return view('app/index');
+        if(!user()) {
+            redirect('/login');
+        }
+
+        $participations = Participants::getAllParticipantsByUserId(user()->id);
+
+        $cities = [];
+        foreach ($participations as $participation) {
+            $cities[] = $participation['city']->id;
+        }
+
+        $selectedCities = array_map(function($item) {
+            return $item['city'];
+        }, $participations);
+
+        $data = [
+            'participations' => $participations,
+            'entries' => Entry::getAllEntries(),
+            'cities' => City::getAllCities(),
+            'offers' => Offer::getOffersByCities($cities),
+            'selected_cities' => $selectedCities
+        ];
+
+        return view('app/index', $data);
     }
 }

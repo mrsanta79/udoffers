@@ -34,7 +34,7 @@ class Offer {
             throw new \Error('Offer ID is required');
         }
 
-        $query = mysqli_query(db(), "SELECT * FROM offers WHERE offers.id = '$id'");
+        $query = mysqli_query(db(), "SELECT * FROM offers WHERE id = '$id'");
 
         if(mysqli_num_rows($query) <= 0) {
             return false;
@@ -45,6 +45,44 @@ class Offer {
         $offer->entry_type = Entry::getEntryById($offer->entry_type);
 
         return $offer;
+    }
+
+    public static function getOffersByCities(array $cities) {
+        if(!isset($cities) || empty($cities)) {
+            throw new \Error('City is required');
+        }
+
+        $cities = implode(", ", $cities);
+
+        $query = "SELECT * FROM offers WHERE city IN ($cities)";
+        if(!is_admin()) {
+            $date = date('d/m/Y', strtotime('today'));
+            $query = "SELECT * FROM offers WHERE city IN ($cities) AND date = '$date'";
+        }
+
+        $query = mysqli_query(db(), $query);
+
+        if(mysqli_num_rows($query) <= 0) {
+            return false;
+        }
+
+        $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
+
+        foreach ($result as $key => $item) {
+            // Convert to int
+            $result[$key]['id'] = intval($result[$key]['id']);
+            $result[$key]['created_by'] = intval($result[$key]['created_by']);
+            $result[$key]['created_at'] = intval($result[$key]['created_at']);
+
+            // Assign user data
+            $result[$key]['creator'] = User::getUserById($item['created_by']);
+
+            // Assign city
+            $result[$key]['city'] = City::getCityById($item['city']);
+            $result[$key]['entry_type'] = Entry::getEntryById($item['entry_type']);
+        }
+
+        return $result;
     }
 
     public static function createOffer($data) {

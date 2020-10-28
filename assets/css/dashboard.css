@@ -213,7 +213,7 @@ body {
 }
 
 #page-loader {
-  position: absolute;
+  position: fixed;
   z-index: 10000;
   left: 0;
   top: 0;
@@ -361,5 +361,34 @@ body[dir=rtl] .dropdown-menu {
     display: none;
   }
 }
+* {
+  font-weight: 400;
+}
+*:not(.fa) {
+  font-family: "Comfortaa", sans-serif !important;
+}
 
-/*# sourceMappingURL=app.css.map */
+.justify-content-between {
+  align-items: center;
+}
+
+select {
+  padding: 10px 20px !important;
+}
+
+.multiselect .dropdown-toggle::after {
+  margin-left: 1rem;
+}
+
+.winner-box {
+  background: #fff;
+  box-shadow: 0 2px 5px 2px rgba(0, 0, 0, 0.1);
+  border-radius: 100px;
+  padding: 20px 40px;
+}
+.winner-box > * {
+  font-weight: 400;
+  margin: 0;
+}
+
+/*# sourceMappingURL=dashboard.css.map */

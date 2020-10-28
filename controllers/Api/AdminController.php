@@ -13,11 +13,20 @@ class AdminController {
         request_method('GET');
 
         // Check privilege
-        if(!is_admin()) {
+        if(!user()) {
             return response(false, null, 'You are not authorized');
         }
 
-        $result = Offer::getAllOffers();
+        if(isset($_GET['cities']) && !empty($_GET['cities'])) {
+            $cities = explode(' ', $_GET['cities']);
+            $cities = array_filter($cities, function ($city) {
+                return !empty($city);
+            });
+
+            $result = Offer::getOffersByCities($cities);
+        } else {
+            $result = Offer::getAllOffers();
+        }
 
         if(!$result) {
             return response(false, null, 'No offer found');

@@ -43,7 +43,7 @@ body {
     width: 100%;
 }
 #page-loader {
-    position: absolute;
+    position: fixed;
     z-index: 10000;
     left: 0;
     top: 0;
