@@ -12,6 +12,7 @@ return [
         'entry_type' => 'Entry Type',
         'cities' => 'Cities',
         'city' => 'City',
+        'ad_script' => 'Ad Script',
         'logout' => 'Logout',
     ]
 ];

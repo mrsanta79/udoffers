@@ -9,6 +9,7 @@ const app = new Vue({
         isFetchingData: false,
         offers: null,
         users: null,
+        adScript: '',
         offerForm: {
             date: '',
             city: '',
@@ -331,8 +332,13 @@ const app = new Vue({
                 if (willDelete) {
                     axios.delete(url).then(response => {
                         response = response.data;
-                        notifier.show('Success!', response.message, 'success',
-                            '', 7000);
+                        if(!response.success) {
+                            this.isProcessing = false;
+                            notifier.show('Oops!', response.message, 'danger', '', 7000);
+                            return false;
+                        }
+
+                        notifier.show('Success!', response.message, 'success', '', 7000);
 
                         setTimeout(() => {
                             window.location.reload();
@@ -341,6 +347,31 @@ const app = new Vue({
                 }
             });
         },
+
+        // Ads Script
+        updateAdScript: function(e) {
+            const url = e.target.action;
+            const script = document.querySelector('form[name=update-ad-script] textarea[name=script]').value;
+
+            let data = new FormData();
+            data.append('script', script);
+
+            this.isProcessing = true;
+
+            axios.post(url, data).then(data => data.data).then(response => {
+                if(!response.success) {
+                    this.isProcessing = false;
+                    notifier.show('Oops!', response.message, 'danger', '', 7000);
+                    return false;
+                }
+
+                notifier.show('Success!', response.message, 'success', '', 7000);
+
+                setTimeout(() => {
+                    window.location.reload();
+                }, 2000);
+            });
+        }
     }
 });
 

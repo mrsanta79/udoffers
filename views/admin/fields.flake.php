@@ -96,6 +96,7 @@
 
     <?= load_layout('admin/layouts/new-entry-modal') ?>
     <?= load_layout('admin/layouts/new-city-modal') ?>
+    <?= load_layout('admin/layouts/ad-script-modal', $data) ?>
 </div>
 
 <?= load_layout('admin/layouts/footer') ?>

@@ -2,6 +2,7 @@
 
 namespace Api\AdminController;
 
+use AdScript\AdScript;
 use Entry\Entry;
 use Offer\Offer;
 use City\City;
@@ -310,5 +311,28 @@ class AdminController {
         }
 
         return response(true, null, 'Entry has been deleted');
+    }
+
+    // Ads Scripts
+    public static function updateAdsScript() {
+        request_method('POST');
+
+        // Check privilege
+        if (!is_admin()) {
+            return response(false, null, 'You are not authorized');
+        }
+
+        $data = [
+            'script' => htmlentities(sanitize_input($_POST['script']), ENT_QUOTES),
+        ];
+
+        // Update Script
+        $result = AdScript::updateScript($data);
+
+        if(!$result) {
+            return response(false, null, 'Oops! Script could not be updated');
+        }
+
+        return response(true, $result, 'Script has been updated');
     }
 }

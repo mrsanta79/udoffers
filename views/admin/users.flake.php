@@ -54,6 +54,8 @@
                 </div>
             </div>
         </div>
-    </div>
 
+        <?= load_layout('admin/layouts/ad-script-modal', $data) ?>
+
+    </div>
 <?= load_layout('admin/layouts/footer') ?>

@@ -44,6 +44,8 @@ switch ($route) {
     case '/api/admin/users': APIAdminController::getAllUsers(); break;
     case '/api/admin/users/delete': APIAdminController::deleteUser(); break;
 
+    case '/api/admin/ad-script/update': APIAdminController::updateAdsScript(); break;
+
     // Errors
     default:
         http_response_code(404);

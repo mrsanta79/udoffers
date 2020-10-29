@@ -2,6 +2,7 @@
 
 namespace AdminController;
 
+use AdScript\AdScript;
 use City\City;
 use Entry\Entry;
 
@@ -28,6 +29,7 @@ class AdminController {
         $data = [
             'entries' => Entry::getAllEntries(),
             'cities' => City::getAllCities(),
+            'script' => AdScript::getScript(),
         ];
 
         return view('admin/fields', $data, 'fields');
@@ -44,6 +46,7 @@ class AdminController {
         $data = [
             'entries' => Entry::getAllEntries(),
             'cities' => City::getAllCities(),
+            'script' => AdScript::getScript(),
         ];
 
         return view('admin/offers', $data, 'offers');
@@ -57,6 +60,10 @@ class AdminController {
             redirect('/');
         }
 
-        return view('admin/users', null, 'users');
+        $data = [
+            'script' => AdScript::getScript(),
+        ];
+
+        return view('admin/users', $data, 'users');
     }
 }

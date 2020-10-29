@@ -48,6 +48,7 @@
                         <img src="<?= !empty(user()->avatar) ? user()->avatar : avatar(user()->name) ?>" alt="" class="avatar mr-2">
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-default" aria-labelledby="top-nav">
+                        <a class="dropdown-item" style="vertical-align: middle" data-toggle="modal" data-target="#ad-script-modal"><?= trans('common.menu.ad_script') ?></a>
                         <a class="dropdown-item" style="vertical-align: middle" href="/logout"><?= trans('common.menu.logout') ?></a>
                     </div>
                 </li>

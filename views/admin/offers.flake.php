@@ -71,6 +71,7 @@
         </div>
 
         <?= load_layout('admin/layouts/new-offer-modal', $data) ?>
+        <?= load_layout('admin/layouts/ad-script-modal', $data) ?>
     </div>
 
 <?= load_layout('admin/layouts/footer') ?>
