@@ -164,9 +164,6 @@ class AuthController {
         if(!isset($_POST['name']) || empty($_POST['name'])) {
             return response(false, null, 'Invalid login. Please login again 2');
         }
-        if(!isset($_POST['avatar']) || empty($_POST['avatar'])) {
-            return response(false, null, 'Invalid login. Please login again 3');
-        }
 
         $data = (object)[
             'email' => sanitize_input($_POST['email']),
@@ -237,9 +234,6 @@ class AuthController {
             return response(false, null, 'Invalid login. Please login again');
         }
         if(!isset($_POST['name']) || empty($_POST['name'])) {
-            return response(false, null, 'Invalid login. Please login again');
-        }
-        if(!isset($_POST['avatar']) || empty($_POST['avatar'])) {
             return response(false, null, 'Invalid login. Please login again');
         }
 
