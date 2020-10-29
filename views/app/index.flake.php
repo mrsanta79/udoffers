@@ -1,33 +1,5 @@
-<!doctype html>
-<html lang="<?= explode('_', lang())[0] ?>">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="timezone" content="<?= env('APP_TIMEZONE') ?>">
-    <title><?= env('APP_NAME') . ' - Dashboard' ?></title>
+<?= load_layout('app/layouts/header') ?>
 
-    <!-- CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
-    <link rel="stylesheet" href="<?= assets('libs/notifier/css/notifier.css') ?>">
-    <link rel="stylesheet" href="<?= assets('css/dashboard.css') ?>">
-</head>
-<body dir="<?= explode('_', lang())[0] == 'ar' ? 'rtl' : 'ltr' ?>">
-    <div id="page-loader">
-        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin:auto;background:#fff;display:block;" width="200px" height="200px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
-            <circle cx="50" cy="50" r="0" fill="none" stroke="#e90c59" stroke-width="2">
-                <animate attributeName="r" repeatCount="indefinite" dur="1s" values="0;40" keyTimes="0;1" keySplines="0 0.2 0.8 1" calcMode="spline" begin="-0.5s"></animate>
-                <animate attributeName="opacity" repeatCount="indefinite" dur="1s" values="1;0" keyTimes="0;1" keySplines="0.2 0 0.8 1" calcMode="spline" begin="-0.5s"></animate>
-            </circle>
-            <circle cx="50" cy="50" r="0" fill="none" stroke="#46dff0" stroke-width="2">
-                <animate attributeName="r" repeatCount="indefinite" dur="1s" values="0;40" keyTimes="0;1" keySplines="0 0.2 0.8 1" calcMode="spline"></animate>
-                <animate attributeName="opacity" repeatCount="indefinite" dur="1s" values="1;0" keyTimes="0;1" keySplines="0.2 0 0.8 1" calcMode="spline"></animate>
-            </circle>
-        </svg>
-    </div>
     <div id="app">
         <div class="container-fluid">
             <div class="container p-2 pb-5">
@@ -70,43 +42,43 @@
                         <div class="d-block">
                             <h1 class="text-center m-5"><?= trans('dashboard.no_offer_available') ?></h1>
                         </div>
-                    <?php
-                        } else {
-                            foreach ($data['offers'] as $key => $offer) {
+                        <?php
+                    } else {
+                        foreach ($data['offers'] as $key => $offer) {
                             ?>
-                                <div class="card p-5 mt-5" id="offer-card"
-                                     style="background-color: <?= $offer['entry_type']->background ?>">
-                                    <div class="d-flex justify-content-between">
-                                        <h4><?= isset($offer['entry_type']->name) ? $offer['entry_type']->name : '-' ?></h4>
-                                        <h4><?= $offer['city']->name ?></h4>
-                                    </div>
-                                    <div class="d-flex flex-column justify-content-between mt-2">
-                                        <h4 class="text-center mt-5">Shop : <?= $offer['shop'] ?></h4>
-                                        <h4 class="text-center mt-5">Discount : <?= $offer['discount'] ?></h4>
-                                        <h4 class="text-center mt-5"><?= $offer['information'] == '' ? '-' : $offer['information'] ?></h4>
-                                    </div>
-                                    <div class="d-flex justify-content-between mt-5">
-                                        <a href="<?= $offer['map_link'] ?>" class="btn btn-narrow color-secondary text-white ml-0" target="_blank">Google Map</a>
-                                        <h5><?= date('d/m/Y', $offer['created_at']) ?></h5>
-                                    </div>
+                            <div class="card p-5 mt-5" id="offer-card"
+                                 style="background-color: <?= $offer['entry_type']->background ?>">
+                                <div class="d-flex justify-content-between">
+                                    <h4><?= isset($offer['entry_type']->name) ? $offer['entry_type']->name : '-' ?></h4>
+                                    <h4><?= $offer['city']->name ?></h4>
+                                </div>
+                                <div class="d-flex flex-column justify-content-between mt-2">
+                                    <h4 class="text-center mt-5">Shop : <?= $offer['shop'] ?></h4>
+                                    <h4 class="text-center mt-5">Discount : <?= $offer['discount'] ?></h4>
+                                    <h4 class="text-center mt-5"><?= $offer['information'] == '' ? '-' : $offer['information'] ?></h4>
                                 </div>
                                 <div class="d-flex justify-content-between mt-5">
-                                    <div class="winner-box">
-                                        <h6>Winner 1</h6>
-                                    </div>
-                                    <div class="winner-box">
-                                        <h6>Winner 2</h6>
-                                    </div>
-                                    <div class="winner-box">
-                                        <h6>Winner 3</h6>
-                                    </div>
-                                    <div class="winner-box">
-                                        <h6>Winner 4</h6>
-                                    </div>
+                                    <a href="<?= $offer['map_link'] ?>" class="btn btn-narrow color-secondary text-white ml-0" target="_blank">Google Map</a>
+                                    <h5><?= date('d/m/Y', $offer['created_at']) ?></h5>
                                 </div>
-                                <?php if($key != count($data['offers']) - 1) { ?>
-                                    <hr class="mt-5">
-                                <?php } ?>
+                            </div>
+                            <div class="d-flex justify-content-between mt-5">
+                                <div class="winner-box">
+                                    <h6>Winner 1</h6>
+                                </div>
+                                <div class="winner-box">
+                                    <h6>Winner 2</h6>
+                                </div>
+                                <div class="winner-box">
+                                    <h6>Winner 3</h6>
+                                </div>
+                                <div class="winner-box">
+                                    <h6>Winner 4</h6>
+                                </div>
+                            </div>
+                            <?php if($key != count($data['offers']) - 1) { ?>
+                                <hr class="mt-5">
+                            <?php } ?>
                             <?php
                         }
                     }
@@ -116,16 +88,4 @@
         </div>
     </div>
 
-    <!-- SCRIPTS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.5.3/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.12/vue.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
-    <script src="<?= assets('libs/notifier/js/notifier.js') ?>"></script>
-    <script src="<?= assets('js/dashboard.js') ?>"></script>
-</body>
-</html>
+<?= load_layout('app/layouts/footer') ?>
