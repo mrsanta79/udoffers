@@ -58,8 +58,12 @@
                                     <h4><?= $offer['city']->name ?></h4>
                                 </div>
                                 <div class="d-flex flex-column justify-content-between mt-2">
-                                    <h4 class="text-center mt-5">Shop : <?= $offer['shop'] ?></h4>
-                                    <h4 class="text-center mt-5">Discount : <?= $offer['discount'] ?></h4>
+                                    <h4 class="text-center mt-5">
+                                        <?= trans('modals.shop') ?> : <?= $offer['shop'] ?>
+                                    </h4>
+                                    <h4 class="text-center mt-5">
+                                        <?= trans('modals.discount') ?> : <?= $offer['discount'] ?>
+                                    </h4>
                                     <h4 class="text-center mt-5"><?= $offer['information'] == '' ? '-' : $offer['information'] ?></h4>
                                 </div>
                                 <div class="d-flex justify-content-between mt-5">
