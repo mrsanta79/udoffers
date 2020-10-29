@@ -1,18 +1,18 @@
 <?php
 
 return [
-    'loading_data' => 'Loading data...',
-    'actions' => 'Actions',
+    'loading_data' => 'تحميل البيانات...',
+    'actions' => 'أجراءات',
     'menu' => [
-        'fields' => 'Fields',
-        'offer' => 'Offer',
-        'offers' => 'Offers',
-        'users' => 'Users',
-        'entry_types' => 'Entry Types',
-        'entry_type' => 'Entry Type',
-        'cities' => 'Cities',
-        'city' => 'City',
-        'ad_script' => 'Ad Script',
-        'logout' => 'Logout',
+        'fields' => 'مجالات',
+        'offer' => 'عرض',
+        'offers' => 'عروض',
+        'users' => 'المستخدمون',
+        'entry_types' => 'أنواع الدخول',
+        'entry_type' => 'نوع الإدخال',
+        'cities' => 'مدن',
+        'city' => 'مدينة',
+        'ad_script' => 'نص إعلان',
+        'logout' => 'تسجيل خروج',
     ]
 ];

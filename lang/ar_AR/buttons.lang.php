@@ -1,8 +1,8 @@
 <?php
 
 return [
-    'create' => 'Create',
-    'continue' => 'Continue',
-    'authenticate' => 'Authenticate',
-    'update' => 'Update',
+    'create' => 'خلق',
+    'continue' => 'استمر',
+    'authenticate' => 'المصادقة',
+    'update' => 'تحديث',
 ];
