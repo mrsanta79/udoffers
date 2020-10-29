@@ -15,4 +15,6 @@ return [
     'discount_details' => 'Discount Details',
     'information' => 'Information',
     'google_map_link' => 'Google Map link',
+    'update_ad_script' => 'Update Ads Script',
+    'script' => 'Ad Script'
 ];
