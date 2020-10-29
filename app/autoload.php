@@ -14,6 +14,9 @@ $route = rtrim(explode('?', $_SERVER['REQUEST_URI'])[0], '/');
 // Load config
 require_once 'config.php';
 
+// Initialize timezone
+date_default_timezone_set(env('APP_TIMEZONE'));
+
 // Load controllers
 foreach (glob('controllers/*.php') as $controller) {
     require_once $controller;
@@ -37,6 +40,11 @@ foreach (glob('models/*/*.php') as $model) {
 // Autoload all helper funtions
 foreach (glob('app/helpers/*.php') as $helper) {
     require_once $helper;
+}
+
+// Autoload all schedules
+foreach (glob('app/schedules/*.php') as $schedule) {
+    require_once $schedule;
 }
 
 // Load routes

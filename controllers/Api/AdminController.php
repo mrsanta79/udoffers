@@ -68,7 +68,7 @@ class AdminController {
 
         // Data
         $data = [
-            'date' => strtotime(sanitize_input($_POST['date'])),
+            'date' => sanitize_input($_POST['date']),
             'city' => sanitize_input($_POST['city']),
             'entry_type' => sanitize_input($_POST['entry_type']),
             'winners_count' => sanitize_input($_POST['winners_count']),

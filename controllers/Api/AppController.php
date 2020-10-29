@@ -41,6 +41,6 @@ class AppController {
             return response(false, null, 'Something went wrong!');
         }
 
-        return response(true, $result, 'You have participated successfully.');
+        return response(true, $result, 'Cities changed');
     }
 }

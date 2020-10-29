@@ -28,7 +28,7 @@ class AppController {
             'participations' => $participations,
             'entries' => Entry::getAllEntries(),
             'cities' => City::getAllCities(),
-            'offers' => Offer::getOffersByCities($cities),
+            'offers' => count($cities) ? Offer::getOffersByCities($cities) : null,
             'selected_cities' => $selectedCities
         ];
 

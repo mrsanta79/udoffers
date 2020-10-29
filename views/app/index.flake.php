@@ -4,7 +4,7 @@
         <div class="container-fluid">
             <div class="container p-2 pb-5">
                 <div class="d-flex justify-content-between">
-                    <h4 id="countdown" data-timeout="<?= strtotime('tomorrow') ?>">{{ currentTime }}</h4>
+                    <h4 id="countdown" data-timeout="<?= strtotime('tomorrow') ?>" style="width: 100px;">{{ currentTime }}</h4>
                     <div class="md-form m-0">
                         <select class="multiselect" name="city" multiple data-live-search="true" @change="getOffersByCity">
                             <?php
@@ -31,6 +31,11 @@
                             <i class="fa fa-spinner fa-spin" v-if="isProcessing"></i>
                             <span class="font-weight-bold" v-if="!isProcessing"><?= trans('buttons.update') ?></span>
                         </button>
+                    </div>
+                    <div>
+                        <a href="<?= url('/logout') ?>" class="btn color-accent text-white btn-narrow mr-0">
+                            <?= trans('common.menu.logout') ?>
+                        </a>
                     </div>
                 </div>
                 <?php if(!$data['participations'] || count($data['participations']) < 1) { ?>
@@ -62,20 +67,15 @@
                                     <h5><?= date('d/m/Y', $offer['created_at']) ?></h5>
                                 </div>
                             </div>
-                            <div class="d-flex justify-content-between mt-5">
-                                <div class="winner-box">
-                                    <h6>Winner 1</h6>
+                            <?php if(count((array)$offer['winners'])) { ?>
+                                <div class="d-flex justify-content-around mt-5">
+                                    <?php foreach($offer['winners'] as $winner) { ?>
+                                        <div class="winner-box">
+                                            <h6><?= generate_user_id($winner['user']->id) ?></h6>
+                                        </div>
+                                    <?php } ?>
                                 </div>
-                                <div class="winner-box">
-                                    <h6>Winner 2</h6>
-                                </div>
-                                <div class="winner-box">
-                                    <h6>Winner 3</h6>
-                                </div>
-                                <div class="winner-box">
-                                    <h6>Winner 4</h6>
-                                </div>
-                            </div>
+                            <?php } ?>
                             <?php if($key != count($data['offers']) - 1) { ?>
                                 <hr class="mt-5">
                             <?php } ?>

@@ -15,17 +15,22 @@ const app = new Vue({
     },
     methods: {
         countdown: function() {
-            const today = new Date();
-            // const timeout = new Date(document.getElementById('countdown').getAttribute('data-timeout') * 1000);
-            let hours = today.getHours();
-            let minutes = today.getMinutes();
-            let seconds = today.getSeconds();
-            let ampm = hours >= 12 ? 'PM' : 'AM';
-            hours = hours % 12;
-            hours = hours ? hours : 12; // the hour '0' should be '12'
-            minutes = minutes < 10 ? '0' + minutes : minutes;
-            seconds = seconds < 10 ? '0' + seconds : seconds;
-            const time = hours + ':' + minutes + ':' + seconds + ' ' + ampm;
+            const timeout = document.getElementById('countdown').getAttribute('data-timeout') * 1000;
+            const now = new Date().getTime();
+
+            // Find the distance between now and the count down date
+            const distance = timeout - now;
+
+            // Time calculations for days, hours, minutes and seconds
+            let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            hours = hours <= 9 ? '0' + hours : hours;
+            minutes = minutes <= 9 ? '0' + minutes : minutes;
+            seconds = seconds <= 9 ? '0' + seconds : seconds;
+
+            // Display the result in the element with id="demo"
+            const time = hours + ":" + minutes + ":" + seconds + "";
             this.currentTime = time;
         },
         getOffersByCity: function(event) {

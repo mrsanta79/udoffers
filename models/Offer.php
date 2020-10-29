@@ -5,6 +5,7 @@ namespace Offer;
 use City\City;
 use Entry\Entry;
 use User\User;
+use Winner\Winner;
 
 class Offer {
     public static function getAllOffers() {
@@ -54,11 +55,8 @@ class Offer {
 
         $cities = implode(", ", $cities);
 
-        $query = "SELECT * FROM offers WHERE city IN ($cities)";
-        if(!is_admin()) {
-            $date = date('d/m/Y', strtotime('today'));
-            $query = "SELECT * FROM offers WHERE city IN ($cities) AND date = '$date'";
-        }
+        $date = date('d/m/Y', strtotime('today'));
+        $query = "SELECT * FROM offers WHERE city IN ($cities) AND date = '$date'";
 
         $query = mysqli_query(db(), $query);
 
@@ -80,6 +78,7 @@ class Offer {
             // Assign city
             $result[$key]['city'] = City::getCityById($item['city']);
             $result[$key]['entry_type'] = Entry::getEntryById($item['entry_type']);
+            $result[$key]['winners'] = Winner::getWinnersByOfferId($item['id']);
         }
 
         return $result;
@@ -90,6 +89,9 @@ class Offer {
 
         $data['created_by'] = user()->id;
         $data['created_at'] = strtotime('now');
+        if(substr($data['map_link'], 0, 8) != "https://" && substr($data['map_link'], 0, 7) != "http://") {
+            $data['map_link'] = 'http://' . $data['map_link'];
+        }
 
         $data = (object)$data;
 
@@ -100,6 +102,26 @@ class Offer {
         }
 
         $id = mysqli_insert_id($conn);
+
+        // Create winners
+        $participantsOfTheCityQuery = mysqli_query($conn, "SELECT * FROM participants WHERE city_id = '$data->city'");
+
+        if(mysqli_num_rows($participantsOfTheCityQuery) > 0) {
+            $participantsOfTheCity = mysqli_fetch_all($participantsOfTheCityQuery, MYSQLI_ASSOC);
+            shuffle($participantsOfTheCity);
+
+            $winnersQuery = 'INSERT INTO winners (offer_id, user_id) VALUES ';
+            for($i = 0; $i < $data->winners_count; $i++) {
+                $user_id = $participantsOfTheCity[$i]['user_id'];
+                $winnersQuery .= "('$id', '$user_id')";
+                if($i != $data->winners_count - 1) {
+                    $winnersQuery .= ', ';
+                }
+            }
+
+            // Execute and create winners
+            mysqli_query($conn, $winnersQuery);
+        }
 
         // Get offer details
         $offer = self::getOfferById($id);
