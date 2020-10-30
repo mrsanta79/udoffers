@@ -42,6 +42,21 @@ body {
     box-sizing: border-box;
     width: 100%;
 }
+#copyright {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 20px;
+    background: $accent-color;
+    color: $text-white;
+    text-align: center;
+    vertical-align: middle;
+}
 #page-loader {
     position: fixed;
     z-index: 10000;

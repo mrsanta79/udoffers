@@ -212,6 +212,22 @@ body {
   width: 100%;
 }
 
+#copyright {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 20px;
+  background: #f69314;
+  color: #fff;
+  text-align: center;
+  vertical-align: middle;
+}
+
 #page-loader {
   position: fixed;
   z-index: 10000;
@@ -389,6 +405,19 @@ select {
 .winner-box > * {
   font-weight: 400;
   margin: 0;
+}
+
+@media only screen and (max-width: 767px) {
+  .container > .d-flex {
+    flex-direction: column;
+    text-align: center;
+  }
+  .container .card {
+    padding: 20px !important;
+  }
+  .container .card h4 {
+    font-size: 16px !important;
+  }
 }
 
 /*# sourceMappingURL=dashboard.css.map */

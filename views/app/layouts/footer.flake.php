@@ -1,4 +1,15 @@
-
+    <small id="copyright">
+        <a href="<?= url('/') ?>">
+            <strong><?= env('APP_NAME') ?></strong>
+        </a>&nbsp;
+        <i class="fa fa-copyright"></i>&nbsp;
+        2020 CREATED BY&nbsp;
+        <a href="https://roidnet.com/">
+            <strong>
+                <span style="color: red;font-size: 12px">ROID</span>NET
+            </strong>
+        </a>.
+    </small>
     <!-- SCRIPTS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.5.3/umd/popper.min.js"></script>
