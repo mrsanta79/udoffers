@@ -386,14 +386,14 @@ const openSideNav = (event) => {
     const $topNav = $('.navbar');
     const $bodyContainer = $('.container-fluid');
 
-    $sideNav.addClass('expanded');
+    $sideNav.toggleClass('expanded');
     $sideNavBackdrop.css({
         display: 'block',
         opacity: 1
     });
     if($(window).width() >= 767) {
-        $topNav.addClass('expanded');
-        $bodyContainer.addClass('expanded');
+        $topNav.toggleClass('expanded');
+        $bodyContainer.toggleClass('expanded');
     }
 }
 

@@ -61,7 +61,7 @@
     <div id="sidenav-backdrop"></div>
     <div class="sidenav color-primary">
         <a class="navbar-brand mr-0 ml-0" href="/">
-            <img src="<?= assets('images/logo.jpeg') ?>" alt="" class="w-100" style="max-width: 150px;">
+            <img src="<?= assets('images/logo.png') ?>" alt="" class="w-100" style="max-width: 100px;">
         </a>
         <a class="navbar-brand-sm hidden" href="/">U</a>
         <ul>

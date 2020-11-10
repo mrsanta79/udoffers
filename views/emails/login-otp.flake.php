@@ -16,7 +16,7 @@
         <div id="fb-root"></div>
         <div class="card">
             <a href="<?= url('/') ?>" class="logo">
-                <img src="<?= assets('images/logo.jpeg') ?>" alt="">
+                <img src="<?= assets('images/logo.png') ?>" alt="">
             </a>
             <?php if(isset($data) && isset($data['is_new_account']) && $data['is_new_account']) { ?>
                 <h1 class="text-center">Welcome to <?= env('APP_NAME') ?></h1>

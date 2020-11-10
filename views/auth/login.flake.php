@@ -23,7 +23,7 @@
             <div id="fb-root"></div>
             <div class="card">
                 <a href="<?= url('/') ?>" class="logo">
-                    <img src="<?= assets('images/logo.jpeg') ?>" alt="">
+                    <img src="<?= assets('images/logo.png') ?>" alt="" style="max-width: 100px;">
                 </a>
 
                 <div class="buttons-container processing-auth" :class="authType !== '' && authType !== 'email' ? 'processing-auth' : ''">

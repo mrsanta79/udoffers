@@ -15,7 +15,7 @@
                         <label for="entry_name"><?= trans('modals.entry_name') ?></label>
                     </div>
                     <div class="md-form">
-                        <span class="d-block"><?= trans('modals.background') ?> (e.g. #424242 or #424):</span>
+                        <span class="d-block"><?= trans('modals.background') ?></span>
                         <div class="d-flex flex-row mt-2">
                             <input type="color" id="background" name="background" class="d-block w-100" v-model="entryForm.background">
                             <span class="ml-2 text-right" style="text-transform: uppercase; width: 100px;">
