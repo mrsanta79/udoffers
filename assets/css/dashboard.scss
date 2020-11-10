@@ -1,0 +1,48 @@
+@import "common";
+
+* {
+    font-weight: 400;
+    &:not(.fa) {
+        font-family: 'Comfortaa', sans-serif !important;
+    }
+}
+
+.justify-content-between {
+    align-items: center;
+}
+
+select {
+    padding: 10px 20px !important;
+}
+
+.multiselect {
+    .dropdown-toggle::after {
+        margin-left: 1rem;
+    }
+}
+
+.winner-box {
+    background: $text-white;
+    box-shadow: 0 2px 5px 2px rgba(0, 0, 0, 0.1);
+    border-radius: 100px;
+    padding: 20px 40px;
+    & > * {
+        font-weight: 400;
+        margin: 0;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .container {
+        & > .d-flex {
+            flex-direction: column;
+            text-align: center;
+        }
+        .card {
+            padding: 20px !important;
+            h4 {
+                font-size: 16px !important;
+            }
+        }
+    }
+}

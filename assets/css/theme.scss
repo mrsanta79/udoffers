@@ -7,9 +7,9 @@
     font-weight: 400;
 }
 
-$primary-color: #fb7813;
-$secondary-color: #0e9aa7;
-$accent-color: #ffc93c;
+$primary-color: #512c96;//#fb7813;
+$secondary-color: #ff5151;//#0e9aa7;
+$accent-color: #f69314;
 $text-white: #fff;
 $text-black: #41444b;
 
@@ -28,19 +28,19 @@ $text-black: #41444b;
 }
 
 // Texts
-.text-primary {
+.text-primary, .text-primary * {
     color: $primary-color;
 }
-.text-secondary {
+.text-secondary, .text-secondary * {
     color: $secondary-color;
 }
-.text-accent {
+.text-accent, .text-accent * {
     color: $accent-color;
 }
-.text-white {
+.text-white, .text-white * {
     color: $text-white;
 }
-.text-black {
+.text-black, .text-black * {
     color: $text-black;
 }
 
@@ -50,4 +50,124 @@ $text-black: #41444b;
 }
 .font-montserrat {
     font-family: 'Montserrat', sans-serif;
+}
+
+// Buttons
+.btn {
+    border-radius: 100px;
+    font-weight: bold;
+    text-transform: unset;
+    &.btn-narrow {
+        padding: 7px 20px;
+    }
+}
+
+a.icon-btn {
+    &.btn-floating {
+        border-radius: 100%;
+
+        &:not(:last-child) {
+            margin-right: 5px;
+        }
+    }
+
+    .fa, .fab, .fal, .far, .fas {
+        width: 30px;
+        height: 30px;
+        line-height: 30px !important;
+        padding: 0;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 100%;
+        font-size: 16px;
+        background: rgba(0, 0, 0, 0.1);
+        color: #555;
+        transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+        &:hover {
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+        }
+    }
+
+    &.disabled {
+        pointer-events: none;
+        opacity: 0.5;
+    }
+}
+
+// Label
+.md-form label {
+    color: $text-black;
+}
+
+// Select input
+.md-form select {
+    border: navajowhite;
+    border-bottom: 1px solid #ccc;
+    border-radius: 0;
+    padding: 0.6rem 0 0.4rem 0;
+    height: unset;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("/assets/images/arrow-down.svg");
+    background-position: right 5px center;
+    background-size: 10px;
+}
+.md-form select:focus {
+    border: 0;
+    border-bottom: 1px solid #4285f4;
+    outline: 0;
+    box-shadow: 0 1px 0 0 #4285f4;
+}
+
+// Textarea
+div[contenteditable=true] {
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #ced4da;
+    border-radius: 0;
+    outline: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+}
+div[contenteditable=true]:focus {
+    border-bottom: 2px solid #4285f4;
+    -webkit-box-shadow: 0 1px 0 0 #4285f4;
+    box-shadow: 0 1px 0 0 #4285f4;
+}
+div[contenteditable=true][placeholder]:empty:before {
+    content: attr(placeholder);
+    color: #9c9c9c;
+}
+
+.datepicker {
+    box-shadow: 0 2px 5px 2px rgba(0, 0, 0, 0.1);
+    margin-bottom: 3rem;
+
+    td, th {
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 0.85rem;
+    }
+    .year.active,
+    .month.active,
+    .day.today {
+        background: $accent-color !important;
+        color: $text-white !important;
+    }
+    .year.focused,
+    .month.focused,
+    .day.active {
+        background: $secondary-color !important;
+        color: $text-white !important;
+    }
 }

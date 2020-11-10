@@ -1,0 +1,120 @@
+body[dir=rtl] {
+    $sideNaveWidth: 250;
+
+    .navbar {
+        padding-right: $sideNaveWidth + 15px;
+        padding-left: 10px;
+        .navbar-brand {
+            margin-right: 0.35rem;
+            margin-left: 1rem;
+        }
+        #toggle-sidenav {
+            margin-left: 10px;
+            margin-right: 0;
+        }
+    }
+    .sidenav {
+        left: unset;
+        right: 0;
+        box-shadow: -3px 0 5px 2px rgba(0, 0, 0, 0.1);
+        ul li a {
+            text-align: right;
+            i {
+                margin-right: unset;
+                margin-left: 15px;
+            }
+        }
+    }
+
+    .container-fluid {
+        padding-left: 15px;
+        padding-right: $sideNaveWidth + 15px;
+    }
+
+    .dataTables_wrapper {
+        .dataTables_length {
+            float: right;
+            padding-right: 5px;
+        }
+        .dataTables_filter {
+            float: left;
+            padding-left: 5px;
+            input {
+                margin-left: unset;
+                margin-right: 0.5em;
+            }
+        }
+    }
+    table {
+        th, td {
+            text-align: right;
+        }
+        th:not(:last-child),
+        td:not(:last-child) {
+            border-right: unset;
+        }
+        a.icon-btn.btn-floating:not(:last-child) {
+            margin-right: unset;
+            margin-left: 5px;
+        }
+    }
+    .modal {
+        .modal-title {
+            text-align: right;
+        }
+        button.close {
+            margin: -1rem auto -1rem -1rem;
+        }
+        &#modal-compose-mail form {
+            .text-right {
+                text-align: left !important;
+            }
+            div[contenteditable=true] {
+                direction: ltr;
+            }
+        }
+    }
+    .md-form {
+        label {
+            left: unset;
+            right: 0;
+        }
+        select {
+            background-position: left 2px center;
+        }
+    }
+}
+
+@media only screen and (max-width: 1440px) {
+    body[dir=rtl] {
+        .container-fluid {
+            padding-right: 75px !important;
+
+            &.expanded {
+                padding-right: 215px !important;
+            }
+        }
+
+        .navbar {
+            padding-right: 50px !important;
+
+            &.expanded {
+                padding-right: 190px !important;
+            }
+        }
+    }
+}
+@media only screen and (max-width: 767px) {
+    body[dir=rtl] {
+        .navbar {
+            padding-right: 0px !important;
+        }
+        .sidenav {
+            left: unset;
+            right: -220px;
+        }
+        .container-fluid {
+            padding-right: 15px !important;
+        }
+    }
+}

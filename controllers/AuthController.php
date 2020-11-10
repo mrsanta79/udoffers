@@ -4,22 +4,20 @@ namespace AuthController;
 
 class AuthController {
     public static function login() {
+        if(user()) {
+            if(is_admin()) {
+                redirect('/admin/fields');
+            } else {
+                redirect('/');
+            }
+        }
 
-    }
-
-    public static function register() {
-
-    }
-
-    public static function loginWithFacebook() {
-
-    }
-
-    public static function loginWithGmail() {
-
+        return view('auth/login');
     }
 
     public static function logout() {
+        reset_user();
 
+        redirect('login');
     }
 }
