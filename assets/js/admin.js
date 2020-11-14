@@ -351,10 +351,16 @@ const app = new Vue({
         // Ads Script
         updateAdScript: function(e) {
             const url = e.target.action;
-            const script = document.querySelector('form[name=update-ad-script] textarea[name=script]').value;
+            const top_script = document.querySelector('form[name=update-ad-script] textarea#top_script').value;
+            const bottom_script = document.querySelector('form[name=update-ad-script] textarea#bottom_script').value;
+            const left_script = document.querySelector('form[name=update-ad-script] textarea#left_script').value;
+            const right_script = document.querySelector('form[name=update-ad-script] textarea#right_script').value;
 
             let data = new FormData();
-            data.append('script', script);
+            data.append('top_script', top_script);
+            data.append('bottom_script', bottom_script);
+            data.append('left_script', left_script);
+            data.append('right_script', right_script);
 
             this.isProcessing = true;
 

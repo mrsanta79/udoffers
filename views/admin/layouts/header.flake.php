@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="locale" content="<?= env('APP_LOCALE') ?>">
+    <meta name="timezone" content="<?= env('APP_TIMEZONE') ?>">
     <title><?= env('APP_NAME') . ' - Admin | ' . ucfirst($page_name) ?></title>
+    <link rel="icon" href="<?= assets('images/logo.png') ?>">
 
     <!-- CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
@@ -60,10 +63,10 @@
     <!-- Side Navbar -->
     <div id="sidenav-backdrop"></div>
     <div class="sidenav color-primary">
-        <a class="navbar-brand mr-0 ml-0" href="/">
+        <a class="navbar-brand mr-0 ml-0" href="<?= url('/') ?>">
             <img src="<?= assets('images/logo.png') ?>" alt="" class="w-100" style="max-width: 100px;">
         </a>
-        <a class="navbar-brand-sm hidden" href="/">U</a>
+        <a class="navbar-brand-sm hidden" href="<?= url('/') ?>">U</a>
         <ul>
             <li class="waves-effect <?= isset($page_name) && $page_name == 'fields' ? 'active' : '' ?>">
                 <a href="/admin/fields">

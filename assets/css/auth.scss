@@ -66,6 +66,13 @@
     }
 }
 
+body[dir = rtl] {
+    .md-form label {
+        left: unset;
+        right: 0;
+    }
+}
+
 // Processing animation
 @-moz-keyframes loadingState {
     from {

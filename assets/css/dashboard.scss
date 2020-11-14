@@ -2,7 +2,7 @@
 
 * {
     font-weight: 400;
-    &:not(.fa) {
+    &:not(.fas):not(.fa):not(.fab) {
         font-family: 'Comfortaa', sans-serif !important;
     }
 }
@@ -25,11 +25,26 @@ select {
     background: $text-white;
     box-shadow: 0 2px 5px 2px rgba(0, 0, 0, 0.1);
     border-radius: 100px;
-    padding: 20px 40px;
+    padding: 10px 20px;
     & > * {
-        font-weight: 400;
+        font-weight: bold;
+        font-size: 14px;
         margin: 0;
     }
+}
+#winner-box-container {
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+}
+#offer-card {
+    margin: 0 auto;
+    h6 {
+        font-weight: bold;
+    }
+}
+.ad-container {
+    overflow: hidden;
 }
 
 @media only screen and (max-width: 767px) {

@@ -29,7 +29,7 @@ class AdminController {
         $data = [
             'entries' => Entry::getAllEntries(),
             'cities' => City::getAllCities(),
-            'script' => AdScript::getScript(),
+            'ads' => AdScript::getScripts(),
         ];
 
         return view('admin/fields', $data, 'fields');
@@ -46,7 +46,7 @@ class AdminController {
         $data = [
             'entries' => Entry::getAllEntries(),
             'cities' => City::getAllCities(),
-            'script' => AdScript::getScript(),
+            'ads' => AdScript::getScripts(),
         ];
 
         return view('admin/offers', $data, 'offers');
@@ -61,7 +61,7 @@ class AdminController {
         }
 
         $data = [
-            'script' => AdScript::getScript(),
+            'ads' => AdScript::getScripts(),
         ];
 
         return view('admin/users', $data, 'users');

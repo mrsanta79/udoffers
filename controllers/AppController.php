@@ -2,6 +2,7 @@
 
 namespace AppController;
 
+use AdScript\AdScript;
 use City\City;
 use Entry\Entry;
 use Offer\Offer;
@@ -29,7 +30,8 @@ class AppController {
             'entries' => Entry::getAllEntries(),
             'cities' => City::getAllCities(),
             'offers' => count($cities) ? Offer::getOffersByCities($cities) : null,
-            'selected_cities' => $selectedCities
+            'selected_cities' => $selectedCities,
+            'ads' => AdScript::getScripts()
         ];
 
         return view('app/index', $data);

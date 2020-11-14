@@ -215,17 +215,19 @@ body {
 #copyright {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 20px;
-  background: #f69314;
+  height: 50px;
+  padding-right: 50px;
+  padding-left: 50px;
+  background: #41444b;
   color: #fff;
   text-align: center;
   vertical-align: middle;
+  font-size: 16px;
+}
+#copyright * {
+  color: #fff;
 }
 
 #page-loader {
@@ -377,6 +379,13 @@ body[dir=rtl] .dropdown-menu {
     display: none;
   }
 }
+@media only screen and (max-width: 767px) {
+  #copyright {
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 80px;
+  }
+}
 .card {
   margin: 100px auto;
   max-width: 500px;
@@ -440,6 +449,11 @@ body[dir=rtl] .dropdown-menu {
 .btn.g-signin2 > div .abcRioButtonContentWrapper span {
   font-size: 18px !important;
   font-weight: 500 !important;
+}
+
+body[dir=rtl] .md-form label {
+  left: unset;
+  right: 0;
 }
 
 @-moz-keyframes loadingState {

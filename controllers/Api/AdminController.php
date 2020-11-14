@@ -323,7 +323,22 @@ class AdminController {
         }
 
         $data = [
-            'script' => htmlentities(sanitize_input($_POST['script']), ENT_QUOTES),
+            'top_script' => [
+                'script' => htmlentities(sanitize_input($_POST['top_script']), ENT_QUOTES),
+                'position' => 'top',
+            ],
+            'right_script' => [
+                'script' => htmlentities(sanitize_input($_POST['right_script']), ENT_QUOTES),
+                'position' => 'right',
+            ],
+            'bottom_script' => [
+                'script' => htmlentities(sanitize_input($_POST['bottom_script']), ENT_QUOTES),
+                'position' => 'bottom',
+            ],
+            'left_script' => [
+                'script' => htmlentities(sanitize_input($_POST['left_script']), ENT_QUOTES),
+                'position' => 'left',
+            ],
         ];
 
         // Update Script
@@ -333,6 +348,6 @@ class AdminController {
             return response(false, null, 'Oops! Script could not be updated');
         }
 
-        return response(true, $result, 'Script has been updated');
+        return response(true, $result, 'Scripts have been updated');
     }
 }

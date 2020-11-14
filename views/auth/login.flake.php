@@ -6,8 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="google-signin-client_id" content="<?= env('GOOGLE_CLIENT_ID') ?>">
     <meta name="facebook-app_id" content="<?= env('FACEBOOK_APP_ID') ?>" />
-
+    <meta name="locale" content="<?= env('APP_LOCALE') ?>">
+    <meta name="timezone" content="<?= env('APP_TIMEZONE') ?>">
     <title><?= env('APP_NAME') . ' - Login' ?></title>
+    <link rel="icon" href="<?= assets('images/logo.png') ?>">
 
     <!-- CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
@@ -67,6 +69,12 @@
                                 <i class="fas fa-chevron-right ml-3"></i>
                             </span>
                         </button>
+                    </div>
+                    <div class="md-form mt-0 text-center">
+                        <a href="javascript:void(0)" class="text-accent" @click="authType = ''">
+                            <i class="fas fa-chevron-left mr-1"></i>
+                            <?= trans('buttons.choose_other_option') ?>
+                        </a>
                     </div>
                 </form>
 

@@ -112,10 +112,12 @@ class Offer {
 
             $winnersQuery = 'INSERT INTO winners (offer_id, user_id) VALUES ';
             for($i = 0; $i < $data->winners_count; $i++) {
-                $user_id = $participantsOfTheCity[$i]['user_id'];
-                $winnersQuery .= "('$id', '$user_id')";
-                if($i != $data->winners_count - 1) {
-                    $winnersQuery .= ', ';
+                if(isset($participantsOfTheCity[$i]['user_id'])) {
+                    $user_id = $participantsOfTheCity[$i]['user_id'];
+                    $winnersQuery .= "('$id', '$user_id')";
+                    if ($i != $data->winners_count - 1 && isset($participantsOfTheCity[$i + 1]['user_id'])) {
+                        $winnersQuery .= ', ';
+                    }
                 }
             }
 

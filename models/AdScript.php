@@ -3,8 +3,18 @@
 namespace AdScript;
 
 class AdScript {
-    public static function getScript() {
-        $query = mysqli_query(db(), "SELECT * FROM ads WHERE id = 1");
+    public static function getScripts() {
+        $query = mysqli_query(db(), "SELECT * FROM ads");
+
+        return mysqli_fetch_all($query, MYSQLI_ASSOC);
+    }
+
+    public static function getScriptByPosition($pos = null) {
+        if(empty($pos)) {
+            throw new \Error('Ads position is required');
+        }
+
+        $query = mysqli_query(db(), "SELECT * FROM ads WHERE position = '$pos'");
 
         return mysqli_fetch_array($query);
     }
@@ -12,15 +22,11 @@ class AdScript {
     public static function updateScript($data) {
         $data = (object)$data;
 
-        $query = mysqli_query(db(), "UPDATE ads SET script = '$data->script' WHERE id = 1");
-
-        if(!$query) {
-            return false;
+        foreach($data as $ad) {
+            $ad = (object)$ad;
+            mysqli_query(db(), "UPDATE ads SET script = '$ad->script' WHERE position = '$ad->position'");
         }
 
-        return [
-            'id' => 1,
-            'script' => $data->script
-        ];
+        return self::getScripts();
     }
 }
