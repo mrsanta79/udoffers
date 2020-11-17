@@ -6,7 +6,7 @@ class AdScript {
     public static function getScripts() {
         $query = mysqli_query(db(), "SELECT * FROM ads");
 
-        return mysqli_fetch_all($query, MYSQLI_ASSOC);
+        return fetch_all($query);
     }
 
     public static function getScriptByPosition($pos = null) {

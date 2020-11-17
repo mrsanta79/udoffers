@@ -207,7 +207,7 @@ body {
 
 .container-fluid {
   padding-bottom: 15px;
-  margin-top: 80px !important;
+  padding-top: 80px !important;
   box-sizing: border-box;
   width: 100%;
 }
@@ -391,6 +391,14 @@ body[dir=rtl] .dropdown-menu {
 }
 *:not(.fas):not(.fa):not(.fab) {
   font-family: "Comfortaa", sans-serif !important;
+}
+
+#app {
+  min-height: 100vh;
+  margin-bottom: -50px;
+}
+#app .container-fluid {
+  margin-bottom: 50px;
 }
 
 .justify-content-between {

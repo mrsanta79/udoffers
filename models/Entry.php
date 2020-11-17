@@ -8,7 +8,7 @@ class Entry {
     public static function getAllEntries() {
         $query = mysqli_query(db(), "SELECT * FROM entries");
 
-        $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
+        $result = fetch_all($query);
 
         foreach ($result as $key => $item) {
             $result[$key]['id'] = intval($result[$key]['id']);

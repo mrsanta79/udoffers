@@ -7,7 +7,7 @@ class User {
         $loggedinId = user()->id;
         $query = mysqli_query(db(), "SELECT * FROM users WHERE id != '$loggedinId' AND is_deleted = 0");
 
-        $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
+        $result = fetch_all($query);
 
         foreach ($result as $key=>$item) {
 

@@ -1,7 +1,7 @@
 <?= load_layout('app/layouts/header') ?>
 
     <div id="app">
-        <div class="container-fluid" style="margin-top: 50px !important;">
+        <div class="container-fluid" style="padding-top: 50px !important;">
             <?php
                 $top_ad = array_filter($data['ads'], function($item) {
                     $item = $item['position'] == 'top';

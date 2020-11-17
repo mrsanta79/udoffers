@@ -34,7 +34,7 @@ class Participants {
     public static function getAllParticipants() {
         $query = mysqli_query(db(), "SELECT * FROM participants");
 
-        $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
+        $result = fetch_all($query);
 
         foreach ($result as $key=>$item) {
             // Convert to int
@@ -54,7 +54,7 @@ class Participants {
     public static function getAllParticipantsByUserId(int $user_id) {
         $query = mysqli_query(db(), "SELECT * FROM participants WHERE user_id = '$user_id'");
 
-        $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
+        $result = fetch_all($query);
 
         foreach ($result as $key=>$item) {
             // Convert to int

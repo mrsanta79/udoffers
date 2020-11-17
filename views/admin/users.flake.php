@@ -15,6 +15,7 @@
                 <table class="table table-hover card" id="users-table" style="display: none" :class="!isFetchingData ? 'd-table' : ''" v-if="users" data-users-url="<?= api('/admin/users') ?>">
                     <thead>
                         <tr>
+                            <th>ID</th>
                             <th><?= trans('pages.users.name') ?></th>
                             <th><?= trans('pages.users.email') ?></th>
                             <th><?= trans('pages.users.account_type') ?></th>
@@ -25,6 +26,7 @@
                     </thead>
                     <tbody>
                         <tr v-for="(user, index) in users" :data-id="user.id">
+                            <td>{{ user.id }}</td>
                             <td>
                                 {{ user.name }}
                                 <i v-if="user.is_admin" class="fas fa-crown text-warning ml-2"></i>

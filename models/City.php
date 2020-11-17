@@ -8,7 +8,7 @@ class City {
     public static function getAllCities() {
         $query = mysqli_query(db(), "SELECT * FROM cities");
 
-        $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
+        $result = fetch_all($query);
 
         foreach ($result as $key=>$item) {
             $result[$key]['id'] = intval($result[$key]['id']);

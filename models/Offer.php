@@ -11,7 +11,7 @@ class Offer {
     public static function getAllOffers() {
         $query = mysqli_query(db(), "SELECT * FROM offers");
 
-        $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
+        $result = fetch_all($query);
 
         foreach ($result as $key=>$item) {
             // Convert to int
@@ -64,7 +64,7 @@ class Offer {
             return false;
         }
 
-        $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
+        $result = fetch_all($query);
 
         foreach ($result as $key => $item) {
             // Convert to int
@@ -107,7 +107,7 @@ class Offer {
         $participantsOfTheCityQuery = mysqli_query($conn, "SELECT * FROM participants WHERE city_id = '$data->city'");
 
         if(mysqli_num_rows($participantsOfTheCityQuery) > 0) {
-            $participantsOfTheCity = mysqli_fetch_all($participantsOfTheCityQuery, MYSQLI_ASSOC);
+            $participantsOfTheCity = fetch_all($participantsOfTheCityQuery);
             shuffle($participantsOfTheCity);
 
             $winnersQuery = 'INSERT INTO winners (offer_id, user_id) VALUES ';
