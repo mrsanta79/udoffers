@@ -38,7 +38,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <a class="navbar-brand" href="<?= url('/') ?>">
-            UDOffers
+            <?= env('APP_NAME') ?>
         </a>
         <a type="button" href="<?= url('/logout') ?>" class="show-sm text-white mr-3">
             <i class="fas fa-sign-out-alt" style="font-size: 20px;"></i>
