@@ -74,6 +74,16 @@
                     </div>
                 </div>
                 <div class="row">
+                    <div class="col-md-6 mt-2 text-left">
+                        <?= trans('dashboard.total_visits') ?>:
+                        <?= $data['visits']['total'] ?>
+                    </div>
+                    <div class="col-md-6 mt-2 text-right">
+                        <?= trans('dashboard.today_visits') ?>:
+                        <?= $data['visits']['today'] ?>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-md-12 mt-5 text-center ad-container">
                         <?= $top_ad['script'] ?>
                     </div>
