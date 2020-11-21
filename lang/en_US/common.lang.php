@@ -13,6 +13,7 @@ return [
         'cities' => 'Cities',
         'city' => 'City',
         'ad_script' => 'Ad Script',
+        'admin_panel' => 'Admin Panel',
         'logout' => 'Logout',
     ]
 ];

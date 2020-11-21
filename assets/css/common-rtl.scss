@@ -1,4 +1,10 @@
 body[dir=rtl] {
+    .text-right {
+        text-align: left !important;
+    }
+    .text-left {
+        text-align: right !important;
+    }
     .mr-2, i.mr-2 {
         margin-right: unset !important;
         margin-left: 0.5rem !important;

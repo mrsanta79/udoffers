@@ -8,7 +8,7 @@ class Entry {
     public static function getAllEntries() {
         $query = mysqli_query(db(), "SELECT * FROM entries");
 
-        $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
+        $result = fetch_all($query);
 
         foreach ($result as $key => $item) {
             $result[$key]['id'] = intval($result[$key]['id']);
@@ -42,8 +42,19 @@ class Entry {
         return $entry;
     }
 
-    public static function createEntry($data) {
+    public static function createEntry($data, $background = null) {
         $conn = db();
+
+        if(!empty($background)) {
+            $upload_dir = 'storage/entry-bg/';
+            $file_name = $upload_dir . strtotime('now');
+            $upload_name = $file_name . '.' . strtolower(pathinfo($background['name'], PATHINFO_EXTENSION));
+
+            $data['background'] = $upload_name;
+
+            // Upload file
+            move_uploaded_file($background['tmp_name'], $upload_name);
+        }
 
         $data['created_at'] = strtotime('now');
 
@@ -63,6 +74,14 @@ class Entry {
     }
 
     public static function deleteEntry(int $id) {
+        $query = mysqli_query(db(), "SELECT * FROM entries WHERE id = '$id'");
+        $row = mysqli_fetch_object($query);
+
+        // Delete background image file if exists
+        if(file_exists($row->background)) {
+            unlink($row->background);
+        }
+
         $query = mysqli_query(db(), "DELETE FROM entries WHERE id = '$id'");
 
         if (!$query) {

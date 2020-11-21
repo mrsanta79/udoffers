@@ -7,6 +7,7 @@
     <meta name="locale" content="<?= env('APP_LOCALE') ?>">
     <meta name="timezone" content="<?= env('APP_TIMEZONE') ?>">
     <title><?= env('APP_NAME') . ' - Dashboard' ?></title>
+    <link rel="icon" href="<?= assets('images/logo.png') ?>">
 
     <!-- CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">

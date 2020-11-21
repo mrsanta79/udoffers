@@ -207,7 +207,7 @@ body {
 
 .container-fluid {
   padding-bottom: 15px;
-  margin-top: 80px !important;
+  padding-top: 80px !important;
   box-sizing: border-box;
   width: 100%;
 }
@@ -215,17 +215,19 @@ body {
 #copyright {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 20px;
-  background: #f69314;
+  height: 50px;
+  padding-right: 50px;
+  padding-left: 50px;
+  background: #41444b;
   color: #fff;
   text-align: center;
   vertical-align: middle;
+  font-size: 16px;
+}
+#copyright * {
+  color: #fff;
 }
 
 #page-loader {
@@ -334,6 +336,12 @@ table.card {
   color: #fff !important;
 }
 
+body[dir=rtl] .text-right {
+  text-align: left !important;
+}
+body[dir=rtl] .text-left {
+  text-align: right !important;
+}
 body[dir=rtl] .mr-2, body[dir=rtl] i.mr-2 {
   margin-right: unset !important;
   margin-left: 0.5rem !important;
@@ -375,6 +383,13 @@ body[dir=rtl] .dropdown-menu {
 @media only screen and (min-width: 767px) {
   .show-sm {
     display: none;
+  }
+}
+@media only screen and (max-width: 767px) {
+  #copyright {
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 80px;
   }
 }
 .navbar {

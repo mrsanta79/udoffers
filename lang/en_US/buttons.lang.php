@@ -5,4 +5,6 @@ return [
     'continue' => 'Continue',
     'authenticate' => 'Authenticate',
     'update' => 'Update',
+    'back' => 'Back',
+    'choose_other_option' => 'Choose other option'
 ];

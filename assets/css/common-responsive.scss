@@ -3,3 +3,10 @@
         display: none;
     }
 }
+@media only screen and (max-width: 767px) {
+    #copyright {
+        flex-direction: column;
+        justify-content: space-evenly;
+        height: 80px;
+    }
+}

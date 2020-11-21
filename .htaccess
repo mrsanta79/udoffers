@@ -7,8 +7,13 @@
     RewriteCond %{REQUEST_URI} !^/(favicon\.ico|apple-touch-icon.*\.png)$ [NC]
     RewriteRule (.+) index.php?p=$1 [QSA,L]
 
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
     <Files .env>
         Order allow,deny
         Deny from all
     </Files>
+
+    AddHandler application/x-httpd-php74 .php .php5
 </IfModule>

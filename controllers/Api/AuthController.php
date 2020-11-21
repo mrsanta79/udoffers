@@ -3,6 +3,7 @@
 namespace Api\AuthController;
 
 use User\User;
+use Visit\Visit;
 
 class AuthController {
     public static function auth() {
@@ -151,6 +152,10 @@ class AuthController {
 
         $hideFields = ['password'];
         user($user, $hideFields);
+
+        // Update visit count
+        Visit::updateVisitCount();
+
         return response(true, user(), 'Login success');
     }
 
@@ -174,6 +179,9 @@ class AuthController {
 
         // Check user
         $user = User::getUserByEmail($data->email);
+
+        // Update visit count
+        Visit::updateVisitCount();
 
         // Verify if it's a facebook account
         if($user && !$user->is_facebook) {
@@ -251,6 +259,9 @@ class AuthController {
         if($user && !$user->is_google) {
             return response(false, null, 'This is not a google authenticated account. Please login using the correct method.');
         }
+
+        // Update visit count
+        Visit::updateVisitCount();
 
         // Create entry if not found
         if(!$user) {

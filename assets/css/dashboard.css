@@ -207,7 +207,7 @@ body {
 
 .container-fluid {
   padding-bottom: 15px;
-  margin-top: 80px !important;
+  padding-top: 80px !important;
   box-sizing: border-box;
   width: 100%;
 }
@@ -215,17 +215,19 @@ body {
 #copyright {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 20px;
-  background: #f69314;
+  height: 50px;
+  padding-right: 50px;
+  padding-left: 50px;
+  background: #41444b;
   color: #fff;
   text-align: center;
   vertical-align: middle;
+  font-size: 16px;
+}
+#copyright * {
+  color: #fff;
 }
 
 #page-loader {
@@ -334,6 +336,12 @@ table.card {
   color: #fff !important;
 }
 
+body[dir=rtl] .text-right {
+  text-align: left !important;
+}
+body[dir=rtl] .text-left {
+  text-align: right !important;
+}
 body[dir=rtl] .mr-2, body[dir=rtl] i.mr-2 {
   margin-right: unset !important;
   margin-left: 0.5rem !important;
@@ -377,11 +385,26 @@ body[dir=rtl] .dropdown-menu {
     display: none;
   }
 }
+@media only screen and (max-width: 767px) {
+  #copyright {
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 80px;
+  }
+}
 * {
   font-weight: 400;
 }
-*:not(.fa) {
+*:not(.fas):not(.fa):not(.fab) {
   font-family: "Comfortaa", sans-serif !important;
+}
+
+#app {
+  min-height: 100vh;
+  margin-bottom: -50px;
+}
+#app .container-fluid {
+  margin-bottom: 50px;
 }
 
 .justify-content-between {
@@ -400,11 +423,29 @@ select {
   background: #fff;
   box-shadow: 0 2px 5px 2px rgba(0, 0, 0, 0.1);
   border-radius: 100px;
-  padding: 20px 40px;
+  padding: 10px 20px;
 }
 .winner-box > * {
-  font-weight: 400;
+  font-weight: bold;
+  font-size: 14px;
   margin: 0;
+}
+
+#winner-box-container {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+#offer-card {
+  margin: 0 auto;
+}
+#offer-card h6 {
+  font-weight: bold;
+}
+
+.ad-container {
+  overflow: hidden;
 }
 
 @media only screen and (max-width: 767px) {

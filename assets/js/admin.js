@@ -25,7 +25,8 @@ const app = new Vue({
         },
         entryForm: {
             name: '',
-            background: '#424242'
+            // background: '#424242'
+            background: ''
         }
     },
     created() {
@@ -284,19 +285,20 @@ const app = new Vue({
         // Entry
         createEntry: function(e) {
             const url = e.target.action;
+            const backgroundFile = document.querySelector('form[name=create-entry] input[name=background]').files[0];
 
             // Validate background color
-
-            if(!validateHexCode(this.entryForm.background)) {
-                notifier.show('Oops!', 'Invalid hex color code. Please try again.', 'danger', '', 7000);
-                return false;
-            }
+            // if(!validateHexCode(this.entryForm.background)) {
+            //     notifier.show('Oops!', 'Invalid hex color code. Please try again.', 'danger', '', 7000);
+            //     return false;
+            // }
 
             this.isProcessing = true;
 
             let data = new FormData();
             data.append('name', this.entryForm.name);
-            data.append('background', this.entryForm.background);
+            // data.append('background', this.entryForm.background);
+            data.append('background', backgroundFile);
 
             axios.post(url, data).then(response => {
                 response = response.data;
@@ -351,10 +353,16 @@ const app = new Vue({
         // Ads Script
         updateAdScript: function(e) {
             const url = e.target.action;
-            const script = document.querySelector('form[name=update-ad-script] textarea[name=script]').value;
+            const top_script = document.querySelector('form[name=update-ad-script] textarea#top_script').value;
+            const bottom_script = document.querySelector('form[name=update-ad-script] textarea#bottom_script').value;
+            const left_script = document.querySelector('form[name=update-ad-script] textarea#left_script').value;
+            const right_script = document.querySelector('form[name=update-ad-script] textarea#right_script').value;
 
             let data = new FormData();
-            data.append('script', script);
+            data.append('top_script', top_script);
+            data.append('bottom_script', bottom_script);
+            data.append('left_script', left_script);
+            data.append('right_script', right_script);
 
             this.isProcessing = true;
 

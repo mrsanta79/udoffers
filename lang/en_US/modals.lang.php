@@ -18,5 +18,9 @@ return [
     'information' => 'Information',
     'google_map_link' => 'Google Map link',
     'update_ad_script' => 'Update Ads Script',
-    'script' => 'Ad Script'
+    'script' => 'Ad Script',
+    'top_script' => 'Top Ad Script',
+    'right_script' => 'Right Ad Script',
+    'bottom_script' => 'Bottom Ad Script',
+    'left_script' => 'Left Ad Script',
 ];

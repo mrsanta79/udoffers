@@ -18,5 +18,9 @@ return [
     'information' => 'معلومات',
     'google_map_link' => 'رابط خريطة جوجل',
     'update_ad_script' => 'تحديث البرنامج النصي للإعلانات',
-    'script' => 'نص إعلان'
+    'script' => 'نص إعلان',
+    'top_script' => 'أعلى نص إعلان',
+    'right_script' => 'نص الإعلان الصحيح',
+    'bottom_script' => 'نص الإعلان السفلي',
+    'left_script' => 'نص الإعلان الأيسر',
 ];

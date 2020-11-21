@@ -13,6 +13,7 @@ return [
         'cities' => 'مدن',
         'city' => 'مدينة',
         'ad_script' => 'نص إعلان',
+        'admin_panel' => 'لوحة الادارة',
         'logout' => 'تسجيل خروج',
     ]
 ];

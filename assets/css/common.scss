@@ -38,24 +38,26 @@ body {
 
 .container-fluid {
     padding-bottom: 15px;
-    margin-top: 80px !important;
+    padding-top: 80px !important;
     box-sizing: border-box;
     width: 100%;
 }
 #copyright {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 20px;
-    background: $accent-color;
+    height: 50px;
+    padding-right: 50px;
+    padding-left: 50px;
+    background: $text-black;
     color: $text-white;
     text-align: center;
     vertical-align: middle;
+    font-size: 16px;
+    & * {
+        color: $text-white;
+    }
 }
 #page-loader {
     position: fixed;

@@ -2,10 +2,12 @@
 
 namespace AppController;
 
+use AdScript\AdScript;
 use City\City;
 use Entry\Entry;
 use Offer\Offer;
 use Participants\Participants;
+use Visit\Visit;
 
 class AppController {
     public static function index() {
@@ -29,7 +31,12 @@ class AppController {
             'entries' => Entry::getAllEntries(),
             'cities' => City::getAllCities(),
             'offers' => count($cities) ? Offer::getOffersByCities($cities) : null,
-            'selected_cities' => $selectedCities
+            'selected_cities' => $selectedCities,
+            'ads' => AdScript::getScripts(),
+            'visits' => [
+                'total' => Visit::getTotalVisits(),
+                'today' => Visit::getTodayVisits()
+            ]
         ];
 
         return view('app/index', $data);

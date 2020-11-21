@@ -16,7 +16,7 @@
         <div id="fb-root"></div>
         <div class="card">
             <a href="<?= url('/') ?>" class="logo">
-                <img src="<?= assets('images/logo.png') ?>" alt="">
+                <img src="<?= assets('images/logo.png') ?>" alt="" style="max-width: 100px;">
             </a>
             <h1 class="text-center">Welcome to <?= env('APP_NAME') ?></h1>
         </div>

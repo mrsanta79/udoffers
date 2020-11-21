@@ -27,3 +27,15 @@ if(!function_exists('generate_user_id')) {
         return 'UD' . $newUserId;
     }
 }
+
+if(!function_exists('fetch_all')) {
+    // Alternative of mysqli_fetch_all
+    function fetch_all($query) {
+        $data = [];
+
+        while($row = mysqli_fetch_assoc($query)) {
+            $data[] = $row;
+        }
+        return $data;
+    }
+}

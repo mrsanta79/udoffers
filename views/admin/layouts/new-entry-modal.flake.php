@@ -17,10 +17,11 @@
                     <div class="md-form">
                         <span class="d-block"><?= trans('modals.background') ?></span>
                         <div class="d-flex flex-row mt-2">
-                            <input type="color" id="background" name="background" class="d-block w-100" v-model="entryForm.background">
-                            <span class="ml-2 text-right" style="text-transform: uppercase; width: 100px;">
-                                {{ entryForm.background }}
-                            </span>
+<!--                            <input type="color" id="background" name="background" class="d-block w-100" v-model="entryForm.background">-->
+<!--                            <span class="ml-2 text-right" style="text-transform: uppercase; width: 100px;">-->
+<!--                                {{ entryForm.background }}-->
+<!--                            </span>-->
+                            <input type="file" id="background" name="background" class="d-block w-100" accept="image/jpeg,image/x-png,image/bmp">
                         </div>
                     </div>
                 </div>

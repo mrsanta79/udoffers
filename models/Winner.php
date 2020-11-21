@@ -15,7 +15,7 @@ class Winner {
             return null;
         }
 
-        $winners = mysqli_fetch_all($query, MYSQLI_ASSOC);
+        $winners = fetch_all($query);
 
         foreach($winners as $key => $winner) {
             $winners[$key]['id'] = intval($winners[$key]['id']);

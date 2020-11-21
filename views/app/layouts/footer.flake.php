@@ -1,14 +1,18 @@
     <small id="copyright">
-        <a href="<?= url('/') ?>">
-            <strong><?= env('APP_NAME') ?></strong>
-        </a>&nbsp;
-        <i class="fa fa-copyright"></i>&nbsp;
-        2020 CREATED BY&nbsp;
-        <a href="https://roidnet.com/">
-            <strong>
-                <span style="color: red;font-size: 12px">ROID</span>NET
-            </strong>
-        </a>.
+        <div>
+            <a href="<?= url('/') ?>">
+                <strong><?= env('APP_NAME') ?></strong>
+            </a>&nbsp;
+            <i class="fa fa-copyright"></i>&nbsp;<?= date('Y') ?>
+        </div>
+        <div>
+            CREATED BY&nbsp;
+            <a href="https://roidnet.com/">
+                <strong>
+                    <span style="color: red;">ROID</span>NET
+                </strong>
+            </a>
+        </div>
     </small>
     <!-- SCRIPTS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
