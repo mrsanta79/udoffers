@@ -79,7 +79,7 @@ class AdminController {
             'map_link' => sanitize_input($_POST['map_link']),
         ];
 
-        // Create entry
+        // Create offer
         $result = Offer::createOffer($data);
 
         if(!$result) {
@@ -104,7 +104,7 @@ class AdminController {
 
         $id = sanitize_input($_GET['id']);
 
-        // Delete entry
+        // Delete offer
         $result = Offer::deleteOffer($id);
 
         if(!$result) {
@@ -147,7 +147,7 @@ class AdminController {
 
         $id = sanitize_input($_GET['id']);
 
-        // Delete entry
+        // Delete user
         $result = User::deleteUser($id);
 
         if(!$result) {
@@ -182,7 +182,7 @@ class AdminController {
             'created_by' => user()->id,
         ];
 
-        // Create entry
+        // Create city
         $result = City::createCity($data);
 
         if(!$result) {
@@ -223,7 +223,7 @@ class AdminController {
 
         $id = sanitize_input($_GET['id']);
 
-        // Delete entry
+        // Delete city
         $result = City::deleteCity($id);
 
         if(!$result) {
@@ -246,24 +246,31 @@ class AdminController {
         if(!isset($_POST['name']) || empty(sanitize_input($_POST['name']))) {
             return response(false, null, 'Entry name is required');
         }
-        if(!isset($_POST['background']) || empty(sanitize_input($_POST['background']))) {
+        if(!isset($_FILES['background']) || empty($_FILES['background'])) {
             return response(false, null, 'Entry background is required');
+        }
+        if(!getimagesize($_FILES['background']['tmp_name'])) {
+            return response(false, null, 'Background is not a supported image file');
+        }
+
+        if(filesize($_FILES['background']['tmp_name']) > 5000000) {
+            return response(false, null, 'Max file size is 2 MB');
         }
 
         // Validate hex code
-        if(!validate_hex(sanitize_input($_POST['background']))) {
-            return response(false, null, 'Invalid hex code. Please try again.');
-        }
+//        if(!validate_hex(sanitize_input($_POST['background']))) {
+//            return response(false, null, 'Invalid hex code. Please try again.');
+//        }
 
         // Data
         $data = [
             'name' => sanitize_input($_POST['name']),
-            'background' => sanitize_input($_POST['background']),
+//            'background' => sanitize_input($_FILES['background']),
             'created_by' => user()->id,
         ];
 
         // Create entry
-        $result = Entry::createEntry($data);
+        $result = Entry::createEntry($data, $_FILES['background']);
 
         if(!$result) {
             return response(false, null, 'Oops! New entry cound not be created');

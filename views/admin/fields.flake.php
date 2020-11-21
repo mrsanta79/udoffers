@@ -28,10 +28,13 @@
                                 <td><?= $entry['name'] ?></td>
                                 <td style="text-transform: uppercase">
                                     <div class="d-flex flex-row">
-                                        <span style="width: 20px; height: 20px; border-radius: 100%; background: <?= $entry['background'] ?>"
-                                              class="d-inline-block mr-2">
-                                        </span>
-                                        <?= $entry['background'] ?>
+                                        <?php if(validate_hex($entry['background'])) { ?>
+                                            <span style="width: 20px; height: 20px; border-radius: 100%; background: <?= $entry['background'] ?>" class="d-inline-block mr-2">
+                                            </span>
+                                            <?= $entry['background'] ?>
+                                        <?php } else { ?>
+                                            <img src="<?= url($entry['background']) ?>" alt="" style="width: 50px; height: 50px; object-fit: contain">
+                                        <?php } ?>
                                     </div>
                                 </td>
                                 <td><?= $entry['creator']->name ?> (<?= $entry['creator']->email ?>)</td>

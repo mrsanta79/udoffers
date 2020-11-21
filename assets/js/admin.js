@@ -25,7 +25,8 @@ const app = new Vue({
         },
         entryForm: {
             name: '',
-            background: '#424242'
+            // background: '#424242'
+            background: ''
         }
     },
     created() {
@@ -284,19 +285,20 @@ const app = new Vue({
         // Entry
         createEntry: function(e) {
             const url = e.target.action;
+            const backgroundFile = document.querySelector('form[name=create-entry] input[name=background]').files[0];
 
             // Validate background color
-
-            if(!validateHexCode(this.entryForm.background)) {
-                notifier.show('Oops!', 'Invalid hex color code. Please try again.', 'danger', '', 7000);
-                return false;
-            }
+            // if(!validateHexCode(this.entryForm.background)) {
+            //     notifier.show('Oops!', 'Invalid hex color code. Please try again.', 'danger', '', 7000);
+            //     return false;
+            // }
 
             this.isProcessing = true;
 
             let data = new FormData();
             data.append('name', this.entryForm.name);
-            data.append('background', this.entryForm.background);
+            // data.append('background', this.entryForm.background);
+            data.append('background', backgroundFile);
 
             axios.post(url, data).then(response => {
                 response = response.data;

@@ -105,8 +105,9 @@
                                 <?php
                             } else {
                                 foreach ($data['offers'] as $key => $offer) {
+                                    $card_bg = validate_hex($offer['entry_type']->background) ? $offer['entry_type']->background : 'url(' . url($offer['entry_type']->background) . ')';
                                     ?>
-                                    <div class="card p-5 <?= $key != 0 ? 'mt-5' : '' ?>" id="offer-card" style="background-color: <?= $offer['entry_type']->background ?>">
+                                    <div class="card p-5 <?= $key != 0 ? 'mt-5' : '' ?>" id="offer-card" style="background: <?= $card_bg ?>; background-size: cover">
                                         <div class="d-flex justify-content-between">
                                             <h6><?= isset($offer['entry_type']->name) ? $offer['entry_type']->name : '-' ?></h6>
                                             <h6><?= $offer['city']->name ?></h6>
