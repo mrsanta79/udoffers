@@ -11,7 +11,8 @@ if(!function_exists('validate_hex')) {
 }
 
 if(!function_exists('generate_user_id')) {
-    function generate_user_id($user_id) {
+    function generate_user_id($user) {
+        $user_id = $user->created_at;
         $userIdLength = strlen($user_id);
         $maxLength = 6;
         $newUserId = null;
@@ -24,7 +25,7 @@ if(!function_exists('generate_user_id')) {
         } else {
             $newUserId = $user_id;
         }
-        return 'UD' . $newUserId;
+        return strtoupper(substr(env('APP_NAME'), 0, 2)) . $newUserId;
     }
 }
 

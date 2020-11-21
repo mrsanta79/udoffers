@@ -58,8 +58,11 @@
                         </button>
                     </div>
                     <div>
-                        <a class="dropdown-toggle d-block p-1 pr-2 icon-btn color-accent text-white waves-light" id="dashboard-avatar" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border-radius: 100px">
-                            <img src="<?= !empty(user()->avatar) ? user()->avatar : avatar(user()->name) ?>" alt="" class="avatar mr-2" style="width: 25px; height: 25px;">
+                        <a class="dropdown-toggle d-block p-1 pr-3 icon-btn color-accent text-white waves-light" id="dashboard-avatar" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border-radius: 100px">
+                            <img src="<?= !empty(user()->avatar) ? user()->avatar : avatar(user()->name) ?>" alt="" class="avatar mr-1" style="width: 25px; height: 25px;">
+                            <span class="font-weight-bold" style="font-size: 14px;">
+                                <?= generate_user_id(user()) ?>
+                            </span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right dropdown-default" aria-labelledby="#dashboard-avatar">
                             <?php if(is_admin()) { ?>
@@ -105,7 +108,11 @@
                                 <?php
                             } else {
                                 foreach ($data['offers'] as $key => $offer) {
-                                    $card_bg = validate_hex($offer['entry_type']->background) ? $offer['entry_type']->background : 'url(' . url($offer['entry_type']->background) . ')';
+                                    if(isset($offer['entry_type']) && isset($offer['entry_type']->background)) {
+                                        $card_bg = validate_hex($offer['entry_type']->background) ? $offer['entry_type']->background : 'url(' . url($offer['entry_type']->background) . ')';
+                                    } else {
+                                        $card_bg = '#fff';
+                                    }
                                     ?>
                                     <div class="card p-5 <?= $key != 0 ? 'mt-5' : '' ?>" id="offer-card" style="background: <?= $card_bg ?>; background-size: cover">
                                         <div class="d-flex justify-content-between">
@@ -132,7 +139,7 @@
                                         <div class="d-flex justify-content-around mt-3 pb-3" id="winner-box-container" style="border-bottom: 1px solid #ddd">
                                             <?php foreach($offer['winners'] as $winner) { ?>
                                                 <div class="winner-box">
-                                                    <h6><?= generate_user_id($winner['user']->id) ?></h6>
+                                                    <h6><?= generate_user_id($winner['user']) ?></h6>
                                                 </div>
                                             <?php } ?>
                                         </div>
