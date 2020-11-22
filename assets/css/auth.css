@@ -212,7 +212,7 @@ body {
   width: 100%;
 }
 
-#copyright {
+#footer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -224,9 +224,9 @@ body {
   color: #fff;
   text-align: center;
   vertical-align: middle;
-  font-size: 16px;
+  font-size: 14px;
 }
-#copyright * {
+#footer * {
   color: #fff;
 }
 
@@ -386,7 +386,7 @@ body[dir=rtl] .dropdown-menu {
   }
 }
 @media only screen and (max-width: 767px) {
-  #copyright {
+  #footer {
     flex-direction: column;
     justify-content: space-evenly;
     height: 80px;

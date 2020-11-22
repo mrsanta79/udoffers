@@ -1,16 +1,27 @@
-    <small id="copyright">
+    <small id="footer">
         <div>
-            <a href="<?= url('/') ?>">
-                <strong><?= env('APP_NAME') ?></strong>
-            </a>&nbsp;
-            <i class="fa fa-copyright"></i>&nbsp;<?= date('Y') ?>
-        </div>
-        <div>
-            CREATED BY&nbsp;
+            Copyright &copy;
+            <?= date('Y') ?>.
+            <a href="<?= url('/') ?>" class="text-white font-weight-bold"><?= env('APP_NAME') ?></a>.
+            All Rights Reserved.
+            CREATED BY
             <a href="https://roidnet.com/">
                 <strong>
                     <span style="color: red;">ROID</span>NET
                 </strong>
+            </a>
+        </div>
+        <div>
+            <a href="<?= url('/about-us') ?>">
+                <?= trans('dashboard.links.who_we_are') ?>
+            </a>
+            <span class="seperator mx-2"></span>
+            <a href="<?= url('/privacy-policy') ?>">
+                <?= trans('dashboard.links.privacy_policy') ?>
+            </a>
+            <span class="seperator mx-2"></span>
+            <a href="<?= url('/terms') ?>">
+                <?= trans('dashboard.links.terms_conditions') ?>
             </a>
         </div>
     </small>
