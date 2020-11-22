@@ -133,5 +133,5 @@ $(document).ready(function() {
     $('.multiselect').click();
 
     // Customize multi-select button
-    $('.bootstrap-select button').removeClass('btn-light').addClass('btn-narrow color-secondary text-white');
+    $('.bootstrap-select button').removeClass('btn-light').addClass('btn-narrow color-secondary text-white mx-0');
 })

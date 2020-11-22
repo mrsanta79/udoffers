@@ -41,4 +41,16 @@ class AppController {
 
         return view('app/index', $data);
     }
+
+    public static function aboutUs() {
+        return view('app/about');
+    }
+
+    public static function privacyPolicy() {
+        return view('app/privacy');
+    }
+
+    public static function termsAndConditions() {
+        return view('app/terms');
+    }
 }

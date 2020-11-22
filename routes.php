@@ -19,6 +19,9 @@ switch ($route) {
     // User Panel
     case '/':
     case '' : AppController::index(); break;
+    case '/about-us' : AppController::aboutUs(); break;
+    case '/privacy-policy' : AppController::privacyPolicy(); break;
+    case '/terms' : AppController::termsAndConditions(); break;
     case '/api/participants': APIAppController::getAllParticipants(); break;
     case '/api/participants/update': APIAppController::participate(); break;
 

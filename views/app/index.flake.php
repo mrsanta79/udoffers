@@ -20,14 +20,18 @@
                     return $item;
                 })[3];
             ?>
-            <div class="container p-2 pb-5">
-                <div class="mb-4 text-center">
-                    <a class="navbar-brand" href="<?= url('/') ?>">
-                        <img src="<?= assets('images/logo.png') ?>" alt="" class="w-100" style="max-width: 100px;">
-                    </a>
+            <div class="container p-2 pb-2">
+                <div class="row mb-4">
+                    <div class="col-md-4 text-left">
+                        <a class="navbar-brand" href="<?= url('/') ?>">
+                            <img src="<?= assets('images/logo.png') ?>" alt="" class="w-100" style="max-width: 100px;">
+                        </a>
+                    </div>
+                    <div class="col-md-8 text-right ad-container">
+                        <?= $top_ad['script'] ?>
+                    </div>
                 </div>
                 <div class="d-flex justify-content-between">
-                    <h4 id="countdown" data-timeout="<?= strtotime('tomorrow') ?>" style="width: 100px;">{{ currentTime }}</h4>
                     <div class="md-form m-0">
                         <select class="multiselect" name="city" multiple data-live-search="true" @change="getOffersByCity">
                             <?php
@@ -57,6 +61,7 @@
                             </span>
                         </button>
                     </div>
+                    <h4 id="countdown" data-timeout="<?= strtotime('tomorrow') ?>" style="width: 100px;">{{ currentTime }}</h4>
                     <div>
                         <a class="dropdown-toggle d-block p-1 pr-3 icon-btn color-accent text-white waves-light" id="dashboard-avatar" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border-radius: 100px">
                             <img src="<?= !empty(user()->avatar) ? user()->avatar : avatar(user()->name) ?>" alt="" class="avatar mr-1" style="width: 25px; height: 25px;">
@@ -74,21 +79,6 @@
                                 <?= trans('common.menu.logout') ?>
                             </a>
                         </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6 mt-2 text-left">
-                        <?= trans('dashboard.total_visits') ?>:
-                        <?= $data['visits']['total'] ?>
-                    </div>
-                    <div class="col-md-6 mt-2 text-right">
-                        <?= trans('dashboard.today_visits') ?>:
-                        <?= $data['visits']['today'] ?>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12 mt-5 text-center ad-container">
-                        <?= $top_ad['script'] ?>
                     </div>
                 </div>
                 <div class="row py-5">
@@ -155,6 +145,20 @@
                 <div class="row">
                     <div class="col-md-12 mt-1 text-center ad-container">
                         <?= $bottom_ad['script'] ?>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-6 mt-2 text-left">
+                        <h5>
+                            <?= trans('dashboard.total_visits') ?>:
+                            <?= $data['visits']['total'] ?>
+                        </h5>
+                    </div>
+                    <div class="col-md-6 mt-2 text-right">
+                        <h5>
+                            <?= trans('dashboard.today_visits') ?>:
+                            <?= $data['visits']['today'] ?>
+                        </h5>
                     </div>
                 </div>
             </div>
